@@ -55,7 +55,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
         )}
       >
         <Link
-          href="/projects"
+          href="#"
           className={cn(
             "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
             className,
