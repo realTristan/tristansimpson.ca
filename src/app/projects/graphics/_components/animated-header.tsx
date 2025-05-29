@@ -100,10 +100,10 @@ export function AnimatedHeader({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group pointer-events-auto inline-flex items-center rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
+              className="cursor-active group pointer-events-auto inline-flex items-center gap-2 rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
             >
               {React.cloneElement(icon, {
-                className: "mr-2 h-5 w-5 text-white group-hover:text-blue-400",
+                className: "h-5 w-5 text-white group-hover:text-blue-400",
               })}
               {title}
             </a>
@@ -123,7 +123,7 @@ export function AnimatedHeader({
                 value={id}
                 className="border-b border-white/10 px-4"
               >
-                <AccordionTrigger className="group pointer-events-auto flex w-full items-center justify-between py-4 text-left text-white transition hover:text-blue-400 focus:text-blue-400">
+                <AccordionTrigger className="cursor-active group pointer-events-auto flex w-full items-center justify-between py-4 text-left text-white transition hover:text-blue-400 focus:text-blue-400">
                   <span className="flex items-center gap-2">
                     {React.cloneElement(icon, {
                       className:
@@ -132,15 +132,15 @@ export function AnimatedHeader({
                     {title}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-left text-gray-400">
-                  <p className="mb-2 leading-snug">{description}</p>
+                <AccordionContent className="flex flex-col gap-2 px-4 pb-4 text-left text-gray-400">
+                  <p className="leading-snug">{description}</p>
                   <a
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="pointer-events-auto inline-flex items-center text-sm text-blue-400 hover:text-blue-300"
+                    className="cursor-active pointer-events-auto inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300"
                   >
-                    View on GitHub <ExternalLink className="ml-1 h-4 w-4" />
+                    View on GitHub <ExternalLink className="h-4 w-4" />
                   </a>
                 </AccordionContent>
               </AccordionItem>

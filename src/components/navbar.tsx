@@ -82,21 +82,21 @@ function ProjectsDropdown({ className }: { className?: string }) {
             >
               <Link
                 href="/projects/apollo"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />
                 <span>Apollo</span>
               </Link>
               <Link
                 href="/projects/athena"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />
                 <span>Athena</span>
               </Link>
               <Link
                 href="/projects/graphics"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />
                 <span>Graphics & Physics</span>
@@ -105,7 +105,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
                 href="https://simpsonresearch.ca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <ExternalLink className="size-4" />
                 <span>Simpson Research</span>
@@ -114,7 +114,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
                 href="https://github.com/realtristan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <ExternalLink className="size-4" />
                 <span>GitHub (@realtristan)</span>
@@ -144,7 +144,7 @@ function ContactDropdown({ className }: { className?: string }) {
         <Link
           href="mailto:tsimps01@uoguelph.ca"
           className={cn(
-            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
+            "cursor-active font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
             className,
           )}
         >
@@ -167,7 +167,7 @@ function ContactDropdown({ className }: { className?: string }) {
             >
               <a
                 href="mailto:tsimps01@uoguelph.ca"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Mail className="size-4" />
                 <span>tsimps01@uoguelph.ca</span>
@@ -176,7 +176,7 @@ function ContactDropdown({ className }: { className?: string }) {
                 href="https://www.linkedin.com/in/tristansimpsonn/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Linkedin className="size-4" />
                 <span>LinkedIn</span>
@@ -186,7 +186,7 @@ function ContactDropdown({ className }: { className?: string }) {
                 href="http://x.com/tristans121"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Twitter className="size-4" />
                 <span>Twitter</span>
@@ -242,7 +242,7 @@ function ResumeDropdown({ className }: { className?: string }) {
               <a
                 href="/resume.pdf"
                 download
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <File className="size-4" />
                 <span>Open Preview</span>
@@ -295,28 +295,28 @@ function ExperienceDropdown({ className }: { className?: string }) {
             >
               <Link
                 href="/experience/yncu"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Computer className="size-4" />
                 <span>YNCU (Current 2025)</span>
               </Link>
               <Link
                 href="/experience/dominion-lending"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Computer className="size-4" />
                 <span>Dominion Lending</span>
               </Link>
               <Link
                 href="/experience/university-of-guelph"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <University className="size-4" />
                 <span>University of Guelph</span>
               </Link>
               <Link
                 href="/experience"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Clock className="size-4" />
                 <span>Timeline (All)</span>
@@ -373,7 +373,7 @@ export default function Navbar() {
             <MagneticButton>
               <Link
                 href="/journey"
-                className="font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
+                className="cursor-active font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
               >
                 Journey
               </Link>

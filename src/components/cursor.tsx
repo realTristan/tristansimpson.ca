@@ -21,15 +21,18 @@ export function Cursor() {
 
   useEffect(() => {
     const isInteractive = (el: EventTarget | null) => {
-      if (!(el instanceof HTMLElement)) {
-        return false;
+      let node = el instanceof HTMLElement ? el : null;
+      while (node) {
+        if (
+          node.tagName === "A" ||
+          node.tagName === "BUTTON" ||
+          node.getAttribute("role") === "button"
+        ) {
+          return true;
+        }
+        node = node.parentElement;
       }
-
-      return (
-        el.tagName === "A" ||
-        el.tagName === "BUTTON" ||
-        el.getAttribute("role") === "button"
-      );
+      return false;
     };
 
     const handleOver = (e: MouseEvent) => {
@@ -55,7 +58,7 @@ export function Cursor() {
   return (
     <div
       ref={cursorRef}
-      className={`pointer-events-none fixed z-50 rounded-full border-2 border-white mix-blend-difference transition-all duration-200 ease-linear ${
+      className={`pointer-events-none fixed z-[999] rounded-full border-2 border-white mix-blend-difference transition-all duration-200 ease-linear ${
         active ? "h-12 w-12 border-2 bg-black" : "h-6 w-6 border-2 bg-transparent"
       }`}
       style={{
