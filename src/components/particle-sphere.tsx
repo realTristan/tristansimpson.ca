@@ -145,10 +145,12 @@ function ParticleSphere({
 
 export default function ParticleSphereScene({}: {}) {
   return (
-    <Canvas camera={{ position: [0, 0, 1] }}>
-      <ambientLight intensity={0.2} />
+    <div className="fixed z-0 h-screen w-screen">
+      <Canvas camera={{ position: [0, 0, 1] }}>
+        <ambientLight intensity={0.2} />
 
-      <ParticleSphere color="#aaccff" />
-    </Canvas>
+        <ParticleSphere color="#aaccff" />
+      </Canvas>
+    </div>
   );
 }
