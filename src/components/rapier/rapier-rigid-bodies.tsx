@@ -37,7 +37,7 @@ export function RapierRigidBodies() {
     >
       <instancedMesh
         args={[undefined, undefined, config.numberOfSphereInstances]}
-        material={config.materials.secondary}
+        material={config.materials.ball}
         castShadow
       >
         <sphereGeometry args={[0.8, 32, 32]} />

@@ -4,13 +4,14 @@ import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { easing } from "maath";
 import { useRef } from "react";
-import { Vector3 } from "three";
+import { Vector3, PointLight as ThreePointLight } from "three";
 import { Sphere } from "@react-three/drei";
 import { config } from "./utils/config";
 
 export function PointerBall() {
   const vec = new Vector3();
   const ref = useRef<any>(null);
+  const lightRef = useRef<ThreePointLight>(null);
 
   useFrame(({ mouse, viewport }, delta) => {
     if (!ref.current) return;
@@ -30,9 +31,26 @@ export function PointerBall() {
     ref.current.setNextKinematicTranslation(vec);
   });
 
+  useFrame((_, delta) => {
+    if (!lightRef.current) return;
+    // Pulse the light intensity between 5 and 15
+    lightRef.current.intensity = 10 + Math.sin(Date.now() * 0.001) * 5;
+  });
+
   return (
-    <RigidBody type="kinematicPosition" ref={ref}>
+    <RigidBody
+      type="kinematicPosition"
+      ref={ref}
+      colliders="ball"
+      friction={1}
+      restitution={0.5}
+      density={1}
+    >
       <Sphere material={config.materials.primary} args={[0.6, 32, 32]} />
+      <primitive
+        ref={lightRef}
+        object={new ThreePointLight(config.materials.primary.color, 10, 10, 2)}
+      />
     </RigidBody>
   );
 }

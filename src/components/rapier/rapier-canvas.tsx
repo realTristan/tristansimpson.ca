@@ -4,6 +4,7 @@ import { Color } from "three";
 import { EffectComposer, SSAO } from "@react-three/postprocessing";
 import { PointerBall } from "./pointer-ball";
 import { RapierRigidBodies } from "./rapier-rigid-bodies";
+import { StaticShapes } from "./static-shapes";
 import { cn } from "@/lib/utils";
 import { primaryColor } from "./utils/config";
 
@@ -19,6 +20,7 @@ export default function RapierCanvas({ className }: { className?: string }) {
         <Physics gravity={[0, 2, 0]}>
           <RapierRigidBodies />
           <PointerBall />
+          <StaticShapes />
         </Physics>
 
         <ambientLight intensity={1} />
