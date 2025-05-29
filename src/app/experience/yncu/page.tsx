@@ -499,7 +499,7 @@ const projects = [
     ),
     images: [],
     Component: MortgageRenewalSystem,
-    tags: ["Project", "Lead", "Salesforce", "In Progress"],
+    tags: ["Project", "Lead", "In Progress"],
   },
   {
     id: "id-verification",
@@ -652,6 +652,7 @@ export default function YNCUPage() {
     <main className="relative flex h-screen w-full flex-col bg-black">
       <Navbar />
       <FloatingTechGridScene />
+
       <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center px-4 py-12">
         <YNCUHeader />
         <ScrollArea className="scrollbar-hide w-full flex-1">

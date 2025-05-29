@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useSpring, animated } from "@react-spring/three";
 import { SSAO } from "@react-three/postprocessing";
+import { Line } from "@react-three/drei";
 
 interface FloatingTechGridProps {
   gridSize?: number;
@@ -70,6 +71,14 @@ function FloatingTechGrid({
     return { nodes, connections };
   }, [gridSize, nodeCount]);
 
+  // Streak animation parameters for each connection
+  const streakParams = useMemo(() => {
+    return connections.map(() => ({
+      speed: 0.1 + Math.random() * 0.2, // random speed between 0.15 and 0.35
+      phase: Math.random(),
+    }));
+  }, [connections.length]);
+
   // Handle mouse movement
   React.useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -86,12 +95,9 @@ function FloatingTechGrid({
   // Animation frame
   useFrame((state) => {
     if (!groupRef.current) return;
-
     const time = state.clock.getElapsedTime();
-
     // Rotate the entire grid
     groupRef.current.rotation.y = time * 0.05;
-
     // Add subtle floating motion
     groupRef.current.position.y = Math.sin(time * 0.5) * 0.2;
   });
@@ -123,35 +129,72 @@ function FloatingTechGrid({
 
       {/* Connections */}
       {connections.map(([start, end], index) => (
-        <line key={`connection-${index}`}>
-          <bufferGeometry>
-            <bufferAttribute
-              attach="attributes-position"
-              args={[
-                new Float32Array([
-                  nodes[start].x,
-                  nodes[start].y,
-                  nodes[start].z,
-                  nodes[end].x,
-                  nodes[end].y,
-                  nodes[end].z,
-                ]),
-                3,
-              ]}
-              count={2}
-              itemSize={3}
+        <React.Fragment key={`connection-${index}`}>
+          <line>
+            <bufferGeometry>
+              <bufferAttribute
+                attach="attributes-position"
+                args={[
+                  new Float32Array([
+                    nodes[start].x,
+                    nodes[start].y,
+                    nodes[start].z,
+                    nodes[end].x,
+                    nodes[end].y,
+                    nodes[end].z,
+                  ]),
+                  3,
+                ]}
+                count={2}
+                itemSize={3}
+              />
+            </bufferGeometry>
+            <animated.lineBasicMaterial
+              color={primaryColor}
+              transparent
+              opacity={opacity}
+              linewidth={1}
             />
-          </bufferGeometry>
-          <animated.lineBasicMaterial
-            color={primaryColor}
-            transparent
-            opacity={opacity}
-            linewidth={1}
+          </line>
+          {/* White streak traversing the line */}
+          <StreakLine
+            start={nodes[start]}
+            end={nodes[end]}
+            speed={streakParams[index].speed}
+            phase={streakParams[index].phase}
+            streakLength={0.15}
           />
-        </line>
+        </React.Fragment>
       ))}
     </animated.group>
   );
+}
+
+// Add the StreakLine component
+function StreakLine({
+  start,
+  end,
+  speed,
+  phase,
+  streakLength,
+}: {
+  start: THREE.Vector3;
+  end: THREE.Vector3;
+  speed: number;
+  phase: number;
+  streakLength: number;
+}) {
+  const [points, setPoints] = React.useState([start, end]);
+  useFrame(({ clock }) => {
+    const t = (clock.getElapsedTime() * speed + phase) % 1;
+    const t2 = Math.min(t + streakLength, 0.999);
+    if (t2 > t) {
+      const p1 = new THREE.Vector3().lerpVectors(start, end, t);
+      const p2 = new THREE.Vector3().lerpVectors(start, end, t2);
+      setPoints([p1, p2]);
+    }
+  });
+  return <Line points={points} color="white" lineWidth={1} transparent opacity={0.95} />;
 }
 
 export default function FloatingTechGridScene(props: FloatingTechGridProps) {
@@ -162,13 +205,6 @@ export default function FloatingTechGridScene(props: FloatingTechGridProps) {
         <FloatingTechGrid {...props} />
         <EffectComposer enableNormalPass>
           <Bloom intensity={0.5} luminanceThreshold={0.2} luminanceSmoothing={0.9} />
-          <SSAO
-            samples={11}
-            radius={0.15}
-            intensity={20}
-            luminanceInfluence={0.6}
-            color={new THREE.Color("black")}
-          />
         </EffectComposer>
       </Canvas>
     </div>
