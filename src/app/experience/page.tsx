@@ -2,17 +2,19 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Computer, University, Clock, Briefcase } from "lucide-react";
+import { Computer, University, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
 import ParticleSphereScene from "@/components/particle-sphere";
+import { ScrollArea } from "@/components/ui/scroll-area";
+// import "@/styles/scrollbar-hide.css";
 
 const experiences = [
   {
     id: "yncu",
     title: "YNCU",
-    role: "Software Developer",
-    period: "2024 - Present",
+    role: "Full Stack Developer",
+    period: "June 2024 - Present",
     description: "Full-stack development and system architecture",
     icon: <Computer className="h-6 w-6" />,
     link: "/experience/yncu",
@@ -21,17 +23,26 @@ const experiences = [
     id: "dominion-lending",
     title: "Dominion Lending",
     role: "Software Developer",
-    period: "2023 - 2024",
-    description: "Web development and automation solutions",
+    period: "July 2023 - September 2023",
+    description: "Software development and automation solutions",
     icon: <Computer className="h-6 w-6" />,
     link: "/experience/dominion-lending",
+  },
+  {
+    id: "engineering-ambition",
+    title: "Engineering Ambition",
+    role: "Lead Software Developer",
+    period: "December 2023 - June 2024",
+    description: "Lead software developement and system architecture",
+    icon: <Computer className="h-6 w-6" />,
+    link: "/experience/engineering-ambition",
   },
   {
     id: "university-of-guelph",
     title: "University of Guelph",
     role: "Computer Science Student",
-    period: "2020 - 2024",
-    description: "Bachelor of Computing - Computer Science",
+    period: "2023 - 2028",
+    description: "Bachelor of Computing - Computer Science (Co-op)",
     icon: <University className="h-6 w-6" />,
     link: "/experience/university-of-guelph",
   },
@@ -107,7 +118,7 @@ function ExperienceHeader() {
           variants={experienceHeaderContainer}
         >
           <span className="flex flex-row items-center justify-center gap-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-            <motion.span className="text-2xl text-blue-500 sm:text-3xl md:text-4xl lg:text-5xl">
+            <motion.span className="text-4xl text-blue-500 sm:text-5xl md:text-6xl lg:text-7xl">
               @
             </motion.span>
             <span className="inline-block">
@@ -145,57 +156,59 @@ function ExperienceHeader() {
 
 export default function ExperiencePage() {
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-start overflow-x-hidden bg-black">
+    <main className="relative flex h-screen w-full flex-col bg-black">
       <Navbar />
-
-      {/* Custom particle sphere with experience-themed colors */}
       <ParticleSphereScene />
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col items-center px-4 py-12">
+        <div className="sticky top-0 z-20 w-full">
+          <ExperienceHeader />
+        </div>
 
-      <div className="relative z-10 mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-24">
-        <ExperienceHeader />
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="relative flex w-full max-w-3xl flex-col items-center justify-center gap-8"
-        >
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={experience.id}
-              variants={item}
-              className={cn(
-                "group relative flex w-full flex-col gap-4 rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50",
-                index % 2 === 0 ? "md:ml-0" : "lg:ml-52",
-              )}
-            >
-              <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
-                <div className="h-3 w-3 rounded-full bg-blue-500" />
-              </div>
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-black/50 text-white transition-colors group-hover:border-blue-500/50">
-                    {experience.icon}
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-semibold text-white">
-                      {experience.title}
-                    </h2>
-                    <p className="text-sm text-gray-400">{experience.role}</p>
-                  </div>
-                </div>
-                <span className="text-sm text-gray-500">{experience.period}</span>
-              </div>
-              <p className="text-gray-400">{experience.description}</p>
-              <Link
-                href={experience.link}
-                className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
+        <ScrollArea className="scrollbar-hide w-full flex-1">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="relative flex flex-col items-center justify-center gap-8 overflow-visible py-4"
+          >
+            {experiences.map((experience, index) => (
+              <motion.div
+                key={experience.id}
+                variants={item}
+                className={cn(
+                  "group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50",
+                  index % 2 === 0 ? "md:translate-x-0" : "lg:translate-x-24",
+                )}
               >
-                Learn more
-                <Clock className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
+                  <div className="h-3 w-3 rounded-full bg-blue-500" />
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-black/50 text-white transition-colors group-hover:border-blue-500/50">
+                      {experience.icon}
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-semibold text-white">
+                        {experience.title}
+                      </h2>
+                      <p className="text-sm text-gray-400">{experience.role}</p>
+                    </div>
+                  </div>
+                  <span className="text-sm text-gray-500">{experience.period}</span>
+                </div>
+                <p className="text-gray-400">{experience.description}</p>
+                <Link
+                  href={experience.link}
+                  className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
+                >
+                  Learn more
+                  <ExternalLink className="h-4 w-4" />
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </ScrollArea>
       </div>
     </main>
   );

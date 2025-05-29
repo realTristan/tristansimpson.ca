@@ -132,3 +132,21 @@ body {
 ::selection {
   @apply bg-blue-500 text-white;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide Radix UI ScrollArea scrollbar */
+.scrollbar-hide [data-radix-scroll-area-viewport]::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-hide [data-radix-scroll-area-viewport] {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
