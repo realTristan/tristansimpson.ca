@@ -15,12 +15,14 @@ interface RapierBallsSceneProps {
   className?: string;
   onLoaded?: () => void;
   animateIn?: boolean;
+  pointerColor?: "primary" | "secondary";
 }
 
 export default function RapierBallsScene({
   className,
   onLoaded,
   animateIn,
+  pointerColor,
 }: RapierBallsSceneProps) {
   // Call onLoaded after Suspense resolves (after first render)
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function RapierBallsScene({
         >
           <Physics gravity={[0, 2, 0]}>
             <RapierRigidBodies />
-            <PointerBall />
+            <PointerBall color={pointerColor} />
             <StaticShapes animateIn={animateIn} />
           </Physics>
 

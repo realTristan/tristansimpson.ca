@@ -8,7 +8,7 @@ import { Vector3, PointLight as ThreePointLight } from "three";
 import { Sphere } from "@react-three/drei";
 import { config } from "./utils/config";
 
-export function PointerBall() {
+export function PointerBall({ color = "primary" }: { color?: "primary" | "secondary" }) {
   const vec = new Vector3();
   const ref = useRef<any>(null);
   const lightRef = useRef<ThreePointLight>(null);
@@ -50,10 +50,24 @@ export function PointerBall() {
       restitution={0.5}
       density={1}
     >
-      <Sphere material={config.materials.primary} args={[0.6, 32, 32]} />
+      <Sphere
+        material={
+          color === "primary" ? config.materials.primary : config.materials.secondary
+        }
+        args={[0.6, 32, 32]}
+      />
       <primitive
         ref={lightRef}
-        object={new ThreePointLight(config.materials.primary.color, 10, 10, 2)}
+        object={
+          new ThreePointLight(
+            color === "primary"
+              ? config.materials.primary.color
+              : config.materials.secondary.color,
+            10,
+            10,
+            2,
+          )
+        }
       />
     </RigidBody>
   );

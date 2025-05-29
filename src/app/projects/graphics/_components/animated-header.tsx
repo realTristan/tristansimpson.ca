@@ -55,7 +55,15 @@ const projectItems = [
   },
 ];
 
-export function AnimatedHeader({ className }: { className?: string }) {
+export function AnimatedHeader({
+  className,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  className?: string;
+  onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
+}) {
   return (
     <motion.section
       className={cn(
@@ -65,6 +73,8 @@ export function AnimatedHeader({ className }: { className?: string }) {
       initial="hidden"
       animate="show"
       variants={container}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div className="flex w-full flex-col items-center gap-8 text-center">
         <div className="flex flex-col items-center gap-6">
