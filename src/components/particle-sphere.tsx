@@ -162,12 +162,12 @@ function ParticleSphere({
   );
 }
 
-export default function ParticleSphereScene({}: {}) {
+export default function ParticleSphereScene(props: ParticleSphereProps) {
   return (
     <div className="fixed z-0 h-screen w-screen">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <ambientLight intensity={0.2} />
-        <ParticleSphere color="#aaccff" secondaryColor="#1d4ed8" />
+        <ParticleSphere {...props} />
       </Canvas>
     </div>
   );

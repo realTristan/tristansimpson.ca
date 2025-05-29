@@ -86,7 +86,7 @@ export default function AnimatedHeader({
             </span>
           </span>
 
-          <span className="inline-block text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+          <span className="inline-block text-5xl md:text-7xl lg:text-8xl">
             {lastName.split("").map((char, i) => (
               <motion.span
                 key={i}
