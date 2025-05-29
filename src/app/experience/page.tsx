@@ -33,7 +33,7 @@ const experiences = [
     title: "Engineering Ambition",
     role: "Lead Software Developer",
     period: "December 2023 - June 2024",
-    description: "Lead software developement and system architecture",
+    description: "Lead software developement and team of 15",
     icon: <Computer className="h-6 w-6" />,
     link: "/experience/engineering-ambition",
   },
