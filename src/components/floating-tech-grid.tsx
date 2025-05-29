@@ -18,8 +18,8 @@ interface FloatingTechGridProps {
 }
 
 function FloatingTechGrid({
-  gridSize = 40,
-  nodeCount = 40,
+  gridSize = 32,
+  nodeCount = 28,
   primaryColor = "#444444",
   secondaryColor = "#444444",
   onLoad,
@@ -58,13 +58,23 @@ function FloatingTechGrid({
       );
     }
 
-    // Create connections between nearby nodes
+    // Create limited connections between nearby nodes
     for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const distance = nodes[i].distanceTo(nodes[j]);
-
-        if (distance < gridSize * 0.4) {
+      // Find the 2 closest nodes for each node
+      const distances = nodes.map((n, j) => ({
+        index: j,
+        dist: nodes[i].distanceTo(n),
+      }));
+      distances.sort((a, b) => a.dist - b.dist);
+      let added = 0;
+      for (let k = 1; k < distances.length && added < 2; k++) {
+        const j = distances[k].index;
+        if (
+          i < j &&
+          !connections.some(([a, b]) => (a === i && b === j) || (a === j && b === i))
+        ) {
           connections.push([i, j]);
+          added++;
         }
       }
     }
@@ -109,7 +119,7 @@ function FloatingTechGrid({
       {nodes.map((position, index) => (
         <mesh key={`node-${index}`} position={position}>
           {/* Glow effect */}
-          <sphereGeometry args={[0.18, 12, 12]} />
+          <sphereGeometry args={[0.18, 8, 8]} />
           <meshStandardMaterial
             color={index % 3 === 0 ? secondaryColor : primaryColor}
             transparent
@@ -119,7 +129,7 @@ function FloatingTechGrid({
             depthWrite={false}
           />
           {/* Node core */}
-          <sphereGeometry args={[0.1, 12, 12]} />
+          <sphereGeometry args={[0.1, 8, 8]} />
           <animated.meshBasicMaterial
             color={index % 3 === 0 ? secondaryColor : primaryColor}
             transparent
@@ -172,7 +182,7 @@ function FloatingTechGrid({
 }
 
 // Add the StreakLine component
-function StreakLine({
+const StreakLine = React.memo(function StreakLine({
   start,
   end,
   speed,
@@ -185,10 +195,11 @@ function StreakLine({
   phase: number;
   streakLength: number;
 }) {
-  const [points, setPoints] = React.useState([start, end]);
-  const [opacity, setOpacity] = React.useState(0);
   const maxOpacity = 0.95;
-  const fadeInDuration = 0.2; // first 20% of the line
+  const fadeInDuration = 0.2;
+  const pointsRef = useRef<[THREE.Vector3, THREE.Vector3]>([start, end]);
+  const opacityRef = useRef(0);
+  const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   useFrame(({ clock }) => {
     const t = (clock.getElapsedTime() * speed + phase) % 1;
@@ -198,17 +209,33 @@ function StreakLine({
     if (t2 > t) {
       const p1 = new THREE.Vector3().lerpVectors(start, end, t);
       const p2 = new THREE.Vector3().lerpVectors(start, end, t2);
-      setPoints([p1, p2]);
-      setOpacity(maxOpacity * fadeIn);
+      // Only update if changed
+      if (
+        !pointsRef.current[0].equals(p1) ||
+        !pointsRef.current[1].equals(p2) ||
+        opacityRef.current !== maxOpacity * fadeIn
+      ) {
+        pointsRef.current = [p1, p2];
+        opacityRef.current = maxOpacity * fadeIn;
+        forceUpdate();
+      }
     }
   });
 
   return (
-    <Line points={points} color="white" lineWidth={1} transparent opacity={opacity} />
+    <Line
+      points={pointsRef.current}
+      color="white"
+      lineWidth={1}
+      transparent
+      opacity={opacityRef.current}
+    />
   );
-}
+});
 
-export default function FloatingTechGridScene(props: FloatingTechGridProps) {
+const FloatingTechGridScene = React.memo(function FloatingTechGridScene(
+  props: FloatingTechGridProps,
+) {
   return (
     <div className="fixed z-0 h-screen w-screen">
       <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
@@ -220,4 +247,6 @@ export default function FloatingTechGridScene(props: FloatingTechGridProps) {
       </Canvas>
     </div>
   );
-}
+});
+
+export default FloatingTechGridScene;

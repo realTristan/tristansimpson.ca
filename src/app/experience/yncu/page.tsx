@@ -364,7 +364,7 @@ function WorkspaceManagementDashboard() {
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
           <li>
             <span className="font-semibold text-white">Affordability:</span> Other
-            solutions weren’t budget friendly
+            solutions weren't budget friendly
           </li>
           <li>
             <span className="font-semibold text-white">Flexibility:</span> Needed custom
