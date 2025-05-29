@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export function FooterText() {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,10 +22,33 @@ export function FooterText() {
   }, []);
 
   return (
-    <p className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-pulse text-center text-sm text-gray-500">
-      {isMobile
-        ? "open on desktop for the full 3D experience"
-        : "made by tristan simpson"}
-    </p>
+    <motion.p
+      className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-sm text-gray-500"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.8,
+          ease: "easeOut",
+        },
+      }}
+    >
+      <motion.span
+        animate={{
+          y: [0, -4, 0],
+          opacity: [0.7, 1, 0.7],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        {isMobile
+          ? "open on desktop for the full 3D experience"
+          : "made by tristan simpson"}
+      </motion.span>
+    </motion.p>
   );
 }
