@@ -15,7 +15,7 @@ export default function HomePage() {
       <Navbar />
 
       {!isLoading && (
-        <AnimatedHeader className="absolute top-1/4 z-50 mx-12 xl:left-1/2" />
+        <AnimatedHeader className="absolute z-50 mx-12 sm:top-1/4 2xl:left-1/2" />
       )}
 
       <BrowserView>

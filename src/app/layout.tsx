@@ -34,6 +34,9 @@ export default function RootLayout({
         >
           <TRPCProvider>
             {children}
+            <p className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-pulse text-center text-sm text-gray-500">
+              open on desktop for the full 3D experience
+            </p>
             <Toaster />
           </TRPCProvider>
         </ThemeProvider>

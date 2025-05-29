@@ -67,7 +67,7 @@ export function AnimatedHeader({
   return (
     <motion.section
       className={cn(
-        "relative mx-auto flex max-w-4xl min-w-3xl flex-col items-center justify-center rounded-xl border border-white/10 bg-transparent px-8 py-10 shadow-xl backdrop-blur-md",
+        "relative mx-auto flex max-w-4xl min-w-fit flex-col items-center justify-center rounded-xl border border-white/10 bg-transparent px-8 py-10 shadow-xl backdrop-blur-md lg:min-w-3xl",
         className,
       )}
       initial="hidden"
