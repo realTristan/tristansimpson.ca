@@ -13,9 +13,9 @@ export default function HomePage() {
       <ParticleSphereScene />
 
       <AnimatedHeader
-        firstName="TRISTAN"
-        lastName="SIMPSON"
-        subheader="Full Stack Developer & Designer"
+        firstName="realtristan"
+        lastName="simpson"
+        subheader="full stack developer"
         buttons={[
           <Button variant="outline" className="font-normal tracking-widest" asChild>
             <Link key="apollo" href="/projects/apollo">
