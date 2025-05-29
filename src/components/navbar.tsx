@@ -410,6 +410,13 @@ export default function Navbar() {
               className="absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 bg-black/80 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
             >
               <div className="flex flex-col space-y-2">
+                <Link
+                  href="/"
+                  className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                >
+                  <Home className="size-4" />
+                  <span>Home</span>
+                </Link>
                 <a
                   href="/resume.pdf"
                   download
