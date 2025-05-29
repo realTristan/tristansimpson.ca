@@ -11,7 +11,6 @@ const container = {
   visible: {
     opacity: 1,
     transition: {
-      // stagger each child (letter) by 0.05s
       staggerChildren: 0.05,
     },
   },
@@ -50,6 +49,9 @@ export default function AnimatedHeader({
       variants={container}
       initial="hidden"
       animate="visible"
+      style={{
+        perspective: 1000,
+      }}
     >
       <div className="flex flex-col items-center gap-4">
         {subheader && (
@@ -58,7 +60,14 @@ export default function AnimatedHeader({
             variants={container}
           >
             {subheader.split("").map((char, i) => (
-              <motion.span key={i} variants={letter}>
+              <motion.span
+                key={i}
+                variants={letter}
+                style={{
+                  display: "inline-block",
+                  transform: `translateZ(${10}px)`,
+                }}
+              >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
@@ -71,9 +80,14 @@ export default function AnimatedHeader({
         >
           {/* First Name */}
           <span className="flex flex-row items-center justify-center gap-4 text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
-            <span className="text-5xl text-blue-500 sm:text-6xl md:text-7xl lg:text-8xl">
+            <motion.span
+              className="text-5xl text-blue-500 sm:text-6xl md:text-7xl lg:text-8xl"
+              style={{
+                transform: `translateZ(${20}px)`,
+              }}
+            >
               @
-            </span>
+            </motion.span>
 
             <span className="inline-block">
               {firstName.split("").map((char, i) => (
@@ -81,6 +95,10 @@ export default function AnimatedHeader({
                   key={i}
                   variants={letter}
                   className="transition-colors duration-200 ease-in-out hover:text-blue-500"
+                  style={{
+                    display: "inline-block",
+                    transform: `translateZ(${10 + i}px)`,
+                  }}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
@@ -94,6 +112,10 @@ export default function AnimatedHeader({
                 key={i}
                 variants={letter}
                 className="transition-colors duration-200 ease-in-out hover:text-blue-500"
+                style={{
+                  display: "inline-block",
+                  transform: `translateZ(${10 + i}px)`,
+                }}
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
@@ -102,9 +124,6 @@ export default function AnimatedHeader({
         </motion.h1>
       </div>
 
-      {/**
-       * Animted "GitHub" and "LinkedIn" links
-       */}
       <motion.div
         className="flex flex-row items-center justify-center gap-8 text-sm sm:gap-12"
         variants={container}
@@ -116,7 +135,7 @@ export default function AnimatedHeader({
               className,
             )}
           >
-            <Link
+            <a
               href="https://github.com/realtristan"
               target="_blank"
               rel="noopener noreferrer"
@@ -124,13 +143,13 @@ export default function AnimatedHeader({
             >
               My GitHub
               <ExternalLink className="size-4" />
-            </Link>
+            </a>
           </MagneticButton>
         </motion.div>
 
         <motion.div variants={letter}>
           <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
-            <Link
+            <a
               href="https://linkedin.com/in/realtristan"
               target="_blank"
               rel="noopener noreferrer"
@@ -138,7 +157,7 @@ export default function AnimatedHeader({
             >
               My LinkedIn
               <ExternalLink className="size-4" />
-            </Link>
+            </a>
           </MagneticButton>
         </motion.div>
       </motion.div>
