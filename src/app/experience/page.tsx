@@ -79,6 +79,7 @@ function ExperienceHeader() {
   const firstName = "@realtristan";
   const lastName = "simpson";
   const subheader = "experience timeline";
+
   return (
     <motion.div
       className="flex flex-col items-center gap-4 pt-24 pb-8 text-center"
@@ -96,6 +97,7 @@ function ExperienceHeader() {
           </motion.span>
         ))}
       </motion.h2>
+
       <motion.div
         className="flex flex-row items-center justify-center gap-4"
         variants={experienceHeaderContainer}
@@ -105,7 +107,7 @@ function ExperienceHeader() {
           variants={experienceHeaderContainer}
         >
           <span className="flex flex-row items-center justify-center gap-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-            <motion.span className="text-3xl text-blue-500 sm:text-4xl md:text-5xl lg:text-6xl">
+            <motion.span className="text-2xl text-blue-500 sm:text-3xl md:text-4xl lg:text-5xl">
               @
             </motion.span>
             <span className="inline-block">
@@ -123,7 +125,8 @@ function ExperienceHeader() {
                 ))}
             </span>
           </span>
-          <span className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+
+          <span className="inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             {lastName.split("").map((char, i) => (
               <motion.span
                 key={i}
@@ -150,7 +153,6 @@ export default function ExperiencePage() {
 
       <div className="relative z-10 mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-24">
         <ExperienceHeader />
-
         <motion.div
           variants={container}
           initial="hidden"
