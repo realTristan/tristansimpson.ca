@@ -6,28 +6,19 @@ import ParticleSphereScene from "@/components/particle-sphere";
 import AnimatedHeader from "@/components/animated-header";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Navbar from "@/components/navbar";
 
 export default function HomePage() {
   return (
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
+      <Navbar />
+
       <ParticleSphereScene />
 
       <AnimatedHeader
         firstName="realtristan"
         lastName="simpson"
         subheader="full stack developer"
-        buttons={[
-          <Button variant="outline" className="font-normal tracking-widest" asChild>
-            <Link key="apollo" href="/projects/apollo">
-              Browse Projects
-            </Link>
-          </Button>,
-          <Button className="font-normal tracking-widest" asChild>
-            <Link key="contact" href="/about">
-              About Me
-            </Link>
-          </Button>,
-        ]}
         className="relative z-50"
       />
 
