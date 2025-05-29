@@ -17,13 +17,13 @@ export function ApolloSection({ title, description, modelPath }: ApolloSectionPr
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-screen overflow-hidden">
+      <ApolloScene modelPath={modelPath} onObjectLoad={() => setIsLoading(false)} />
+
       {isLoading ? (
         <ApolloSceneLoading />
       ) : (
         <>
-          <ApolloScene modelPath={modelPath} onObjectLoad={() => setIsLoading(false)} />
-
           <div
             id="wrapper"
             className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"

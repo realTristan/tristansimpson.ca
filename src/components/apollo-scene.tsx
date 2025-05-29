@@ -65,7 +65,9 @@ function Model({ modelPath, onLoad }: ModelProps) {
   const pointer = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (!gltf.scene) return;
+    if (!gltf.scene) {
+      return;
+    }
 
     // Compute bounding box + size + center
     const box = new Box3().setFromObject(gltf.scene);
@@ -85,13 +87,15 @@ function Model({ modelPath, onLoad }: ModelProps) {
     onLoad();
   }, [gltf, camera, onLoad]);
 
-  // (Optional) keep your animated light + parallax
+  // Keep animated light + parallax
   useEffect(() => {
     const onMouse = (e: MouseEvent) => {
       pointer.current.x = (e.clientX / window.innerWidth - 0.5) * 8;
       pointer.current.y = (e.clientY / window.innerHeight - 0.4) * 9;
     };
+
     window.addEventListener("mousemove", onMouse);
+
     return () => window.removeEventListener("mousemove", onMouse);
   }, []);
 
@@ -99,7 +103,10 @@ function Model({ modelPath, onLoad }: ModelProps) {
     const t = state.clock.elapsedTime;
     const dt = t - prevTime.current;
     prevTime.current = t;
-    if (dt > 0.1) return;
+
+    if (dt > 0.1) {
+      return;
+    }
 
     if (lightRef.current) {
       lightRef.current.position.x +=
