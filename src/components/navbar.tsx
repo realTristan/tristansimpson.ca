@@ -26,17 +26,13 @@ const navItems = [
     name: "Resume",
   },
   {
-    name: "Journey",
-    href: "/journey",
-  },
-  {
     name: "Experience",
   },
   {
     name: "Projects",
   },
   {
-    name: "Contact",
+    name: "Connect",
   },
 ];
 
@@ -127,7 +123,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
   );
 }
 
-function ContactDropdown({ className }: { className?: string }) {
+function ConnectDropdown({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div
@@ -148,7 +144,7 @@ function ContactDropdown({ className }: { className?: string }) {
             className,
           )}
         >
-          Contact
+          Connect
         </Link>
       </MagneticButton>
       <div
@@ -376,16 +372,6 @@ export default function Navbar() {
           <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}>
             <ResumeDropdown />
           </motion.div>
-          <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={1}>
-            <MagneticButton>
-              <Link
-                href="/journey"
-                className="cursor-active font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
-              >
-                Journey
-              </Link>
-            </MagneticButton>
-          </motion.div>
           <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={2}>
             <ExperienceDropdown />
           </motion.div>
@@ -393,7 +379,7 @@ export default function Navbar() {
             <ProjectsDropdown />
           </motion.div>
           <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={4}>
-            <ContactDropdown />
+            <ConnectDropdown />
           </motion.div>
         </div>
 
@@ -432,13 +418,6 @@ export default function Navbar() {
                   <File className="size-4" />
                   <span>Resume</span>
                 </a>
-                <Link
-                  href="/journey"
-                  className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                >
-                  <Clock className="size-4" />
-                  <span>Journey</span>
-                </Link>
                 <div className="space-y-1">
                   <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
                     <Computer className="size-4" />
@@ -532,7 +511,7 @@ export default function Navbar() {
                 <div className="space-y-1">
                   <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
                     <Mail className="size-4" />
-                    <span>Contact</span>
+                    <span>Connect</span>
                   </div>
                   <div className="ml-8 space-y-1">
                     <a

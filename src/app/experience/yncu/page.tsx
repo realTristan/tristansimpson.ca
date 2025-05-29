@@ -20,10 +20,67 @@ import {
   Rocket,
   Wrench,
   Link2,
+  Briefcase,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import React from "react";
 import { FileText, Layers, ClipboardList, Zap, TrendingUp } from "lucide-react";
+import FloatingTechGridScene from "@/components/floating-tech-grid";
+
+function Journey() {
+  return (
+    <div className="space-y-8">
+      {/* Full Stack Developer I, Full-time */}
+      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
+        <div className="mb-2 flex items-center gap-2">
+          <Briefcase className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">
+            Full Stack Developer I, Full-time{" "}
+            <span className="text-sm text-gray-400">(May 2025 – Present)</span>
+          </span>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-gray-200">
+          <li>Continued development of our commercial loan origination system (CLOS)</li>
+          <li>Leading our Mortgage Renewal project</li>
+          <li>Led our workspace management dashboard project</li>
+          <li>Led our application management dashboard project</li>
+        </ul>
+      </div>
+
+      {/* Full Stack Developer I, Part-time */}
+      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
+        <div className="mb-2 flex items-center gap-2">
+          <Briefcase className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">
+            Full Stack Developer I, Part-time{" "}
+            <span className="text-sm text-gray-400">(September 2024 – May 2025)</span>
+          </span>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-gray-200">
+          <li>Continued development of our commercial loan origination system (CLOS)</li>
+          <li>Developed the ID Verification project with Salesforce</li>
+          <li>Developed the Automatic Onboarding System project with Salesforce</li>
+          <li>Refactored and improved our DNA API</li>
+        </ul>
+      </div>
+
+      {/* Full Stack Developer Intern, Full-time */}
+      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
+        <div className="mb-2 flex items-center gap-2">
+          <Briefcase className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">
+            Full Stack Developer Intern, Full-time{" "}
+            <span className="text-sm text-gray-400">(June 2024 – September 2024)</span>
+          </span>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-gray-200">
+          <li>Started development for our commercial loan origination system (CLOS)</li>
+          <li>Refactored and improved our YNCU Tools project</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function Summer2025Hiring() {
   return (
@@ -31,7 +88,7 @@ function Summer2025Hiring() {
       {/* Summer 2025 Hiring */}
       <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
         <div className="mb-2 flex items-center gap-2">
-          <Users className="h-5 w-5 text-blue-400" />
+          <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
         </div>
         <p className="text-gray-200">
@@ -83,6 +140,28 @@ function CommercialLoanOriginationSystem() {
           real-time data and established the core tools, security checks, and testing
           routines that now power many of our projects.
         </p>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
+        <div className="mb-2 flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-gray-200">
+          <li>
+            <span className="font-semibold text-white">Cost savings:</span> ~$500 000
+            saved at launch and ~$80 000 saved each year
+          </li>
+          <li>
+            <span className="font-semibold text-white">Scale:</span> Over 100 000 lines of
+            code
+          </li>
+          <li>
+            <span className="font-semibold text-white">Legacy:</span> Established faster
+            project starts, tighter security checks, and reliable testing across teams
+          </li>
+        </ul>
       </div>
 
       {/* Tech Stack */}
@@ -164,28 +243,6 @@ function CommercialLoanOriginationSystem() {
           </li>
         </ul>
       </div>
-
-      {/* Impact & Stats */}
-      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
-        <div className="mb-2 flex items-center gap-2">
-          <TrendingUp className="h-5 w-5 text-blue-400" />
-          <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
-        <ul className="list-disc space-y-1 pl-5 text-gray-200">
-          <li>
-            <span className="font-semibold text-white">Cost savings:</span> ~$500 000
-            saved at launch and ~$80 000 saved each year
-          </li>
-          <li>
-            <span className="font-semibold text-white">Scale:</span> Over 100 000 lines of
-            code
-          </li>
-          <li>
-            <span className="font-semibold text-white">Legacy:</span> Established faster
-            project starts, tighter security checks, and reliable testing across teams
-          </li>
-        </ul>
-      </div>
     </div>
   );
 }
@@ -196,7 +253,7 @@ function WorkspaceManagementDashboard() {
       {/* Summary */}
       <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
         <div className="mb-2 flex items-center gap-2">
-          <LayoutDashboard className="h-5 w-5 text-blue-400" />
+          <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
         </div>
         <p className="max-w-2xl text-gray-200">
@@ -216,6 +273,24 @@ function WorkspaceManagementDashboard() {
           <span className="font-semibold text-white">+</span> Seamless authentication for
           YNCU employees and visitors.
         </p>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
+        <div className="mb-2 flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+        <ul className="list-disc space-y-1 pl-5 text-gray-200">
+          <li>
+            <span className="font-semibold text-white">Cost savings:</span> ~$10,000 at
+            launch and ~$6,000 per year
+          </li>
+          <li>
+            <span className="font-semibold text-white">Scale:</span> Over 50,000 lines of
+            code
+          </li>
+        </ul>
       </div>
 
       {/* Tech Stack */}
@@ -301,24 +376,6 @@ function WorkspaceManagementDashboard() {
           </li>
         </ul>
       </div>
-
-      {/* Impact & Stats */}
-      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/30 p-6 backdrop-blur-md">
-        <div className="mb-2 flex items-center gap-2">
-          <TrendingUp className="h-5 w-5 text-blue-400" />
-          <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
-        <ul className="list-disc space-y-1 pl-5 text-gray-200">
-          <li>
-            <span className="font-semibold text-white">Cost savings:</span> ~$10,000 at
-            launch and ~$6,000 per year
-          </li>
-          <li>
-            <span className="font-semibold text-white">Scale:</span> Over 50,000 lines of
-            code
-          </li>
-        </ul>
-      </div>
     </div>
   );
 }
@@ -328,6 +385,16 @@ function ApplicantManagementDashboard() {
     <div className="prose prose-invert max-w-none">
       <p className="leading-relaxed text-gray-300">
         Description of the applicant management dashboard
+      </p>
+    </div>
+  );
+}
+
+function MortgageRenewalSystem() {
+  return (
+    <div className="prose prose-invert max-w-none">
+      <p className="leading-relaxed text-gray-300">
+        In progress (2025): Mortgage Renewal System
       </p>
     </div>
   );
@@ -375,6 +442,16 @@ function FiservDNAAPI() {
 
 const projects = [
   {
+    id: "journey",
+    title: "Journey",
+    icon: (
+      <Users className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
+    ),
+    images: [],
+    Component: Journey,
+    tags: ["Journey"],
+  },
+  {
     id: "summer-2025",
     title: "Summer 2025 Hiring",
     icon: (
@@ -382,7 +459,7 @@ const projects = [
     ),
     images: [],
     Component: Summer2025Hiring,
-    tags: ["Co-Lead"],
+    tags: ["Project", "Co-Lead"],
   },
   {
     id: "clos",
@@ -392,7 +469,7 @@ const projects = [
     ),
     images: [],
     Component: CommercialLoanOriginationSystem,
-    tags: ["Lead"],
+    tags: ["Project", "Lead"],
   },
   {
     id: "workspace",
@@ -402,7 +479,7 @@ const projects = [
     ),
     images: [],
     Component: WorkspaceManagementDashboard,
-    tags: ["Lead"],
+    tags: ["Project", "Lead"],
   },
   {
     id: "applicant",
@@ -412,7 +489,17 @@ const projects = [
     ),
     images: [],
     Component: ApplicantManagementDashboard,
-    tags: ["Lead"],
+    tags: ["Project", "Lead"],
+  },
+  {
+    id: "mortgage-renewal",
+    title: "Mortgage Renewal System",
+    icon: (
+      <Banknote className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
+    ),
+    images: [],
+    Component: MortgageRenewalSystem,
+    tags: ["Project", "Lead", "Salesforce", "In Progress"],
   },
   {
     id: "id-verification",
@@ -422,7 +509,7 @@ const projects = [
     ),
     images: [],
     Component: IDVerification,
-    tags: ["Salesforce"],
+    tags: ["Project", "Salesforce"],
   },
   {
     id: "onboarding",
@@ -432,7 +519,7 @@ const projects = [
     ),
     images: [],
     Component: AutomaticOnboardingSystem,
-    tags: ["Salesforce"],
+    tags: ["Project", "Salesforce"],
   },
   {
     id: "yncu-tools",
@@ -442,7 +529,7 @@ const projects = [
     ),
     images: [],
     Component: YNCUTools,
-    tags: ["Refactor"],
+    tags: ["Project", "Refactor"],
   },
   {
     id: "fiserv",
@@ -452,7 +539,7 @@ const projects = [
     ),
     images: [],
     Component: FiservDNAAPI,
-    tags: ["Refactor"],
+    tags: ["Project", "Refactor"],
   },
 ];
 
@@ -497,7 +584,7 @@ const headerLetter = {
 function YNCUHeader() {
   const firstName = "@realtristan";
   const lastName = "simpson";
-  const subheader = "YNCU Experience";
+  const subheader = "YNCU Full Stack Developer";
 
   return (
     <motion.div
@@ -564,7 +651,7 @@ export default function YNCUPage() {
   return (
     <main className="relative flex h-screen w-full flex-col bg-black">
       <Navbar />
-      <ParticleSphereScene />
+      <FloatingTechGridScene />
       <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center px-4 py-12">
         <YNCUHeader />
         <ScrollArea className="scrollbar-hide w-full flex-1">

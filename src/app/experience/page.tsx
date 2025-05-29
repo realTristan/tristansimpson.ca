@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Computer, University, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
-import ParticleSphereScene from "@/components/particle-sphere";
+import FloatingTechGridScene from "@/components/floating-tech-grid";
 import { ScrollArea } from "@/components/ui/scroll-area";
 // import "@/styles/scrollbar-hide.css";
 
@@ -158,7 +158,7 @@ export default function ExperiencePage() {
   return (
     <main className="relative flex h-screen w-full flex-col bg-black">
       <Navbar />
-      <ParticleSphereScene />
+      <FloatingTechGridScene />
       <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col items-center px-4 py-12">
         <div className="sticky top-0 z-20 w-full">
           <ExperienceHeader />
@@ -175,10 +175,7 @@ export default function ExperiencePage() {
               <motion.div
                 key={experience.id}
                 variants={item}
-                className={cn(
-                  "group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50",
-                  index % 2 === 0 ? "md:translate-x-0" : "lg:translate-x-24",
-                )}
+                className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
               >
                 <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
                   <div className="h-3 w-3 rounded-full bg-blue-500" />
