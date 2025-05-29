@@ -104,7 +104,7 @@ function ExperienceHeader() {
           className="flex flex-col items-center gap-2 overflow-hidden font-black tracking-widest"
           variants={experienceHeaderContainer}
         >
-          <span className="flex flex-row items-center justify-center gap-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <span className="flex flex-row items-center justify-center gap-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
             <motion.span className="text-3xl text-blue-500 sm:text-4xl md:text-5xl lg:text-6xl">
               @
             </motion.span>
@@ -123,7 +123,7 @@ function ExperienceHeader() {
                 ))}
             </span>
           </span>
-          <span className="inline-block text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+          <span className="inline-block text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {lastName.split("").map((char, i) => (
               <motion.span
                 key={i}
@@ -162,7 +162,7 @@ export default function ExperiencePage() {
               variants={item}
               className={cn(
                 "group relative flex w-full flex-col gap-4 rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50",
-                index % 2 === 0 ? "md:ml-0" : "md:ml-52",
+                index % 2 === 0 ? "md:ml-0" : "lg:ml-52",
               )}
             >
               <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
