@@ -1,71 +1,309 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import {
+  ExternalLink,
+  Menu,
+  X,
+  Mail,
+  File,
+  University,
+  Banknote,
+  Clock,
+  Home,
+  Code,
+  Computer,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MagneticButton } from "@/components/magnetic-button";
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
+  {
+    name: "Resume",
+  },
+  {
+    name: "Journey",
+    href: "/journey",
+  },
+  {
+    name: "Experience",
+  },
+  {
+    name: "Projects",
+  },
+  {
+    name: "Contact",
+  },
 ];
 
-function MagneticLink({
-  href,
-  children,
-  className,
-}: {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 300, damping: 20 });
-  const springY = useSpring(y, { stiffness: 300, damping: 20 });
-
-  function handleMouseMove(e: React.MouseEvent) {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    // Calculate distance from center, clamp max offset
-    const maxDist = 40;
-    const distX = Math.max(Math.min(mouseX - centerX, maxDist), -maxDist);
-    const distY = Math.max(Math.min(mouseY - centerY, maxDist), -maxDist);
-    x.set(distX * 0.3);
-    y.set(distY * 0.3);
-  }
-
-  function handleMouseLeave() {
-    x.set(0);
-    y.set(0);
-  }
-
+function ProjectsDropdown({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
   return (
-    <motion.div
-      ref={ref}
-      style={{ x: springX, y: springY, display: "inline-block" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="cursor-pointer"
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
     >
-      <Link
-        href={href}
+      <MagneticButton
         className={cn(
-          "font-medium text-white/90 drop-shadow transition-colors hover:text-white",
+          "transition-colors duration-200 ease-linear hover:text-blue-500",
           className,
         )}
       >
-        {children}
-      </Link>
-    </motion.div>
+        <Link
+          href="/projects"
+          className={cn(
+            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
+            className,
+          )}
+        >
+          Projects
+        </Link>
+      </MagneticButton>
+      {/* Wrap bridge and dropdown in one container */}
+      <div
+        className="absolute top-full left-1/2 z-50 w-72 -translate-x-1/2"
+        style={{ pointerEvents: open ? "auto" : "none" }}
+      >
+        {/* Hover bridge */}
+        <div className="h-10 w-full" />
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.18 }}
+              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+            >
+              <Link
+                href="/projects/apollo"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Code className="size-4" />
+                <span>Apollo</span>
+              </Link>
+              <Link
+                href="/projects/athena"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Code className="size-4" />
+                <span>Athena</span>
+              </Link>
+              <Link
+                href="/projects/cgl"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Code className="size-4" />
+                <span>CGL & WinGL</span>
+              </Link>
+              <Link
+                href="https://simpsonresearch.ca"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <ExternalLink className="size-4" />
+                <span>Simpson Research</span>
+              </Link>
+              <Link
+                href="https://github.com/realtristan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <ExternalLink className="size-4" />
+                <span>GitHub (@realtristan)</span>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function ContactDropdown({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <MagneticButton
+        className={cn(
+          "transition-colors duration-200 ease-linear hover:text-blue-500",
+          className,
+        )}
+      >
+        <Link
+          href="mailto:tsimps01@uoguelph.ca"
+          className={cn(
+            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
+            className,
+          )}
+        >
+          Contact
+        </Link>
+      </MagneticButton>
+      <div
+        className="absolute top-full left-1/2 z-50 w-72 -translate-x-1/2"
+        style={{ pointerEvents: open ? "auto" : "none" }}
+      >
+        <div className="h-10 w-full" />
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.18 }}
+              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+            >
+              <a
+                href="mailto:tsimps01@uoguelph.ca"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Mail className="size-4" />
+                <span>tsimps01@uoguelph.ca</span>
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function ResumeDropdown({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <MagneticButton
+        className={cn(
+          "transition-colors duration-200 ease-linear hover:text-blue-500",
+          className,
+        )}
+      >
+        <Link
+          href="#"
+          className={cn(
+            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
+            className,
+          )}
+        >
+          Resume
+        </Link>
+      </MagneticButton>
+
+      <div
+        className="absolute top-full left-1/2 z-50 w-48 -translate-x-1/2"
+        style={{ pointerEvents: open ? "auto" : "none" }}
+      >
+        <div className="h-10 w-full" />
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.18 }}
+              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+            >
+              <a
+                href="/resume.pdf"
+                download
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <File className="size-4" />
+                <span>Open Preview</span>
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function ExperienceDropdown({ className }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <MagneticButton
+        className={cn(
+          "transition-colors duration-200 ease-linear hover:text-blue-500",
+          className,
+        )}
+      >
+        <Link
+          href="#"
+          className={cn(
+            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
+            className,
+          )}
+        >
+          Experience
+        </Link>
+      </MagneticButton>
+      <div
+        className="absolute top-full left-1/2 z-50 w-64 -translate-x-1/2"
+        style={{ pointerEvents: open ? "auto" : "none" }}
+      >
+        <div className="h-10 w-full" />
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.18 }}
+              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+            >
+              <Link
+                href="/experience/yncu"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Computer className="size-4" />
+                <span>YNCU (Current 2025)</span>
+              </Link>
+              <Link
+                href="/experience/dominion-lending"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Computer className="size-4" />
+                <span>Dominion Lending</span>
+              </Link>
+              <Link
+                href="/experience/university-of-guelph"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <University className="size-4" />
+                <span>University of Guelph</span>
+              </Link>
+              <Link
+                href="/experience"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Clock className="size-4" />
+                <span>Timeline (All)</span>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
   );
 }
 
@@ -106,22 +344,28 @@ export default function Navbar() {
 
         {/* Desktop Navigation - Centered */}
         <div className="hidden flex-1 justify-end space-x-12 text-sm md:flex">
-          {navItems.map((item, i) => (
-            <motion.div
-              key={item.name}
-              variants={fadeIn}
-              initial="hidden"
-              animate="visible"
-              custom={i + 1}
-            >
-              <MagneticLink
-                href={item.href}
-                className="transition-colors duration-200 ease-linear hover:text-blue-500"
+          <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}>
+            <ResumeDropdown />
+          </motion.div>
+          <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={1}>
+            <MagneticButton>
+              <Link
+                href="/journey"
+                className="font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
               >
-                {item.name}
-              </MagneticLink>
-            </motion.div>
-          ))}
+                Journey
+              </Link>
+            </MagneticButton>
+          </motion.div>
+          <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={2}>
+            <ExperienceDropdown />
+          </motion.div>
+          <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={3}>
+            <ProjectsDropdown />
+          </motion.div>
+          <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={4}>
+            <ContactDropdown />
+          </motion.div>
         </div>
 
         {/* Mobile Menu Button - Right */}
@@ -133,40 +377,6 @@ export default function Navbar() {
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </motion.button>
       </motion.div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="mt-2 rounded-2xl border border-white/30 bg-white/20 px-6 py-4 shadow-lg backdrop-blur-xl md:hidden"
-          >
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item, i) => (
-                <motion.div
-                  key={item.name}
-                  variants={fadeIn}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  custom={i}
-                >
-                  <Link
-                    href={item.href}
-                    className="text-lg font-medium text-white/90 drop-shadow hover:text-white"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 }
