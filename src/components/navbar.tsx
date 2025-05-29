@@ -341,7 +341,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 z-[100] w-full max-w-3xl -translate-x-1/2">
+    <nav className="fixed top-6 left-1/2 z-[100] w-full max-w-4xl -translate-x-1/2 px-12">
       <motion.div
         className="flex items-center justify-between rounded-2xl border border-white/10 bg-transparent px-8 py-3 shadow-xl backdrop-blur-md"
         initial={{ opacity: 0, scale: 0.98 }}
