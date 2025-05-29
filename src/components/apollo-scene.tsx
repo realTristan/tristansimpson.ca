@@ -51,6 +51,8 @@ interface ModelProps {
 }
 
 function Model({ modelPath, onLoad }: ModelProps) {
+  const [lift, setLift] = useState(0);
+
   const gltf = useLoader(GLTFLoader, modelPath, (loader) => {
     const draco = new DRACOLoader();
     draco.setDecoderPath("/draco/");
@@ -77,15 +79,16 @@ function Model({ modelPath, onLoad }: ModelProps) {
     // Recenter model on origin
     gltf.scene.position.sub(center);
 
-    // Head height relative to origin = half total height
-    const headY = size.y * 0.35;
+    // lift by 25% of its height
+    const yLift = 0.5;
+    setLift(yLift);
 
-    // Position & aim camera
-    camera.position.set(0, headY, size.z);
-    camera.lookAt(0, headY, 0);
+    // optional: reposition and point camera
+    camera.position.set(0, size.y * 0.5, size.z * 1);
+    camera.lookAt(0, size.y * 0.5, 0);
 
     onLoad();
-  }, [gltf, camera, onLoad]);
+  }, [gltf, camera, lift]);
 
   // Keep animated light + parallax
   useEffect(() => {
@@ -117,11 +120,13 @@ function Model({ modelPath, onLoad }: ModelProps) {
     }
   });
 
-  if (!gltf.scene) return null;
+  if (!gltf.scene) {
+    return null;
+  }
 
   return (
     <>
-      <group position={[0.1, 0.2, 0]}>
+      <group position={[0.1, lift, 0]}>
         <Center>
           <primitive ref={modelRef} object={gltf.scene} />
 
@@ -132,7 +137,7 @@ function Model({ modelPath, onLoad }: ModelProps) {
             position={[30, 3, 1.8]}
             distance={8}
             decay={2}
-            intensity={0.2}
+            intensity={0.1}
             color={0xfff0e5}
           />
         </Center>
