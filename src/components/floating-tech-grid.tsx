@@ -62,6 +62,7 @@ function FloatingTechGrid({
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const distance = nodes[i].distanceTo(nodes[j]);
+
         if (distance < gridSize * 0.4) {
           connections.push([i, j]);
         }
@@ -108,7 +109,7 @@ function FloatingTechGrid({
       {nodes.map((position, index) => (
         <mesh key={`node-${index}`} position={position}>
           {/* Glow effect */}
-          <sphereGeometry args={[0.18, 16, 16]} />
+          <sphereGeometry args={[0.18, 12, 12]} />
           <meshStandardMaterial
             color={index % 3 === 0 ? secondaryColor : primaryColor}
             transparent
@@ -118,7 +119,7 @@ function FloatingTechGrid({
             depthWrite={false}
           />
           {/* Node core */}
-          <sphereGeometry args={[0.1, 16, 16]} />
+          <sphereGeometry args={[0.1, 12, 12]} />
           <animated.meshBasicMaterial
             color={index % 3 === 0 ? secondaryColor : primaryColor}
             transparent
@@ -185,16 +186,26 @@ function StreakLine({
   streakLength: number;
 }) {
   const [points, setPoints] = React.useState([start, end]);
+  const [opacity, setOpacity] = React.useState(0);
+  const maxOpacity = 0.95;
+  const fadeInDuration = 0.2; // first 20% of the line
+
   useFrame(({ clock }) => {
     const t = (clock.getElapsedTime() * speed + phase) % 1;
-    const t2 = Math.min(t + streakLength, 0.999);
+    const fadeIn = Math.min(1, t / fadeInDuration);
+    const currentLength = streakLength * fadeIn;
+    const t2 = Math.min(t + currentLength, 0.999);
     if (t2 > t) {
       const p1 = new THREE.Vector3().lerpVectors(start, end, t);
       const p2 = new THREE.Vector3().lerpVectors(start, end, t2);
       setPoints([p1, p2]);
+      setOpacity(maxOpacity * fadeIn);
     }
   });
-  return <Line points={points} color="white" lineWidth={1} transparent opacity={0.95} />;
+
+  return (
+    <Line points={points} color="white" lineWidth={1} transparent opacity={opacity} />
+  );
 }
 
 export default function FloatingTechGridScene(props: FloatingTechGridProps) {
