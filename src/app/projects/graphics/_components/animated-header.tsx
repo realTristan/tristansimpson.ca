@@ -90,7 +90,7 @@ export function AnimatedHeader({ className }: { className?: string }) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
+              className="group inline-flex items-center rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
             >
               {React.cloneElement(icon, {
                 className: "mr-2 h-5 w-5 text-white group-hover:text-blue-400",
