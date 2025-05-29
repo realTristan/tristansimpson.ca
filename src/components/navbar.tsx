@@ -398,6 +398,155 @@ export default function Navbar() {
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </motion.button>
+
+        {/* Mobile Menu Dropdown */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.18 }}
+              className="absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 bg-black/80 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
+            >
+              <div className="flex flex-col space-y-2">
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                >
+                  <File className="size-4" />
+                  <span>Resume</span>
+                </a>
+                <Link
+                  href="/journey"
+                  className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                >
+                  <Clock className="size-4" />
+                  <span>Journey</span>
+                </Link>
+                <div className="space-y-1">
+                  <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
+                    <Computer className="size-4" />
+                    <span>Experience</span>
+                  </div>
+                  <div className="ml-8 space-y-1">
+                    <Link
+                      href="/experience/yncu"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Computer className="size-4" />
+                      <span>YNCU (Current 2025)</span>
+                    </Link>
+                    <Link
+                      href="/experience/dominion-lending"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Computer className="size-4" />
+                      <span>Dominion Lending</span>
+                    </Link>
+                    <Link
+                      href="/experience/university-of-guelph"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <University className="size-4" />
+                      <span>University of Guelph</span>
+                    </Link>
+                    <Link
+                      href="/experience"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Clock className="size-4" />
+                      <span>Timeline (All)</span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
+                    <Code className="size-4" />
+                    <span>Projects</span>
+                  </div>
+                  <div className="ml-8 space-y-1">
+                    <Link
+                      href="/projects/apollo"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Code className="size-4" />
+                      <span>Apollo</span>
+                    </Link>
+                    <Link
+                      href="/projects/athena"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Code className="size-4" />
+                      <span>Athena</span>
+                    </Link>
+                    <Link
+                      href="/projects/graphics"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Code className="size-4" />
+                      <span>Graphics & Physics</span>
+                    </Link>
+                    <a
+                      href="https://simpsonresearch.ca"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <ExternalLink className="size-4" />
+                      <span>Simpson Research</span>
+                    </a>
+                    <a
+                      href="https://github.com/realtristan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <ExternalLink className="size-4" />
+                      <span>GitHub (@realtristan)</span>
+                    </a>
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
+                    <Mail className="size-4" />
+                    <span>Contact</span>
+                  </div>
+                  <div className="ml-8 space-y-1">
+                    <a
+                      href="mailto:tsimps01@uoguelph.ca"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Mail className="size-4" />
+                      <span>tsimps01@uoguelph.ca</span>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/tristansimpsonn/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Linkedin className="size-4" />
+                      <span>LinkedIn</span>
+                      <ExternalLink className="size-4" />
+                    </a>
+                    <a
+                      href="http://x.com/tristans121"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    >
+                      <Twitter className="size-4" />
+                      <span>Twitter</span>
+                      <ExternalLink className="size-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </nav>
   );
