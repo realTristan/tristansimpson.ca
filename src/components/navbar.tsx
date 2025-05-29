@@ -95,7 +95,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
                 <span>Athena</span>
               </Link>
               <Link
-                href="/projects/cgl"
+                href="/projects/graphics"
                 className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />

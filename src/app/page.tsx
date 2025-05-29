@@ -4,9 +4,8 @@ import React from "react";
 import { Cursor } from "@/components/cursor";
 import ParticleSphereScene from "@/components/particle-sphere";
 import AnimatedHeader from "@/components/animated-header";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
+import { BrowserView } from "react-device-detect";
 
 export default function HomePage() {
   return (
@@ -22,7 +21,9 @@ export default function HomePage() {
         className="relative z-50"
       />
 
-      <Cursor />
+      <BrowserView>
+        <Cursor />
+      </BrowserView>
     </main>
   );
 }
