@@ -67,7 +67,7 @@ export function AnimatedHeader({
   return (
     <motion.section
       className={cn(
-        "pointer-events-none relative mx-auto flex max-w-4xl min-w-3xl flex-col items-center justify-center rounded-xl border border-white/10 bg-transparent px-8 py-10 shadow-xl backdrop-blur-md",
+        "relative mx-auto flex max-w-4xl min-w-3xl flex-col items-center justify-center rounded-xl border border-white/10 bg-transparent px-8 py-10 shadow-xl backdrop-blur-md",
         className,
       )}
       initial="hidden"
@@ -76,7 +76,7 @@ export function AnimatedHeader({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="flex w-full flex-col items-center gap-8 text-center">
+      <div className="pointer-events-none flex w-full flex-col items-center gap-8 text-center">
         <div className="flex flex-col items-center gap-6">
           <motion.h1 variants={item} className="text-5xl font-extrabold text-white">
             graphics & physics

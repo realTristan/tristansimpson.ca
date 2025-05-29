@@ -21,8 +21,8 @@ interface RapierBallsSceneProps {
 export default function RapierBallsScene({
   className,
   onLoaded,
-  animateIn,
-  pointerColor,
+  animateIn = true,
+  pointerColor = "primary",
 }: RapierBallsSceneProps) {
   // Call onLoaded after Suspense resolves (after first render)
   useEffect(() => {

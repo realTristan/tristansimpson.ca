@@ -9,18 +9,13 @@ import { AnimatedHeader } from "@/app/projects/graphics/_components/animated-hea
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isPointerOverHeader, setIsPointerOverHeader] = useState(false);
 
   return (
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
 
       {!isLoading && (
-        <AnimatedHeader
-          className="absolute top-1/4 z-50 mx-12 xl:left-1/2"
-          onMouseEnter={() => setIsPointerOverHeader(true)}
-          onMouseLeave={() => setIsPointerOverHeader(false)}
-        />
+        <AnimatedHeader className="absolute top-1/4 z-50 mx-12 xl:left-1/2" />
       )}
 
       <BrowserView>
@@ -28,7 +23,6 @@ export default function HomePage() {
           className="hidden lg:flex"
           onLoaded={() => setIsLoading(false)}
           animateIn={!isLoading}
-          pointerColor={isPointerOverHeader ? "secondary" : "primary"}
         />
         <Cursor />
       </BrowserView>
