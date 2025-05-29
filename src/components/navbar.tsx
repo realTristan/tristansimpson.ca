@@ -414,7 +414,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.18 }}
-              className="absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 bg-black/80 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
+              className="absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 bg-black/95 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
             >
               <div className="flex flex-col space-y-2">
                 <Link
