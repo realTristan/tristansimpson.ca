@@ -148,58 +148,50 @@ export default function ExperiencePage() {
       {/* Custom particle sphere with experience-themed colors */}
       <ParticleSphereScene />
 
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center gap-12 px-4 py-24">
+      <div className="relative z-10 mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-24">
         <ExperienceHeader />
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="w-full"
+          className="relative flex w-full max-w-3xl flex-col items-center justify-center gap-8"
         >
-          <motion.div variants={item} className="flex flex-col items-center gap-4">
-            {/* Removed old static header */}
-          </motion.div>
-          <motion.div
-            variants={container}
-            className="relative flex w-full flex-col gap-8"
-          >
-            {experiences.map((experience, index) => (
-              <motion.div
-                key={experience.id}
-                variants={item}
-                className={cn(
-                  "group relative flex w-full flex-col gap-4 rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50",
-                  index % 2 === 0 ? "md:ml-0" : "md:ml-32",
-                )}
-              >
-                <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
-                  <div className="h-3 w-3 rounded-full bg-blue-500" />
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-black/50 text-white transition-colors group-hover:border-blue-500/50">
-                      {experience.icon}
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold text-white">
-                        {experience.title}
-                      </h2>
-                      <p className="text-sm text-gray-400">{experience.role}</p>
-                    </div>
+          {experiences.map((experience, index) => (
+            <motion.div
+              key={experience.id}
+              variants={item}
+              className={cn(
+                "group relative flex w-full flex-col gap-4 rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50",
+                index % 2 === 0 ? "md:ml-0" : "md:ml-52",
+              )}
+            >
+              <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
+                <div className="h-3 w-3 rounded-full bg-blue-500" />
+              </div>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-black/50 text-white transition-colors group-hover:border-blue-500/50">
+                    {experience.icon}
                   </div>
-                  <span className="text-sm text-gray-500">{experience.period}</span>
+                  <div>
+                    <h2 className="text-xl font-semibold text-white">
+                      {experience.title}
+                    </h2>
+                    <p className="text-sm text-gray-400">{experience.role}</p>
+                  </div>
                 </div>
-                <p className="text-gray-400">{experience.description}</p>
-                <Link
-                  href={experience.link}
-                  className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
-                >
-                  Learn more
-                  <Clock className="h-4 w-4" />
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                <span className="text-sm text-gray-500">{experience.period}</span>
+              </div>
+              <p className="text-gray-400">{experience.description}</p>
+              <Link
+                href={experience.link}
+                className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
+              >
+                Learn more
+                <Clock className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </main>
