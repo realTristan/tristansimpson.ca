@@ -6,8 +6,8 @@ import { createTRPCReact } from "@trpc/react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { useState } from "react";
-import type { AppRouter } from "@/lib/trpc/router";
-
+import type { AppRouter } from "@/server/routers/_app";
+import superjson from "superjson";
 export const trpc = createTRPCReact<AppRouter>();
 
 export function TRPCProvider({ children }: { children: React.ReactNode }) {
@@ -17,9 +17,10 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
       links: [
         httpBatchLink({
           url: "/api/trpc",
+          transformer: superjson,
         }),
       ],
-    })
+    }),
   );
 
   return (

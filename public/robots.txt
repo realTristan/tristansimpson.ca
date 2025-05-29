@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/*
+Disallow: /admin/*
+
+# Host
+Host: https://tristansimpson.ca
+
+# Sitemaps
+Sitemap: https://tristansimpson.ca/sitemap.xml

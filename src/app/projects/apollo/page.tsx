@@ -37,7 +37,7 @@ interface ApolloSectionProps {
   modelPath: string;
 }
 
-export function ApolloSection({ title, description, modelPath }: ApolloSectionProps) {
+function ApolloSection({ title, description, modelPath }: ApolloSectionProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   return (

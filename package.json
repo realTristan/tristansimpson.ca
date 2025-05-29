@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -88,6 +88,7 @@
     "@types/three": "^0.176.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "next-sitemap": "^4.2.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
     "typescript": "^5"

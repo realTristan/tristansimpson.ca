@@ -1,20 +1,18 @@
 import { initTRPC } from "@trpc/server";
-import { prisma } from "@/lib/prisma";
+// import { prisma } from "@/lib/prisma";
 import superjson from "superjson";
 
 // tRPC Context Types
 export type CreateContextOptions = {
   req: Request;
-  res: Response;
 };
 
 export const createTRPCContext = async (opts: CreateContextOptions) => {
-  const { req, res } = opts;
+  const { req } = opts;
 
   return {
-    prisma,
+    // prisma,
     req,
-    res,
   };
 };
 
