@@ -136,7 +136,7 @@ function Model({ modelPath, onLoad }: ModelProps) {
             position={[30, 3, 1.8]}
             distance={8}
             decay={2}
-            intensity={0.1}
+            intensity={0.3}
             color={0xfff0e5}
           />
         </Center>

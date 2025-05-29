@@ -15,6 +15,8 @@ import {
   Home,
   Code,
   Computer,
+  Linkedin,
+  Twitter,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/magnetic-button";
@@ -169,6 +171,26 @@ function ContactDropdown({ className }: { className?: string }) {
               >
                 <Mail className="size-4" />
                 <span>tsimps01@uoguelph.ca</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tristansimpsonn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Linkedin className="size-4" />
+                <span>LinkedIn</span>
+                <ExternalLink className="size-4" />
+              </a>
+              <a
+                href="http://x.com/tristans121"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+              >
+                <Twitter className="size-4" />
+                <span>Twitter</span>
+                <ExternalLink className="size-4" />
               </a>
             </motion.div>
           )}

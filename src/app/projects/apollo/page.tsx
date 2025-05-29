@@ -5,6 +5,7 @@ import { Cursor } from "@/components/cursor";
 import { SceneLoading } from "@/components/scene-loading";
 
 import dynamic from "next/dynamic";
+import Navbar from "@/components/navbar";
 
 // dynamic import with SSR disabled
 const ApolloScene = dynamic(() => import("@/components/apollo-scene"), {
@@ -16,6 +17,8 @@ export default function HomePage() {
 
   return (
     <main className="relative w-full overflow-x-hidden">
+      <Navbar />
+
       <ApolloSection
         title="Apollo"
         description="Description of your first project. Explain what technologies you used and
