@@ -123,3 +123,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* text-blue-500 on selected text */
+::selection {
+  @apply bg-blue-500 text-white;
+}

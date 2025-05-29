@@ -15,6 +15,8 @@ interface ParticleSphereProps {
   swirlSpeed?: number; // speed multiplier for swirl noise time
   size?: number; // point size
   color?: string; // point color
+  secondaryColor?: string; // secondary point color
+  secondaryColorRatio?: number; // ratio of secondary color points
 }
 
 function ParticleSphere({
@@ -27,6 +29,8 @@ function ParticleSphere({
   swirlSpeed = 0.05,
   size = 0.01,
   color = "#88ccff",
+  secondaryColor = "#1d4ed8", // text-blue-700
+  secondaryColorRatio = 0.25, // 25%
 }: ParticleSphereProps) {
   const pointsRef = useRef<THREE.Points>(null!);
   const noise = useMemo(() => new SimplexNoise(), []);
@@ -71,16 +75,30 @@ function ParticleSphere({
   }, [count]);
 
   // — 3) initial positions array (on perfect sphere) —
-  const positions = useMemo(() => {
+  const { positions, colors } = useMemo(() => {
     const p = new Float32Array(count * 3);
+    const c = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const v = anchors[i];
       p[i * 3 + 0] = v.x * radius;
       p[i * 3 + 1] = v.y * radius;
       p[i * 3 + 2] = v.z * radius;
+
+      // Randomly assign secondary color to 1% of particles
+      const isSecondary = Math.random() < secondaryColorRatio;
+      const particleColor = isSecondary ? secondaryColor : color;
+
+      // Convert hex color to RGB
+      const r = parseInt(particleColor.slice(1, 3), 16) / 255;
+      const g = parseInt(particleColor.slice(3, 5), 16) / 255;
+      const b = parseInt(particleColor.slice(5, 7), 16) / 255;
+
+      c[i * 3 + 0] = r;
+      c[i * 3 + 1] = g;
+      c[i * 3 + 2] = b;
     }
-    return p;
-  }, [count, anchors, radius]);
+    return { positions: p, colors: c };
+  }, [count, anchors, radius, color, secondaryColor, secondaryColorRatio]);
 
   // — 4) animation loop: radial + swirl + global spin —
   useFrame(({ clock }) => {
@@ -128,6 +146,7 @@ function ParticleSphere({
     <points ref={pointsRef}>
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
         map={sprite}
@@ -137,7 +156,7 @@ function ParticleSphere({
         blending={THREE.AdditiveBlending}
         sizeAttenuation
         size={size}
-        color={color}
+        vertexColors
       />
     </points>
   );
@@ -148,8 +167,7 @@ export default function ParticleSphereScene({}: {}) {
     <div className="fixed z-0 h-screen w-screen">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <ambientLight intensity={0.2} />
-
-        <ParticleSphere color="#aaccff" />
+        <ParticleSphere color="#aaccff" secondaryColor="#1d4ed8" />
       </Canvas>
     </div>
   );
