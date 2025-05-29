@@ -150,6 +150,7 @@ export default function ExperiencePage() {
 
       <div className="relative z-10 mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-24">
         <ExperienceHeader />
+
         <motion.div
           variants={container}
           initial="hidden"
