@@ -26,13 +26,14 @@ const shapes: Shape[] = [
   { pos: [7, 0, 7], rot: [0.2, 0.3, 0.1], type: "box" },
 ];
 
-export function StaticShapes({ animateIn = false }: { animateIn?: boolean }) {
+export function StaticShapes({ animateIn = true }: { animateIn?: boolean }) {
   return (
     <>
       {shapes.map((shape, i) => {
         const scale = 2;
         const material =
           i % 3 === 0 ? config.materials.secondary : config.materials.tertiary;
+
         // Animate from y=20 to y=shape.pos[1]
         const { position } = useSpring({
           position: animateIn ? shape.pos : [shape.pos[0], 20, shape.pos[2]],

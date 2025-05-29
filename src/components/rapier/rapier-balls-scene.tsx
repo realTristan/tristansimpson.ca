@@ -26,7 +26,7 @@ export default function RapierBallsScene({
   useEffect(() => {
     if (onLoaded) {
       // Delay to ensure all children are mounted
-      const t = setTimeout(() => onLoaded(), 200);
+      const t = setTimeout(() => onLoaded(), 0);
       return () => clearTimeout(t);
     }
   }, [onLoaded]);
