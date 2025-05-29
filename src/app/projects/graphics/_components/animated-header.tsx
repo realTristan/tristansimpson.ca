@@ -33,7 +33,7 @@ const projectItems = [
     id: "verlet",
     title: "Verlet",
     description:
-      "A C++ physics sandbox and engine using Verlet integration. Verlet lets you simulate particles, cloth, and soft bodies with constraints. It's a fun, interactive playground for exploring constraint-based animation and real-time physics.",
+      "A C++ physics sandbox and engine using Verlet integration. Verlet lets you simulate particles, physics, and soft bodies with constraints. It's a fun, interactive playground for exploring constraint-based animation and real-time physics.",
     icon: <Bolt className="mr-2 h-4 w-4 text-white" />,
     link: "https://github.com/realTristan/verlet",
   },

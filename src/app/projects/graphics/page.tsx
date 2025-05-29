@@ -19,11 +19,7 @@ export default function HomePage() {
       )}
 
       <BrowserView>
-        <RapierBallsScene
-          className="hidden lg:flex"
-          onLoaded={() => setIsLoading(false)}
-          animateIn={!isLoading}
-        />
+        <RapierBallsScene onLoaded={() => setIsLoading(false)} animateIn={!isLoading} />
         <Cursor />
       </BrowserView>
     </main>

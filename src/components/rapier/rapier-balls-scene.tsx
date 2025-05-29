@@ -26,11 +26,7 @@ export default function RapierBallsScene({
 }: RapierBallsSceneProps) {
   // Call onLoaded after Suspense resolves (after first render)
   useEffect(() => {
-    if (onLoaded) {
-      // Delay to ensure all children are mounted
-      const t = setTimeout(() => onLoaded(), 0);
-      return () => clearTimeout(t);
-    }
+    onLoaded?.();
   }, [onLoaded]);
 
   return (
