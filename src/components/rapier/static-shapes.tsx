@@ -22,7 +22,7 @@ export function StaticShapes({ animateIn = true }: { animateIn?: boolean }) {
         <AnimatedShape
           key={i}
           shape={shape}
-          material={i % 3 === 0 ? config.materials.secondary : config.materials.tertiary}
+          material={config.materials.shapes}
           delay={i * 80}
           animateIn={animateIn}
         />

@@ -66,7 +66,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
       </MagneticButton>
       {/* Wrap bridge and dropdown in one container */}
       <div
-        className="absolute top-full left-1/2 z-[100] w-72 -translate-x-1/2"
+        className="absolute top-full left-1/2 z-[100] w-80 -translate-x-1/2"
         style={{ pointerEvents: open ? "auto" : "none" }}
       >
         {/* Hover bridge */}
@@ -108,7 +108,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
                 className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <ExternalLink className="size-4" />
-                <span>Simpson Research</span>
+                <span>Simpson Research (All Projects)</span>
               </Link>
               <Link
                 href="https://github.com/realtristan"
@@ -516,7 +516,7 @@ export default function Navbar() {
                       className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
                     >
                       <ExternalLink className="size-4" />
-                      <span>Simpson Research</span>
+                      <span>Simpson Research (All Projects)</span>
                     </a>
                     <a
                       href="https://github.com/realtristan"

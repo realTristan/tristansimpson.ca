@@ -25,6 +25,12 @@ export const config = {
       emissive: "#1a1a1a",
       emissiveIntensity: 0.3,
     }),
+
+    shapes: new MeshLambertMaterial({
+      color: "#000000",
+      emissive: "#1a1a1a",
+      emissiveIntensity: 1,
+    }),
   },
 
   numberOfSphereInstances: 7,
@@ -33,3 +39,9 @@ export const config = {
 export const primaryColor = config.materials.primary.color;
 
 export const secondaryColor = config.materials.secondary.color;
+
+export const tertiaryColor = config.materials.tertiary.color;
+
+export const ballColor = config.materials.ball.color;
+
+export const shapesColor = config.materials.shapes.color;
