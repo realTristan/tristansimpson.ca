@@ -1,17 +1,17 @@
 "use client";
 
 import React from "react";
-import { ApolloSection } from "./_components/apollo-section";
+import { ApolloSection } from "./projects/apollo/_components/apollo-section";
 import { Cursor } from "@/components/cursor";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
     <main className="relative w-full overflow-x-hidden">
-      <ApolloSection
-        title="Project One"
-        description="Description of your first project. Explain what technologies you used and what problems you solved."
-        modelPath="/apollo.glb"
-      />
+      <Button asChild>
+        <Link href="/projects/apollo">View Apollo</Link>
+      </Button>
 
       <Cursor />
     </main>
