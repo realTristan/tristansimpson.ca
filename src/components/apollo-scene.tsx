@@ -83,8 +83,8 @@ function Model({ modelPath, onLoad }: ModelProps) {
     setLift(0.5);
 
     // optional: reposition and point camera
-    camera.position.set(0, size.y * 0.01, size.z);
-    camera.lookAt(0, size.y * 0.01, 0);
+    camera.position.set(0, size.y * 0.5, size.z);
+    camera.lookAt(0, size.y * 0.5, 0);
 
     onLoad();
   }, [gltf, camera, lift]);
