@@ -99,7 +99,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
                 className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />
-                <span>CGL & WinGL</span>
+                <span>Graphics & Physics</span>
               </Link>
               <Link
                 href="https://simpsonresearch.ca"

@@ -59,7 +59,7 @@ export function AnimatedHeader({ className }: { className?: string }) {
   return (
     <motion.section
       className={cn(
-        "pointer-events-none relative mx-auto flex max-w-4xl min-w-3xl flex-col items-center justify-center rounded-xl border border-white/10 bg-black/80 px-8 py-10 shadow-xl backdrop-blur-md",
+        "pointer-events-none relative mx-auto flex max-w-4xl min-w-3xl flex-col items-center justify-center rounded-xl border border-white/10 bg-transparent px-8 py-10 shadow-xl backdrop-blur-md",
         className,
       )}
       initial="hidden"
@@ -105,7 +105,7 @@ export function AnimatedHeader({ className }: { className?: string }) {
           <Accordion
             type="single"
             collapsible
-            className="rounded-xl border border-white/10 bg-black/80 backdrop-blur-md"
+            className="rounded-xl border border-white/10 bg-transparent backdrop-blur-md"
           >
             {projectItems.map(({ id, title, description, icon, link }) => (
               <AccordionItem
