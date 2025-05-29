@@ -8,7 +8,7 @@ import { StaticShapes } from "./static-shapes";
 import { cn } from "@/lib/utils";
 import { primaryColor } from "./utils/config";
 
-export default function RapierCanvas({ className }: { className?: string }) {
+export default function RapierBallsScene({ className }: { className?: string }) {
   return (
     <div className={cn("fixed top-0 left-0 z-40 h-screen w-screen", className)}>
       <Canvas

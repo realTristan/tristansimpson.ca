@@ -1,0 +1,137 @@
+"use client";
+
+import React from "react";
+import { motion, Variants } from "framer-motion";
+import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ExternalLink, Cpu, GitMerge, Bolt, ChevronDown } from "lucide-react";
+
+// Animation variants
+const container: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
+const projectItems = [
+  {
+    id: "wingl",
+    title: "WinGL",
+    description:
+      "Win32 Graphics Library From Scratch in C with custom software rasterizer and shader pipeline.",
+    icon: <Cpu className="mr-2 h-4 w-4 text-white" />,
+    link: "https://github.com/realTristan/wingl",
+  },
+  {
+    id: "cgl",
+    title: "CGL",
+    description: "OpenGL GLFW Wrapper and 2D/3D graphics utilities inspired by PyGame.",
+    icon: <GitMerge className="mr-2 h-4 w-4 text-white" />,
+    link: "https://github.com/realTristan/cgl",
+  },
+  {
+    id: "verlet",
+    title: "Verlet",
+    description:
+      "High-performance physics engine using Verlet integration and constraint solving.",
+    icon: <Bolt className="mr-2 h-4 w-4 text-white" />,
+    link: "https://github.com/realTristan/verlet",
+  },
+];
+
+export function AnimatedHeader({ className }: { className?: string }) {
+  return (
+    <motion.section
+      className={cn(
+        "relative mx-auto flex max-w-3xl flex-col items-center justify-center rounded-xl border border-white/10 bg-black/80 px-8 py-10 shadow-xl backdrop-blur-md",
+        className,
+      )}
+      initial="hidden"
+      animate="show"
+      variants={container}
+    >
+      <div className="flex w-full flex-col items-center text-center">
+        <motion.h1 variants={item} className="mb-4 text-5xl font-extrabold text-white">
+          Graphics & Physics Showcase
+        </motion.h1>
+        <motion.p
+          variants={item}
+          className="mb-8 max-w-2xl text-lg leading-relaxed text-gray-300"
+        >
+          Dive into my custom-built rendering and simulation engines. From Win32 graphics
+          pipelines to lightweight OpenGL wrappers and physics sandboxes, explore how each
+          project tackles real-time performance, low-level optimizations, and interactive
+          demos.
+        </motion.p>
+
+        {/* Project buttons with icons */}
+        <motion.div variants={item} className="mb-10 flex flex-wrap justify-center gap-4">
+          {projectItems.map(({ id, title, icon, link }) => (
+            <a
+              key={id}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
+            >
+              {React.cloneElement(icon, {
+                className: "mr-2 h-5 w-5 text-white group-hover:text-blue-400",
+              })}
+              {title}
+            </a>
+          ))}
+        </motion.div>
+
+        {/* Interactive accordion */}
+        <motion.div variants={item} className="w-full max-w-2xl">
+          <Accordion
+            type="single"
+            collapsible
+            className="rounded-xl border border-white/10 bg-black/80 backdrop-blur-md"
+          >
+            {projectItems.map(({ id, title, description, icon, link }) => (
+              <AccordionItem
+                key={id}
+                value={id}
+                className="border-b border-white/10 px-4"
+              >
+                <AccordionTrigger className="flex w-full items-center justify-between py-4 text-left text-white transition hover:text-blue-400 focus:text-blue-400">
+                  <span className="flex items-center">
+                    {React.cloneElement(icon, { className: "mr-2 h-4 w-4 text-white" })}
+                    {title}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-4 text-gray-400">
+                  <p className="mb-2 leading-snug">{description}</p>
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-blue-400 hover:text-blue-300"
+                  >
+                    View on GitHub <ExternalLink className="ml-1 h-4 w-4" />
+                  </a>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+}

@@ -3,7 +3,7 @@
 import React from "react";
 import { Cursor } from "@/components/cursor";
 import ParticleSphereScene from "@/components/particle-sphere";
-import AnimatedHeader from "@/components/animated-header";
+import AnimatedHeader from "@/app/_components/animated-header";
 import Navbar from "@/components/navbar";
 import { BrowserView } from "react-device-detect";
 

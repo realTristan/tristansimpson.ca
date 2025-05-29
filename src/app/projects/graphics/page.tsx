@@ -3,8 +3,9 @@
 import React from "react";
 import { Cursor } from "@/components/cursor";
 import Navbar from "@/components/navbar";
-import RapierCanvas from "@/components/rapier/rapier-canvas";
+import RapierBallsScene from "@/components/rapier/rapier-balls-scene";
 import { BrowserView } from "react-device-detect";
+import { AnimatedHeader } from "@/app/projects/graphics/_components/animated-header";
 
 export default function HomePage() {
   return (
@@ -12,8 +13,8 @@ export default function HomePage() {
       <Navbar />
 
       <BrowserView>
-        <RapierCanvas className="hidden lg:flex" />
-
+        <AnimatedHeader className="absolute top-1/4 z-50" />
+        <RapierBallsScene className="hidden lg:flex" />
         <Cursor />
       </BrowserView>
     </main>

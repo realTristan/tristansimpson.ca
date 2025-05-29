@@ -31,10 +31,14 @@ export function PointerBall() {
     ref.current.setNextKinematicTranslation(vec);
   });
 
-  useFrame((_, delta) => {
-    if (!lightRef.current) return;
-    // Pulse the light intensity between 5 and 15
-    lightRef.current.intensity = 10 + Math.sin(Date.now() * 0.001) * 5;
+  useFrame((state) => {
+    if (!lightRef.current) {
+      return;
+    }
+
+    // Pulse the light intensity between 5 and 20
+    const time = state.clock.getElapsedTime();
+    lightRef.current.intensity = 12.5 + Math.sin(time * 3) * 7.5;
   });
 
   return (

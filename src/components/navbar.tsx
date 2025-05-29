@@ -66,7 +66,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
       </MagneticButton>
       {/* Wrap bridge and dropdown in one container */}
       <div
-        className="absolute top-full left-1/2 z-50 w-72 -translate-x-1/2"
+        className="absolute top-full left-1/2 z-[100] w-72 -translate-x-1/2"
         style={{ pointerEvents: open ? "auto" : "none" }}
       >
         {/* Hover bridge */}
@@ -152,7 +152,7 @@ function ContactDropdown({ className }: { className?: string }) {
         </Link>
       </MagneticButton>
       <div
-        className="absolute top-full left-1/2 z-50 w-72 -translate-x-1/2"
+        className="absolute top-full left-1/2 z-[100] w-72 -translate-x-1/2"
         style={{ pointerEvents: open ? "auto" : "none" }}
       >
         <div className="h-10 w-full" />
@@ -226,7 +226,7 @@ function ResumeDropdown({ className }: { className?: string }) {
       </MagneticButton>
 
       <div
-        className="absolute top-full left-1/2 z-50 w-48 -translate-x-1/2"
+        className="absolute top-full left-1/2 z-[100] w-48 -translate-x-1/2"
         style={{ pointerEvents: open ? "auto" : "none" }}
       >
         <div className="h-10 w-full" />
@@ -280,7 +280,7 @@ function ExperienceDropdown({ className }: { className?: string }) {
         </Link>
       </MagneticButton>
       <div
-        className="absolute top-full left-1/2 z-50 w-64 -translate-x-1/2"
+        className="absolute top-full left-1/2 z-[100] w-64 -translate-x-1/2"
         style={{ pointerEvents: open ? "auto" : "none" }}
       >
         <div className="h-10 w-full" />
@@ -341,7 +341,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 z-50 w-[95vw] max-w-3xl -translate-x-1/2">
+    <nav className="fixed top-6 left-1/2 z-[100] w-full max-w-3xl -translate-x-1/2">
       <motion.div
         className="flex items-center justify-between rounded-2xl border border-white/10 bg-transparent px-8 py-3 shadow-xl backdrop-blur-md"
         initial={{ opacity: 0, scale: 0.98 }}
