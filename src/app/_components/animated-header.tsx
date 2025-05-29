@@ -44,7 +44,7 @@ export default function AnimatedHeader({
   return (
     <motion.div
       className={cn(
-        "flex h-full flex-col items-center gap-12 pt-60 text-center sm:justify-center sm:pt-0",
+        "flex h-full flex-col items-center gap-12 pt-72 text-center sm:justify-center sm:pt-0",
         className,
       )}
       variants={container}
