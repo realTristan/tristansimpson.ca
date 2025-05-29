@@ -80,12 +80,11 @@ function Model({ modelPath, onLoad }: ModelProps) {
     gltf.scene.position.sub(center);
 
     // lift by 25% of its height
-    const yLift = 0.5;
-    setLift(yLift);
+    setLift(0.5);
 
     // optional: reposition and point camera
-    camera.position.set(0, size.y * 0.5, size.z * 1);
-    camera.lookAt(0, size.y * 0.5, 0);
+    camera.position.set(0, size.y * 0.01, size.z);
+    camera.lookAt(0, size.y * 0.01, 0);
 
     onLoad();
   }, [gltf, camera, lift]);
