@@ -4,18 +4,17 @@ import React, { useRef, useEffect, Suspense, useState } from "react";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { Box3, Vector3, MeshStandardMaterial } from "three";
+import { Box3, Vector3 } from "three";
 import { Center } from "@react-three/drei";
 import * as THREE from "three";
 import { v4 as uuidv4 } from "uuid";
 
 interface ApolloSceneProps {
   modelPath: string;
+  onObjectLoad: () => void;
 }
 
-const ApolloSceneSuspense;
-
-export default function ApolloScene({ modelPath }: ApolloSceneProps) {
+export default function ApolloScene({ modelPath, onObjectLoad }: ApolloSceneProps) {
   const [dpr, setDpr] = useState<[number, number]>([1, 1]);
   const uniqueId = useRef(uuidv4());
 
@@ -26,7 +25,7 @@ export default function ApolloScene({ modelPath }: ApolloSceneProps) {
   return (
     <Canvas
       key={uniqueId.current}
-      className="pointer-events-none absolute inset-0"
+      className="pointer-events-none absolute inset-0 z-auto m-0 h-full w-full"
       gl={{
         antialias: true,
         powerPreference: "high-performance",
@@ -40,7 +39,7 @@ export default function ApolloScene({ modelPath }: ApolloSceneProps) {
     >
       <ambientLight intensity={0.01} />
       <Suspense fallback={null}>
-        <Model key={uniqueId.current} modelPath={modelPath} />
+        <Model key={uniqueId.current} modelPath={modelPath} onLoad={onObjectLoad} />
       </Suspense>
     </Canvas>
   );
@@ -48,10 +47,10 @@ export default function ApolloScene({ modelPath }: ApolloSceneProps) {
 
 interface ModelProps {
   modelPath: string;
+  onLoad: () => void;
 }
 
-function Model({ modelPath }: ModelProps) {
-  const uniqueId = useRef(uuidv4());
+function Model({ modelPath, onLoad }: ModelProps) {
   const gltf = useLoader(GLTFLoader, modelPath, (loader) => {
     const draco = new DRACOLoader();
     draco.setDecoderPath("/draco/");
@@ -82,7 +81,9 @@ function Model({ modelPath }: ModelProps) {
     // Position & aim camera
     camera.position.set(0, headY, size.z);
     camera.lookAt(0, headY, 0);
-  }, [gltf, camera]);
+
+    onLoad();
+  }, [gltf, camera, onLoad]);
 
   // (Optional) keep your animated light + parallax
   useEffect(() => {
