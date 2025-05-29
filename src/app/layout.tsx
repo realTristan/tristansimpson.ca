@@ -4,6 +4,7 @@ import "./globals.css";
 import { TRPCProvider } from "@/lib/trpc/client";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
+import { FooterText } from "@/components/footer-text";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,9 +35,7 @@ export default function RootLayout({
         >
           <TRPCProvider>
             {children}
-            <p className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-pulse text-center text-sm text-gray-500">
-              open on desktop for the full 3D experience
-            </p>
+            <FooterText />
             <Toaster />
           </TRPCProvider>
         </ThemeProvider>
