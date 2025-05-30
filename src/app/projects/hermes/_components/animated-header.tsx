@@ -49,7 +49,7 @@ const projectItems = [
     id: "hermes-websocket",
     title: "Hermes WebSocket",
     description:
-      "Real-time WebSocket API for interacting with Hermes cache and full-text search. Provides a comprehensive set of endpoints for cache operations, search queries, and system monitoring with support for custom implementations.",
+      "Real-time WebSocket API for interacting with Hermes cache and full-text search. Provides an intuitive set of endpoints for cache operations, search queries, and system monitoring with support for custom implementations.",
     icon: <Zap className="mr-2 h-4 w-4 text-white" />,
     link: "https://github.com/realTristan/hermes",
   },

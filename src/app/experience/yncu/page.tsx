@@ -442,7 +442,7 @@ function ApplicantManagementDashboard() {
             meetings, user acceptance testing & demos, and more.
           </p>
           <p className="text-gray-200">
-            <span className="font-semibold text-white">+</span> Built a comprehensive
+            <span className="font-semibold text-white">+</span> Built an intuitive
             dashboard for tracking, reviewing, and managing applications across all
             stages.
           </p>
@@ -527,8 +527,8 @@ function ApplicantManagementDashboard() {
         <div className="flex flex-col gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
-              Designed and built a comprehensive dashboard for tracking applications
-              across all stages of the hiring process
+              Designed and built an intuitive dashboard for tracking applications across
+              all stages of the hiring process
             </li>
             <li>
               Implemented advanced filtering, sorting, and search capabilities for
@@ -1146,8 +1146,8 @@ function FiservDNAAPI() {
               connected three major systems to DNA API
             </li>
             <li>
-              <span className="font-semibold text-white">Security:</span> Implemented
-              comprehensive security standards
+              <span className="font-semibold text-white">Security:</span> Integrated
+              appropriate security standards
             </li>
             <li>
               <span className="font-semibold text-white">Scalability:</span> Added 10 new
@@ -1197,7 +1197,7 @@ function FiservDNAAPI() {
               Developed and implemented 10 new API endpoints for various business
               processes
             </li>
-            <li>Established comprehensive route and file organization standards</li>
+            <li>Established appropriate route and file organization standards</li>
             <li>Implemented robust security protocols and access controls</li>
             <li>Created detailed API documentation and integration guides</li>
             <li>Set up monitoring and logging for API performance and security</li>
@@ -1233,6 +1233,143 @@ function FiservDNAAPI() {
             <li>
               <span className="font-semibold text-white">Future Growth:</span> Required
               scalable API infrastructure for upcoming projects
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MortgageCampaign() {
+  return (
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Led the development of
+            five tailored websites for our mortgage campaign
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Integrated with Salesforce
+            Marketing Cloud for campaign management
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Built custom components
+            and workflows for each campaign website
+          </p>
+        </div>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Scale:</span> Successfully
+              launched five unique campaign websites
+            </li>
+            <li>
+              <span className="font-semibold text-white">Engagement:</span> Increased
+              member interaction with mortgage products
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Seamless
+              connection with marketing automation
+            </li>
+            <li>
+              <span className="font-semibold text-white">Conversion:</span> Improved lead
+              generation and application rates
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Platform:</span> Salesforce,
+              Salesforce Marketing Cloud
+            </li>
+            <li>
+              <span className="font-semibold text-white">Frontend:</span> HTML, CSS,
+              JavaScript, Lightning Web Components
+            </li>
+            <li>
+              <span className="font-semibold text-white">Backend:</span> Apex, SOQL
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Marketing
+              Cloud APIs, Email Services
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Project Scope */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Project Scope</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>Designed and developed five unique campaign websites</li>
+            <li>Created custom Lightning Web Components for each campaign</li>
+            <li>Implemented marketing automation workflows</li>
+            <li>Built lead capture and tracking systems</li>
+            <li>Integrated with Salesforce Marketing Cloud for campaign management</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Campaign Needs:</span> Required
+              tailored web applications for our mortgage campaign
+            </li>
+            <li>
+              <span className="font-semibold text-white">Member Experience:</span> Needed
+              to provide targeted information for different member segments
+            </li>
+            <li>
+              <span className="font-semibold text-white">Marketing:</span> Required better
+              tracking and automation of campaign performance
+            </li>
+            <li>
+              <span className="font-semibold text-white">Conversion:</span> Needed to
+              improve lead generation and application rates
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Required
+              seamless connection with our marketing automation platform
             </li>
           </ul>
         </div>
@@ -1303,6 +1440,16 @@ const projects = [
     tags: ["Project", "Lead", "In Progress"],
   },
   {
+    id: "mortgage-campaign",
+    title: "Mortgage Campaign",
+    icon: (
+      <Banknote className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
+    ),
+    images: [],
+    Component: MortgageCampaign,
+    tags: ["Project", "Lead"],
+  },
+  {
     id: "id-verification",
     title: "ID Verification",
     icon: (
@@ -1310,16 +1457,6 @@ const projects = [
     ),
     images: [],
     Component: IDVerification,
-    tags: ["Project", "Salesforce"],
-  },
-  {
-    id: "onboarding",
-    title: "Automatic Onboarding System",
-    icon: (
-      <Rocket className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
-    ),
-    images: [],
-    Component: AutomaticOnboardingSystem,
     tags: ["Project", "Salesforce"],
   },
   {
@@ -1331,6 +1468,16 @@ const projects = [
     images: [],
     Component: FiservDNAAPI,
     tags: ["Project", "Co-Lead"],
+  },
+  {
+    id: "onboarding",
+    title: "Automatic Onboarding System",
+    icon: (
+      <Rocket className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
+    ),
+    images: [],
+    Component: AutomaticOnboardingSystem,
+    tags: ["Project", "Salesforce"],
   },
   {
     id: "yncu-tools",
@@ -1383,66 +1530,66 @@ const headerLetter = {
 };
 
 function YNCUHeader() {
-  const firstName = "@realtristan";
-  const lastName = "simpson";
-  const subheader = "YNCU Full Stack Developer";
-
   return (
     <motion.div
-      className="flex flex-col items-center gap-4 pt-32 pb-8 text-center"
-      variants={headerContainer}
-      initial="hidden"
-      animate="visible"
+      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <motion.h2
-        className="w-full text-lg font-normal tracking-widest text-gray-400"
-        variants={headerContainer}
-      >
-        {subheader.split("").map((char, i) => (
-          <motion.span key={i} variants={headerLetter}>
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </motion.h2>
       <motion.div
-        className="flex flex-row items-center justify-center gap-4"
-        variants={headerContainer}
+        className="flex flex-col items-center gap-4"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <motion.h1
-          className="flex flex-col items-center gap-2 overflow-hidden font-black tracking-widest"
-          variants={headerContainer}
+        <motion.h2
+          className="text-2xl font-light tracking-widest text-gray-400"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <span className="flex flex-row items-center justify-center gap-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-            <motion.span className="text-4xl text-blue-500 sm:text-5xl md:text-6xl lg:text-7xl">
-              @
-            </motion.span>
-            <span className="inline-block">
-              {firstName
-                .replace("@", "")
-                .split("")
-                .map((char, i) => (
-                  <motion.span
-                    key={i}
-                    variants={headerLetter}
-                    className="inline-block transition-colors duration-200 ease-in-out hover:text-blue-500"
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-            </span>
-          </span>
-          <span className="inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-            {lastName.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                variants={headerLetter}
-                className="inline-block transition-colors duration-200 ease-in-out hover:text-blue-500"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </span>
-        </motion.h1>
+          Your Neighbourhood Credit Union
+        </motion.h2>
+      </motion.div>
+
+      <motion.div
+        className="flex items-center gap-4 text-sm text-gray-400"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+      >
+        <span>Full Stack Developer</span>
+        <span>•</span>
+        <span>June 2024 - Present</span>
+        <span>•</span>
+        <span>Kitchener, Ontario</span>
+      </motion.div>
+
+      <motion.div
+        className="flex flex-wrap justify-center gap-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.5 }}
+      >
+        <Badge variant="outline" className="text-xs">
+          TypeScript
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          React.js
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Next.js
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          tRPC
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Azure
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          shadcn
+        </Badge>
       </motion.div>
     </motion.div>
   );
@@ -1465,6 +1612,7 @@ export default function YNCUPage() {
               animate="show"
               className="relative ml-8 flex w-full flex-col gap-8 px-4 py-4"
             >
+              <YNCUHeader />
               <Accordion
                 type="single"
                 collapsible

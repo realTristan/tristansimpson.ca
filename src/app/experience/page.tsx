@@ -7,6 +7,8 @@ import Link from "next/link";
 import Navbar from "@/components/navbar";
 import FloatingTechGridScene from "@/components/floating-tech-grid";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+import { Accordion } from "@/components/ui/accordion";
 // import "@/styles/scrollbar-hide.css";
 
 const experiences = [
@@ -26,7 +28,7 @@ const experiences = [
     period: "December 2023 - June 2024",
     description: "Lead software developement and team of 15",
     icon: <Computer className="h-6 w-6" />,
-    link: "/experience/engineering-ambition",
+    link: "/experience/university-of-guelph",
   },
   {
     id: "dominion-lending",
@@ -87,68 +89,66 @@ const experienceHeaderLetter = {
 };
 
 function ExperienceHeader() {
-  const firstName = "@realtristan";
-  const lastName = "simpson";
-  const subheader = "experience timeline";
-
   return (
     <motion.div
-      className="flex flex-col items-center gap-4 pt-24 pb-8 text-center"
-      variants={experienceHeaderContainer}
-      initial="hidden"
-      animate="visible"
+      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      <motion.h2
-        className="w-full text-lg font-normal tracking-widest text-gray-400"
-        variants={experienceHeaderContainer}
+      <motion.div
+        className="flex flex-col items-center gap-4"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
       >
-        {subheader.split("").map((char, i) => (
-          <motion.span key={i} variants={experienceHeaderLetter}>
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </motion.h2>
+        <motion.h2
+          className="text-2xl font-light tracking-widest text-gray-400"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          Experience Timeline
+        </motion.h2>
+      </motion.div>
 
       <motion.div
-        className="flex flex-row items-center justify-center gap-4"
-        variants={experienceHeaderContainer}
+        className="flex items-center gap-4 text-sm text-gray-400"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <motion.h1
-          className="flex flex-col items-center gap-2 overflow-hidden font-black tracking-widest"
-          variants={experienceHeaderContainer}
-        >
-          <span className="flex flex-row items-center justify-center gap-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-            <motion.span className="text-4xl text-blue-500 sm:text-5xl md:text-6xl lg:text-7xl">
-              @
-            </motion.span>
-            <span className="inline-block">
-              {firstName
-                .replace("@", "")
-                .split("")
-                .map((char, i) => (
-                  <motion.span
-                    key={i}
-                    variants={experienceHeaderLetter}
-                    className="inline-block transition-colors duration-200 ease-in-out hover:text-blue-500"
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-            </span>
-          </span>
+        <span>Full Stack Developer</span>
+        <span>•</span>
+        <span>2023 - Present</span>
+        <span>•</span>
+        <span>Ontario, Canada</span>
+      </motion.div>
 
-          <span className="inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-            {lastName.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                variants={experienceHeaderLetter}
-                className="inline-block transition-colors duration-200 ease-in-out hover:text-blue-500"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </span>
-        </motion.h1>
+      <motion.div
+        className="flex flex-wrap justify-center gap-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.5 }}
+      >
+        <Badge variant="outline" className="text-xs">
+          TypeScript
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          React.js
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Next.js
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Python
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Azure
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          AWS
+        </Badge>
       </motion.div>
     </motion.div>
   );
@@ -159,14 +159,17 @@ export default function ExperiencePage() {
     <main className="relative flex h-screen w-full flex-col">
       <Navbar />
       <FloatingTechGridScene />
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col items-center px-4 py-12">
+
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col px-4 py-12">
         <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="relative flex flex-col items-center justify-center gap-8 overflow-visible py-4"
+            className="relative ml-8 flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
           >
+            <ExperienceHeader />
+
             {experiences.map((experience, index) => (
               <motion.div
                 key={experience.id}
