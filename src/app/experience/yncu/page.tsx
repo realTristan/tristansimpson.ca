@@ -423,60 +423,820 @@ function WorkspaceManagementDashboard() {
 
 function ApplicantManagementDashboard() {
   return (
-    <div className="prose prose-invert max-w-none">
-      <p className="leading-relaxed text-gray-300">
-        Description of the applicant management dashboard
-      </p>
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Led the development of our
+            Applicant Management Dashboard; Designed and implemented the interface, user
+            journey; and caching, security, backend, and data models.
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Led code reviews, team
+            meetings, user acceptance testing & demos, and more.
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Built a comprehensive
+            dashboard for tracking, reviewing, and managing applications across all
+            stages.
+          </p>
+        </div>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Cost savings:</span> ~$6,000
+              saved annually
+            </li>
+            <li>
+              <span className="font-semibold text-white">Scale:</span> Over 50,000 lines
+              of code
+            </li>
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Thousands of
+              hours saved from manual applicant review
+            </li>
+            <li>
+              <span className="font-semibold text-white">Growth:</span> Significant
+              increase in application volume and processing speed
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Frontend:</span> Vite, React,
+              shadcn, Tailwind CSS
+            </li>
+            <li>
+              <span className="font-semibold text-white">Monorepo:</span> Turborepo
+            </li>
+            <li>
+              <span className="font-semibold text-white">Backend:</span> Node.js, Express
+            </li>
+            <li>
+              <span className="font-semibold text-white">Database:</span> Azure SQL,
+              Prisma
+            </li>
+            <li>
+              <span className="font-semibold text-white">Cloud & Storage:</span> Azure Web
+              Apps, Azure Graph Client, Azure Blob Storage
+            </li>
+            <li>
+              <span className="font-semibold text-white">Data Fetching & Routing:</span>{" "}
+              TanStack Query, TanStack Router, OpenAPI
+            </li>
+            <li>
+              <span className="font-semibold text-white">Other:</span> Python scripts for
+              tooling and automation
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Project Scope */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Project Scope</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              Designed and built a comprehensive dashboard for tracking applications
+              across all stages of the hiring process
+            </li>
+            <li>
+              Implemented advanced filtering, sorting, and search capabilities for
+              efficient applicant management
+            </li>
+            <li>
+              Created automated workflows for application review, interview scheduling,
+              and candidate communication
+            </li>
+            <li>
+              Built real-time analytics and reporting features for tracking application
+              metrics and team performance
+            </li>
+            <li>
+              Integrated with existing HR systems and email platforms for seamless
+              communication
+            </li>
+            <li>
+              Developed role-based access controls and audit trails for secure applicant
+              data management
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Affordability:</span> Other
+              solutions weren't budget friendly
+            </li>
+            <li>
+              <span className="font-semibold text-white">Flexibility:</span> Required
+              custom features to match our unique hiring process
+            </li>
+            <li>
+              <span className="font-semibold text-white">Legacy System:</span> Excel-based
+              tracking was error-prone and couldn't scale with our growing needs
+            </li>
+            <li>
+              <span className="font-semibold text-white">Analytics:</span> Needed custom
+              metrics and insights for optimizing our hiring process
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
 
 function MortgageRenewalSystem() {
   return (
-    <div className="prose prose-invert max-w-none">
-      <p className="leading-relaxed text-gray-300">
-        In progress (2025): Mortgage Renewal System
-      </p>
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Led the development of our
+            Mortgage Renewal System; Designed and implemented automated renewal workflows,
+            member notifications, and employee dashboards.
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Built analytics and
+            reporting features for tracking renewal rates and member engagement.
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Integrated with existing
+            systems for seamless member communication and document management.
+          </p>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Platform:</span> Salesforce
+            </li>
+            <li>
+              <span className="font-semibold text-white">Frontend:</span> HTML, CSS,
+              JavaScript, Apex, Lightning Web Components
+            </li>
+            <li>
+              <span className="font-semibold text-white">Database:</span> SOQL
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Salesforce
+              APIs, Email Services
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Member Experience:</span> Large
+              number of members needing mortgage renewals required a streamlined process
+            </li>
+            <li>
+              <span className="font-semibold text-white">Branch Efficiency:</span> Needed
+              to reduce branch congestion and improve staff productivity
+            </li>
+            <li>
+              <span className="font-semibold text-white">Digital Transformation:</span>
+              Moving from manual processes to automated workflows for better tracking and
+              management
+            </li>
+            <li>
+              <span className="font-semibold text-white">Risk Management:</span> Ensuring
+              timely renewals and reducing the risk of missed opportunities
+            </li>
+            <li>
+              <span className="font-semibold text-white">Member Retention:</span>
+              Proactive engagement to maintain member relationships during renewal periods
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
 
 function IDVerification() {
   return (
-    <div className="prose prose-invert max-w-none">
-      <p className="leading-relaxed text-gray-300">
-        Description of the ID verification system
-      </p>
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Developed, alongside four
+            other team members, our Automatic ID Verification System
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Built an intuitive system
+            for tracking and managing member identification documents across all channels.
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Integrated with our DNA
+            API backend for real-time verification and compliance reporting.
+          </p>
+        </div>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Thousands of
+              hours saved in phone calls and manual verification
+            </li>
+            <li>
+              <span className="font-semibold text-white">Branch Experience:</span>{" "}
+              Significantly reduced branch congestion and wait times
+            </li>
+            <li>
+              <span className="font-semibold text-white">Compliance:</span> 100% tracking
+              of member identification status
+            </li>
+            <li>
+              <span className="font-semibold text-white">Scale:</span> Successfully
+              processed over 20,000 member ID verifications
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Platform:</span> Salesforce
+            </li>
+            <li>
+              <span className="font-semibold text-white">Frontend:</span> HTML, CSS,
+              JavaScript, Apex, Lightning Web Components
+            </li>
+            <li>
+              <span className="font-semibold text-white">Database:</span> SOQL
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Salesforce
+              APIs, Email Services, DNA API Backend
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Project Scope */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Project Scope</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              Designed and implemented automated ID verification workflows for all member
+              touchpoints
+            </li>
+            <li>
+              Built a centralized system for tracking and managing member identification
+              documents
+            </li>
+            <li>
+              Integrated with existing systems for seamless member communication and
+              document management
+            </li>
+            <li>Implemented secure document storage and verification processes</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Compliance:</span> Required to
+              meet SEC regulations for member identification
+            </li>
+            <li>
+              <span className="font-semibold text-white">Scale:</span> Over 20,000 members
+              needed ID verification or updates
+            </li>
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Manual
+              tracking of ID information was time-consuming and error-prone
+            </li>
+            <li>
+              <span className="font-semibold text-white">Member Experience:</span> Needed
+              to streamline the verification process and reduce wait times
+            </li>
+            <li>
+              <span className="font-semibold text-white">Reporting:</span> Required
+              automated system for tracking and reporting ID status
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
 
 function AutomaticOnboardingSystem() {
   return (
-    <div className="prose prose-invert max-w-none">
-      <p className="leading-relaxed text-gray-300">
-        Description of the automatic onboarding system
-      </p>
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Developed, alongside four
+            other team members, our Automatic Onboarding System
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Built an intuitive system
+            for automating member onboarding workflows and document collection
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Integrated with our DNA
+            API backend for real-time account creation and verification
+          </p>
+        </div>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Reduced
+              onboarding time from days to minutes
+            </li>
+            <li>
+              <span className="font-semibold text-white">Branch Experience:</span>{" "}
+              Significantly reduced branch congestion and wait times
+            </li>
+            <li>
+              <span className="font-semibold text-white">Accuracy:</span> Eliminated
+              manual data entry errors
+            </li>
+            <li>
+              <span className="font-semibold text-white">Scale:</span> Successfully
+              onboarded thousands of new members
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Platform:</span> Salesforce
+            </li>
+            <li>
+              <span className="font-semibold text-white">Frontend:</span> HTML, CSS,
+              JavaScript, Apex, Lightning Web Components
+            </li>
+            <li>
+              <span className="font-semibold text-white">Database:</span> SOQL
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Salesforce
+              APIs, Email Services, DNA API Backend
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Project Scope */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Project Scope</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              Designed and implemented automated onboarding workflows for all member
+              touchpoints
+            </li>
+            <li>
+              Built a centralized system for collecting and managing member documents
+            </li>
+            <li>
+              Integrated with existing systems for seamless member communication and
+              document management
+            </li>
+            <li>Implemented secure document storage and verification processes</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Member Experience:</span> Long
+              onboarding process was causing member frustration
+            </li>
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Manual
+              onboarding was time-consuming and error-prone
+            </li>
+            <li>
+              <span className="font-semibold text-white">Branch Experience:</span> Needed
+              to reduce branch congestion during peak times
+            </li>
+            <li>
+              <span className="font-semibold text-white">Compliance:</span> Required
+              better tracking and verification of member information
+            </li>
+            <li>
+              <span className="font-semibold text-white">Growth:</span> Needed to scale
+              onboarding process for increasing member base
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
 
 function YNCUTools() {
   return (
-    <div className="prose prose-invert max-w-none">
-      <p className="leading-relaxed text-gray-300">
-        Description of the YNCU tools project
-      </p>
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Led the complete redesign
+            and refactoring of our internal tools platform
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Modernized the frontend
+            with React Hook Form, Zod, TanStack Router, and TanStack Query
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Enhanced key workflows
+            including Equifax Credit Check, Performance Calculator, and Vendor Management
+          </p>
+        </div>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Performance:</span> 10x
+              improvement in overall system performance
+            </li>
+            <li>
+              <span className="font-semibold text-white">Code Quality:</span> Over 20,000
+              lines of code updated and improved
+            </li>
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Streamlined
+              workflows for credit checks and vendor management
+            </li>
+            <li>
+              <span className="font-semibold text-white">Reliability:</span> Eliminated
+              numerous bugs and improved system stability
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Frontend:</span> React, React
+              Hook Form, Zod
+            </li>
+            <li>
+              <span className="font-semibold text-white">Routing & Data:</span> TanStack
+              Router, TanStack Query
+            </li>
+            <li>
+              <span className="font-semibold text-white">UI:</span> Tailwind CSS,
+              shadcn/ui
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Equifax API,
+              Vendor Management Systems
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Project Scope */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Project Scope</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>Completely redesigned and modernized the frontend interface</li>
+            <li>
+              Implemented form validation and type safety with React Hook Form and Zod
+            </li>
+            <li>
+              Enhanced Equifax Credit Check workflow with improved error handling and user
+              feedback
+            </li>
+            <li>Fixed numerous bugs and improved overall system stability</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Performance:</span> System was
+              slow and inefficient, impacting daily operations
+            </li>
+            <li>
+              <span className="font-semibold text-white">Modernization:</span> Needed to
+              update to modern development practices and tools
+            </li>
+            <li>
+              <span className="font-semibold text-white">Reliability:</span> Numerous bugs
+              were affecting user experience and productivity
+            </li>
+            <li>
+              <span className="font-semibold text-white">Efficiency:</span> Workflows
+              needed optimization for better user experience
+            </li>
+            <li>
+              <span className="font-semibold text-white">Maintenance:</span> Required
+              better code organization and type safety
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
 
 function FiservDNAAPI() {
   return (
-    <div className="prose prose-invert max-w-none">
-      <p className="leading-relaxed text-gray-300">
-        Description of the Fiserv DNA API integration
-      </p>
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <FileText className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Summary</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <p className="max-w-2xl text-gray-200">
+            <span className="font-semibold text-white">+</span> Co-led the development and
+            enhancement of our Fiserv DNA API integration
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Implemented 10 new API
+            endpoints for various business processes
+          </p>
+          <p className="text-gray-200">
+            <span className="font-semibold text-white">+</span> Established route & file
+            organization standards and security protocols
+          </p>
+        </div>
+      </div>
+
+      {/* Impact & Stats */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Impact & Stats</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Successfully
+              connected three major systems to DNA API
+            </li>
+            <li>
+              <span className="font-semibold text-white">Security:</span> Implemented
+              comprehensive security standards
+            </li>
+            <li>
+              <span className="font-semibold text-white">Scalability:</span> Added 10 new
+              API endpoints for future growth
+            </li>
+            <li>
+              <span className="font-semibold text-white">Maintainability:</span>
+              Established clear organization standards
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Tech Stack */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Layers className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Tech Stack</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Backend:</span> Node.js, Express
+            </li>
+            <li>
+              <span className="font-semibold text-white">API:</span> REST, OpenAPI
+            </li>
+            <li>
+              <span className="font-semibold text-white">Integration:</span> Fiserv DNA
+              Core Banking System
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Project Scope */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <ClipboardList className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Project Scope</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              Developed and implemented 10 new API endpoints for various business
+              processes
+            </li>
+            <li>Established comprehensive route and file organization standards</li>
+            <li>Implemented robust security protocols and access controls</li>
+            <li>Created detailed API documentation and integration guides</li>
+            <li>Set up monitoring and logging for API performance and security</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Why We Did It */}
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Zap className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">Why We Did It</span>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <ul className="list-disc space-y-1 pl-5 text-gray-200">
+            <li>
+              <span className="font-semibold text-white">Integration Needs:</span>
+              Required updated and secure API routes for our Automatic Onboarding System
+            </li>
+            <li>
+              <span className="font-semibold text-white">System Requirements:</span>
+              Needed reliable endpoints for Commercial Loan Origination System
+            </li>
+            <li>
+              <span className="font-semibold text-white">Security:</span> Required
+              enhanced security for ID Verification project
+            </li>
+            <li>
+              <span className="font-semibold text-white">Standardization:</span> Needed
+              consistent API structure across all systems
+            </li>
+            <li>
+              <span className="font-semibold text-white">Future Growth:</span> Required
+              scalable API infrastructure for upcoming projects
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
@@ -563,16 +1323,6 @@ const projects = [
     tags: ["Project", "Salesforce"],
   },
   {
-    id: "yncu-tools",
-    title: "YNCU Tools",
-    icon: (
-      <Wrench className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
-    ),
-    images: [],
-    Component: YNCUTools,
-    tags: ["Project", "Refactor"],
-  },
-  {
     id: "fiserv",
     title: "Fiserv DNA API",
     icon: (
@@ -580,6 +1330,16 @@ const projects = [
     ),
     images: [],
     Component: FiservDNAAPI,
+    tags: ["Project", "Co-Lead"],
+  },
+  {
+    id: "yncu-tools",
+    title: "YNCU Tools",
+    icon: (
+      <Wrench className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
+    ),
+    images: [],
+    Component: YNCUTools,
     tags: ["Project", "Refactor"],
   },
 ];
