@@ -18,8 +18,8 @@ interface FloatingTechGridProps {
 }
 
 function FloatingTechGrid({
-  gridSize = 32,
-  nodeCount = 28,
+  gridSize = 68,
+  nodeCount = 24,
   primaryColor = "#444444",
   secondaryColor = "#444444",
   onLoad,
@@ -225,7 +225,7 @@ const StreakLine = React.memo(function StreakLine({
   return (
     <Line
       points={pointsRef.current}
-      color="white"
+      color="#b0b0b0"
       lineWidth={1}
       transparent
       opacity={opacityRef.current}
@@ -238,7 +238,7 @@ const FloatingTechGridScene = React.memo(function FloatingTechGridScene(
 ) {
   return (
     <div className="fixed z-0 h-screen w-screen">
-      <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
+      <Canvas camera={{ position: [0, 0, 25], fov: 50 }}>
         <ambientLight intensity={0.8} />
         <FloatingTechGrid {...props} />
         <EffectComposer enableNormalPass>
