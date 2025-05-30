@@ -1,12 +1,7 @@
-# Apollo
-
-<img width="1788" alt="Screenshot 2025-05-28 at 10 47 25 PM" src="https://github.com/user-attachments/assets/e69604bb-cd06-43ee-af9f-2a0240529807" />
-
-# Inspiration
-- Tom Bogner's Beautiful Three Graces Design inspired me to make one similar for the god of everything; Apollo.
-- Link: https://dribbble.com/shots/6767548-The-Three-Graces-Concept
+# Tristan Simpson
 
 # License
+
 MIT License
 
 Copyright (c) 2022 Tristan Simpson

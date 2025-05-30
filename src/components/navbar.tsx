@@ -77,18 +77,18 @@ function ProjectsDropdown({ className }: { className?: string }) {
               className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
             >
               <Link
-                href="/projects/apollo"
+                href="/projects/hermes"
                 className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />
-                <span>Apollo</span>
+                <span>Hermes</span>
               </Link>
               <Link
-                href="/projects/athena"
+                href="/projects/versa"
                 className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Code className="size-4" />
-                <span>Athena</span>
+                <span>Versa</span>
               </Link>
               <Link
                 href="/projects/graphics"
@@ -468,18 +468,18 @@ export default function Navbar() {
                   </div>
                   <div className="ml-8 space-y-1">
                     <Link
-                      href="/projects/apollo"
+                      href="/projects/hermes"
                       className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
                     >
                       <Code className="size-4" />
-                      <span>Apollo</span>
+                      <span>Hermes</span>
                     </Link>
                     <Link
-                      href="/projects/athena"
+                      href="/projects/versa"
                       className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
                     >
                       <Code className="size-4" />
-                      <span>Athena</span>
+                      <span>Versa</span>
                     </Link>
                     <Link
                       href="/projects/graphics"
