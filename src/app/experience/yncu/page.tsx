@@ -689,7 +689,7 @@ function YNCUHeader() {
 }
 
 export default function YNCUPage() {
-  const [openedProjects, setOpenedProjects] = useState<string[]>([]);
+  const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
   return (
     <main className="relative flex h-screen w-full flex-col">
@@ -697,8 +697,7 @@ export default function YNCUPage() {
       <FloatingTechGridScene />
 
       <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center px-4 py-12">
-        <YNCUHeader />
-        <ScrollArea className="scrollbar-hide w-full flex-1">
+        <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
           <div className="relative flex min-h-full">
             <motion.div
               variants={container}
@@ -706,7 +705,12 @@ export default function YNCUPage() {
               animate="show"
               className="relative ml-8 flex w-full flex-col gap-8 px-4 py-4"
             >
-              <Accordion type="single" collapsible className="flex w-full flex-col gap-4">
+              <Accordion
+                type="single"
+                collapsible
+                className="flex w-full flex-col gap-4"
+                defaultValue="journey"
+              >
                 {projects.map((project, index) => {
                   const isOpened = openedProjects.some((p) => p === project.id);
 

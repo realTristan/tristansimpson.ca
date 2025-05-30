@@ -160,11 +160,7 @@ export default function ExperiencePage() {
       <Navbar />
       <FloatingTechGridScene />
       <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col items-center px-4 py-12">
-        <div className="sticky top-0 z-20 w-full">
-          <ExperienceHeader />
-        </div>
-
-        <ScrollArea className="scrollbar-hide w-full flex-1">
+        <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
           <motion.div
             variants={container}
             initial="hidden"
