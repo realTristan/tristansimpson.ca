@@ -74,7 +74,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.18 }}
-              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
             >
               <Link
                 href="/projects/apollo"
@@ -159,7 +159,7 @@ function ConnectDropdown({ className }: { className?: string }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.18 }}
-              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
             >
               <a
                 href="mailto:tsimps01@uoguelph.ca"
@@ -233,7 +233,7 @@ function ResumeDropdown({ className }: { className?: string }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.18 }}
-              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
             >
               <a
                 href="/resume.pdf"
@@ -287,7 +287,7 @@ function ExperienceDropdown({ className }: { className?: string }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.18 }}
-              className="w-full rounded-xl border border-white/10 bg-black/80 px-2 py-3 shadow-xl backdrop-blur-md"
+              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
             >
               <Link
                 href="/experience/yncu"
@@ -400,7 +400,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.18 }}
-              className="absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 bg-black/95 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
+              className="bg-background absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
             >
               <div className="flex flex-col space-y-2">
                 <Link

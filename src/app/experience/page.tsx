@@ -156,7 +156,7 @@ function ExperienceHeader() {
 
 export default function ExperiencePage() {
   return (
-    <main className="relative flex h-screen w-full flex-col bg-black">
+    <main className="relative flex h-screen w-full flex-col">
       <Navbar />
       <FloatingTechGridScene />
       <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl flex-col items-center px-4 py-12">
@@ -175,16 +175,18 @@ export default function ExperiencePage() {
               <motion.div
                 key={experience.id}
                 variants={item}
-                className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-black/40 p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+                className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-transparent p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
               >
-                <div className="absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-black md:flex">
+                <div className="bg-background absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 md:flex">
                   <div className="h-3 w-3 rounded-full bg-blue-500" />
                 </div>
+
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-black/50 text-white transition-colors group-hover:border-blue-500/50">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 text-white transition-colors group-hover:border-blue-500/50">
                       {experience.icon}
                     </div>
+
                     <div>
                       <h2 className="text-xl font-semibold text-white">
                         {experience.title}

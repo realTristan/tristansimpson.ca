@@ -59,7 +59,7 @@ export function Cursor() {
     <div
       ref={cursorRef}
       className={`pointer-events-none fixed z-[999] rounded-full border-2 border-white mix-blend-difference transition-all duration-200 ease-linear ${
-        active ? "h-12 w-12 border-2 bg-black" : "h-6 w-6 border-2 bg-transparent"
+        active ? "bg-background h-12 w-12 border-2" : "h-6 w-6 border-2 bg-transparent"
       }`}
       style={{
         transitionProperty: "background, width, height",
