@@ -47,7 +47,7 @@ export function FooterText() {
       >
         {isMobile
           ? "open on desktop for the full 3D experience"
-          : "made by tristan simpson"}
+          : "made by tristan simpson, updated 2025"}
       </motion.span>
     </motion.p>
   );

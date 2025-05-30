@@ -346,7 +346,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-6 left-1/2 z-[100] w-full max-w-4xl -translate-x-1/2 px-12">
       <motion.div
-        className="flex items-center justify-between rounded-2xl border border-white/10 bg-transparent px-8 py-3 shadow-xl backdrop-blur-md"
+        className="flex items-center justify-between rounded-2xl border border-white/10 bg-transparent py-3 pr-8 pl-6 shadow-xl backdrop-blur-md"
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -361,9 +361,9 @@ export default function Navbar() {
         >
           <Link
             href="/"
-            className="text-xl font-bold text-white drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
+            className="text-sm font-semibold tracking-wide drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
           >
-            TS
+            <span className="text-blue-500">@</span> realtristan
           </Link>
         </motion.div>
 
