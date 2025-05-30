@@ -304,13 +304,6 @@ function ExperienceDropdown({ className }: { className?: string }) {
                 <span>Dominion Lending</span>
               </Link>
               <Link
-                href="/experience/engineering-ambition"
-                className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Computer className="size-4" />
-                <span>Engineering Ambition</span>
-              </Link>
-              <Link
                 href="/experience/university-of-guelph"
                 className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
@@ -437,13 +430,6 @@ export default function Navbar() {
                     >
                       <Computer className="size-4" />
                       <span>Dominion Lending</span>
-                    </Link>
-                    <Link
-                      href="/experience/engineering-ambition"
-                      className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                    >
-                      <Computer className="size-4" />
-                      <span>Engineering Ambition</span>
                     </Link>
                     <Link
                       href="/experience/university-of-guelph"

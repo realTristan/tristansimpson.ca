@@ -20,15 +20,6 @@ const experiences = [
     link: "/experience/yncu",
   },
   {
-    id: "dominion-lending",
-    title: "Dominion Lending",
-    role: "Software Developer",
-    period: "July 2023 - September 2023",
-    description: "Software development and automation solutions",
-    icon: <Computer className="h-6 w-6" />,
-    link: "/experience/dominion-lending",
-  },
-  {
     id: "engineering-ambition",
     title: "Engineering Ambition",
     role: "Lead Software Developer",
@@ -36,6 +27,15 @@ const experiences = [
     description: "Lead software developement and team of 15",
     icon: <Computer className="h-6 w-6" />,
     link: "/experience/engineering-ambition",
+  },
+  {
+    id: "dominion-lending",
+    title: "Dominion Lending",
+    role: "Software Developer",
+    period: "July 2023 - September 2023",
+    description: "Software development and automation solutions",
+    icon: <Computer className="h-6 w-6" />,
+    link: "/experience/dominion-lending",
   },
   {
     id: "university-of-guelph",
