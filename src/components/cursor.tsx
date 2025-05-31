@@ -22,36 +22,51 @@ export function Cursor() {
   }, [active]);
 
   useEffect(() => {
-    const isInteractive = (el: EventTarget | null) => {
-      let node = el instanceof HTMLElement ? el : null;
-      while (node) {
-        if (node.classList.contains("cursor-active")) {
-          return true;
-        }
-
-        node = node.parentElement;
+    const isInteractive = (el: HTMLElement | null): boolean => {
+      if (!el) {
+        return false;
       }
 
-      return false;
+      if (el.tagName === "BUTTON" || el.tagName === "A") {
+        return true;
+      }
+
+      if (el.getAttribute("role") === "button" || el.getAttribute("role") === "link") {
+        return true;
+      }
+
+      if (el.onclick !== null) {
+        return true;
+      }
+
+      if (el.hasAttribute("onclick")) {
+        return true;
+      }
+
+      // Check parent elements
+      return isInteractive(el.parentElement);
     };
 
-    const handleOver = (e: MouseEvent) => {
-      if (isInteractive(e.target)) {
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (isInteractive(target)) {
         setActive(true);
       }
     };
-    const handleOut = (e: MouseEvent) => {
-      if (isInteractive(e.target)) {
+
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (isInteractive(target)) {
         setActive(false);
       }
     };
 
-    document.addEventListener("mouseover", handleOver);
-    document.addEventListener("mouseout", handleOut);
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     return () => {
-      document.removeEventListener("mouseover", handleOver);
-      document.removeEventListener("mouseout", handleOut);
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
 

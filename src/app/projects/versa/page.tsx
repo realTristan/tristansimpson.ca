@@ -155,7 +155,7 @@ const AnimatedHeader = ({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="cursor-active group pointer-events-auto inline-flex items-center gap-2 rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
+              className="group pointer-events-auto inline-flex items-center gap-2 rounded-lg border border-white/10 bg-transparent px-4 py-2 text-white shadow-sm transition hover:border-blue-500 hover:text-blue-400 focus:border-blue-500 focus:text-blue-400"
             >
               {React.cloneElement(icon, {
                 className: "h-5 w-5 text-white group-hover:text-blue-400",
@@ -178,7 +178,7 @@ const AnimatedHeader = ({
                 value={id}
                 className="border-b border-white/10 px-4"
               >
-                <AccordionTrigger className="cursor-active group pointer-events-auto flex w-full items-center justify-between py-4 text-left text-white transition hover:text-blue-400 focus:text-blue-400">
+                <AccordionTrigger className="group pointer-events-auto flex w-full items-center justify-between py-4 text-left text-white transition hover:text-blue-400 focus:text-blue-400">
                   <Row className="items-center gap-2">
                     {React.cloneElement(icon, {
                       className:
@@ -193,7 +193,7 @@ const AnimatedHeader = ({
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cursor-active pointer-events-auto inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300"
+                    className="pointer-events-auto inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300"
                   >
                     View on GitHub <ExternalLink className="h-4 w-4" />
                   </a>
