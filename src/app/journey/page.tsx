@@ -136,7 +136,6 @@ export default function ChatPage() {
 
   const sendMessage = trpc.chat.send.useMutation({
     onSuccess: (data) => {
-      console.log("[chat] Message sent successfully:", data);
       setMessages((prev) => [...prev, data]);
       setIsLoading(false);
       reset();

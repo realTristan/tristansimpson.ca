@@ -30,8 +30,6 @@ export const chatRouter = router({
     )
     .mutation(async ({ input }) => {
       try {
-        console.log("[chat] Processing message:", input.content);
-
         // Generate response using Gemini
         const aiResponse = await generateResponse(input.content);
 
@@ -46,7 +44,6 @@ export const chatRouter = router({
           timestamp: new Date().toISOString(),
         };
 
-        console.log("[chat] Generated response:", response);
         return response;
       } catch (error) {
         console.error("[chat] Error processing message:", error);
