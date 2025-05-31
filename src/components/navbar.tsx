@@ -224,7 +224,9 @@ function ResumeDropdown({ className }: { className?: string }) {
             >
               <a
                 href="/Tristan_Simpson___Resume_2025.pdf"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
+                type="application/pdf"
                 className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <File className="size-4" />
@@ -393,11 +395,13 @@ export default function Navbar() {
                 </Link>
                 <a
                   href="/Tristan_Simpson___Resume_2025.pdf"
-                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  type="application/pdf"
                   className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
                 >
                   <File className="size-4" />
-                  <span>Resume</span>
+                  <span>Open Preview</span>
                 </a>
                 <div className="space-y-1">
                   <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
