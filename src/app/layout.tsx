@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Full-stack software developer showcasing innovative projects, technical expertise, and professional journey in web development and software engineering.",
+    "Tristan Simpson, a full-stack developer with over 5 years of experience in web development and software engineering.",
   keywords: [
     "portfolio",
     "projects",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     url: "https://tristansimpson.ca",
     title: "Tristan Simpson",
     description:
-      "Full-stack software developer showcasing innovative projects, technical expertise, and professional journey in web development and software engineering.",
+      "Tristan Simpson, a full-stack developer with over 5 years of experience in web development and software engineering.",
     siteName: "Tristan Simpson",
     images: [],
   },
