@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXTAUTH_URL || "https://tristansimpson.ca",
+  siteUrl: process.env.PROD_URL,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   changefreq: "weekly",

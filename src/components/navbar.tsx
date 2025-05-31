@@ -358,6 +358,14 @@ export default function Navbar() {
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}>
               <ResumeDropdown />
             </motion.div>
+            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={1}>
+              <Link
+                href="/journey"
+                className="font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
+              >
+                Journey
+              </Link>
+            </motion.div>
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={2}>
               <ExperienceDropdown />
             </motion.div>
@@ -395,6 +403,13 @@ export default function Navbar() {
                   >
                     <Home className="size-4" />
                     <span>Home</span>
+                  </Link>
+                  <Link
+                    href="/journey"
+                    className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                  >
+                    <Clock className="size-4" />
+                    <span>Journey</span>
                   </Link>
                   <a
                     href="/Tristan_Simpson___Resume_2025.pdf"
