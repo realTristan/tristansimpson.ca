@@ -79,12 +79,13 @@ function Model({ modelPath, onLoad }: ModelProps) {
     // Recenter model on origin
     gltf.scene.position.sub(center);
 
-    // lift by 25% of its height
-    setLift(0.5);
+    // Lift by 40% of its height to center it better
+    setLift(size.y * 0.4);
 
-    // optional: reposition and point camera
-    camera.position.set(0, size.y * 0.5, size.z);
-    camera.lookAt(0, size.y * 0.5, 0);
+    // Position camera much closer
+    const distance = Math.max(size.x, size.y, size.z) * 0.4;
+    camera.position.set(0, size.y * 0.3, distance);
+    camera.lookAt(0, size.y * 0.3, 0);
 
     onLoad();
   }, [gltf, camera, lift, onLoad]);
