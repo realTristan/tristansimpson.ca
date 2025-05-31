@@ -70,7 +70,7 @@ const item = {
 const ExperienceHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center gap-8 pt-24 pb-16 text-center"
+      className="flex flex-col items-center justify-center gap-8 px-4 pt-24 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -86,13 +86,18 @@ const ExperienceHeader = () => {
         </motion.h2>
       </Column>
 
-      <Row className="items-center gap-4 text-sm text-gray-400">
+      <motion.div
+        className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 sm:flex-row"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+      >
         <span>Full Stack Developer</span>
         <span className="hidden sm:flex">•</span>
         <span>2023 - Present</span>
         <span className="hidden sm:flex">•</span>
         <span>Ontario, Canada</span>
-      </Row>
+      </motion.div>
 
       <Row className="flex-wrap justify-center gap-2">
         <Badge variant="outline" className="text-xs">
@@ -132,14 +137,16 @@ const ExperiencePage = () => {
         </>
       )}
 
-      <ExperienceHeader />
+      {!isMobile && <ExperienceHeader />}
 
       <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col">
+        {isMobile && <ExperienceHeader />}
+
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="relative ml-8 flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
+          className="flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
         >
           {experiences.map((experience) => (
             <motion.div

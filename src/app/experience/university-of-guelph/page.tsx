@@ -1070,7 +1070,7 @@ const item = {
 const UofGHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center gap-8 px-4 pt-24 pb-16 text-center"
+      className="flex flex-col items-center justify-center gap-8 px-4 pt-24 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -1148,14 +1148,16 @@ const UniversityOfGuelphPage = () => {
         </>
       )}
 
-      <UofGHeader />
+      {!isMobile && <UofGHeader />}
 
-      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col items-center">
+      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col">
+        {isMobile && <UofGHeader />}
+
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex min-h-full w-full flex-col gap-8 px-4 py-4"
+          className="flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
         >
           <Accordion
             type="single"
