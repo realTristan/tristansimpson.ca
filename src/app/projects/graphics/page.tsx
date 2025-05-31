@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { Cursor } from "@/components/cursor";
 import Navbar from "@/components/navbar";
-import RapierBallsScene from "@/components/rapier/rapier-balls-scene";
-import { BrowserView } from "react-device-detect";
+import RapierBallsScene from "@/components/threejs/rapier/rapier-balls-scene";
 import { AnimatedHeader } from "@/app/projects/graphics/_components/animated-header";
 
 export default function HomePage() {
@@ -18,10 +17,8 @@ export default function HomePage() {
         <AnimatedHeader className="absolute z-50 mx-12 sm:top-1/4 2xl:left-1/2" />
       )}
 
-      <BrowserView>
-        <RapierBallsScene onLoaded={() => setIsLoading(false)} animateIn={!isLoading} />
-        <Cursor />
-      </BrowserView>
+      <RapierBallsScene onLoaded={() => setIsLoading(false)} animateIn={!isLoading} />
+      <Cursor />
     </main>
   );
 }

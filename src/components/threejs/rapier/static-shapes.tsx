@@ -33,7 +33,9 @@ export function StaticShapes({ animateIn = true }: { animateIn?: boolean }) {
 
 function AnimatedShape({ shape, material, delay, animateIn }: any) {
   const [done, setDone] = useState(false);
+
   const scale = 2;
+
   const spring = useSpring({
     from: { position: [shape.pos[0], 20, shape.pos[2]] },
     to: { position: animateIn ? shape.pos : [shape.pos[0], 20, shape.pos[2]] },
@@ -68,12 +70,15 @@ function AnimatedShape({ shape, material, delay, animateIn }: any) {
       density={1}
     >
       {shape.type === "box" && <Box args={[scale, scale, scale]} material={material} />}
+
       {shape.type === "cylinder" && (
         <Cylinder args={[scale / 2, scale / 2, scale * 2, 32]} material={material} />
       )}
+
       {shape.type === "sphere" && (
         <Sphere args={[scale / 1.5, 32, 32]} material={material} />
       )}
+
       {shape.type === "pyramid" && (
         <Cone args={[scale / 1.5, scale * 2, 4]} material={material} />
       )}

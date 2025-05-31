@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
-import ParticleSphereScene from "@/components/particle-sphere";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Accordion,
@@ -13,13 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import {
   Users,
-  Code2,
-  Rocket,
-  GraduationCap,
-  Lightbulb,
-  BookOpen,
   Briefcase,
-  Building2,
   Globe,
   Zap,
   TrendingUp,
@@ -29,7 +22,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import React, { useState } from "react";
 import { FileText } from "lucide-react";
-import FloatingTechGridScene from "@/components/floating-tech-grid";
+import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 
 function Journey() {
   return (

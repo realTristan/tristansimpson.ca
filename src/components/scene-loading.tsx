@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
@@ -7,9 +9,7 @@ export const SceneLoading = () => {
   const [isTakingLong, setIsTakingLong] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsTakingLong(true);
-    }, 5000); // Show message after 5 seconds
+    const timer = setTimeout(() => setIsTakingLong(true), 5000);
 
     return () => clearTimeout(timer);
   }, []);

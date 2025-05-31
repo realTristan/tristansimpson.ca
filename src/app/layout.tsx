@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "./globals.css";
 import { TRPCProvider } from "@/lib/trpc/client";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import { FooterText } from "@/components/footer-text";
+import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

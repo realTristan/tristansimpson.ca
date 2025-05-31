@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect, useState } from "react";
+import React, { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useSpring, animated } from "@react-spring/three";
-import { SSAO } from "@react-three/postprocessing";
 import { Line } from "@react-three/drei";
 
 interface FloatingTechGridProps {
@@ -65,10 +64,13 @@ function FloatingTechGrid({
         index: j,
         dist: nodes[i].distanceTo(n),
       }));
+
       distances.sort((a, b) => a.dist - b.dist);
+
       let added = 0;
       for (let k = 1; k < distances.length && added < 2; k++) {
         const j = distances[k].index;
+
         if (
           i < j &&
           !connections.some(([a, b]) => (a === i && b === j) || (a === j && b === i))
@@ -105,11 +107,14 @@ function FloatingTechGrid({
 
   // Animation frame
   useFrame((state) => {
-    if (!groupRef.current) return;
+    if (!groupRef.current) {
+      return;
+    }
+
     const time = state.clock.getElapsedTime();
-    // Rotate the entire grid
+
+    // Rotate the entire grid  and add subtle floating motion
     groupRef.current.rotation.y = time * 0.05;
-    // Add subtle floating motion
     groupRef.current.position.y = Math.sin(time * 0.5) * 0.2;
   });
 
@@ -128,6 +133,7 @@ function FloatingTechGrid({
             emissiveIntensity={1.5}
             depthWrite={false}
           />
+
           {/* Node core */}
           <sphereGeometry args={[0.1, 8, 8]} />
           <animated.meshBasicMaterial
@@ -167,6 +173,7 @@ function FloatingTechGrid({
               linewidth={1}
             />
           </line>
+
           {/* White streak traversing the line */}
           <StreakLine
             start={nodes[start]}
@@ -206,17 +213,21 @@ const StreakLine = React.memo(function StreakLine({
     const fadeIn = Math.min(1, t / fadeInDuration);
     const currentLength = streakLength * fadeIn;
     const t2 = Math.min(t + currentLength, 0.999);
+
     if (t2 > t) {
       const p1 = new THREE.Vector3().lerpVectors(start, end, t);
       const p2 = new THREE.Vector3().lerpVectors(start, end, t2);
+
       // Only update if changed
-      if (
+      const isChanged =
         !pointsRef.current[0].equals(p1) ||
         !pointsRef.current[1].equals(p2) ||
-        opacityRef.current !== maxOpacity * fadeIn
-      ) {
+        opacityRef.current !== maxOpacity * fadeIn;
+
+      if (isChanged) {
         pointsRef.current = [p1, p2];
         opacityRef.current = maxOpacity * fadeIn;
+
         forceUpdate();
       }
     }

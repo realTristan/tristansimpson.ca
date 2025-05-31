@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useEffect, useState } from "react";
 
 export function Cursor() {
@@ -23,15 +25,13 @@ export function Cursor() {
     const isInteractive = (el: EventTarget | null) => {
       let node = el instanceof HTMLElement ? el : null;
       while (node) {
-        if (
-          node.tagName === "A" ||
-          node.tagName === "BUTTON" ||
-          node.getAttribute("role") === "button"
-        ) {
+        if (node.classList.contains("cursor-active")) {
           return true;
         }
+
         node = node.parentElement;
       }
+
       return false;
     };
 

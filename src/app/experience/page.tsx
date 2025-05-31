@@ -1,15 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { Computer, University, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
-import FloatingTechGridScene from "@/components/floating-tech-grid";
+import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { Accordion } from "@/components/ui/accordion";
-// import "@/styles/scrollbar-hide.css";
 
 const experiences = [
   {
@@ -63,29 +60,6 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
-};
-
-const experienceHeaderContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const experienceHeaderLetter = {
-  hidden: { y: 10, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
-    },
-  },
 };
 
 function ExperienceHeader() {

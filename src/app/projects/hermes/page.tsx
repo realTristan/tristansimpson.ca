@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
 
 // dynamic import with SSR disabled
-const ApolloScene = dynamic(() => import("@/components/apollo-scene"), {
+const ApolloScene = dynamic(() => import("@/components/threejs/apollo-scene"), {
   ssr: false,
 });
 

@@ -64,7 +64,6 @@
     "prettier": "^3.5.3",
     "prisma": "latest",
     "react": "19.1.0",
-    "react-device-detect": "^2.2.3",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",

@@ -8,14 +8,12 @@ export function generateSphereInstances(amount: number) {
     instances.push({
       key: "instance_" + Math.random(),
 
-      // Set sphere positions
       position: new Vector3(
         MathUtils.randFloatSpread(20) * 15,
         MathUtils.randFloatSpread(20) * 15,
         MathUtils.randFloatSpread(20) * 15,
       ),
 
-      // Set sphere rotations
       rotation: [Math.random(), Math.random(), Math.random()],
     });
   }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
   Menu,
@@ -21,23 +21,9 @@ import {
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/magnetic-button";
 
-const navItems = [
-  {
-    name: "Resume",
-  },
-  {
-    name: "Experience",
-  },
-  {
-    name: "Projects",
-  },
-  {
-    name: "Connect",
-  },
-];
-
 function ProjectsDropdown({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className="relative"
@@ -125,6 +111,7 @@ function ProjectsDropdown({ className }: { className?: string }) {
 
 function ConnectDropdown({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className="relative"
@@ -198,6 +185,7 @@ function ConnectDropdown({ className }: { className?: string }) {
 
 function ResumeDropdown({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className="relative"
@@ -253,6 +241,7 @@ function ResumeDropdown({ className }: { className?: string }) {
 
 function ExperienceDropdown({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className="relative"

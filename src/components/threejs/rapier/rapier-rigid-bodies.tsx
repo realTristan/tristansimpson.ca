@@ -10,12 +10,12 @@ export function RapierRigidBodies() {
     config.numberOfSphereInstances,
   );
 
-  // Store reference
   const ref = useRef<any>(null);
 
-  // For each frame
   useFrame((_, delta) => {
-    if (!ref.current) return;
+    if (!ref.current) {
+      return;
+    }
 
     ref.current.forEach((sphere: any) => {
       sphere.applyImpulse(
@@ -27,7 +27,6 @@ export function RapierRigidBodies() {
     });
   });
 
-  // InstancedRigidBodies is multiple rigid bodies
   return (
     <InstancedRigidBodies
       ref={ref}
