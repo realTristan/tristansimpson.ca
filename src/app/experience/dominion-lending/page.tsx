@@ -23,41 +23,41 @@ import { Badge } from "@/components/ui/badge";
 import React, { useState } from "react";
 import { FileText } from "lucide-react";
 import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
+import { Column } from "@/components/ui/column";
+import { Row } from "@/components/ui/row";
 
-function Journey() {
+const Journey = () => {
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+    <Column className="space-y-8">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Briefcase className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">
             Software Developer{" "}
             <span className="text-sm text-gray-400">(July 2023 – September 2023)</span>
           </span>
-        </div>
-
+        </Row>
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
           <li>Led the development of our corporate website</li>
           <li>Led the development of our internal communication platform (Pulse)</li>
           <li>Implemented secure document handling and user management systems</li>
           <li>Integrated with Azure services for data storage and management</li>
         </ul>
-      </div>
-    </div>
+      </Column>
+    </Column>
   );
-}
+};
 
-function CorporateWebsite() {
+const CorporateWebsite = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Delivered a corporate
             website optimized for accessibility, maintainability, and security
@@ -70,17 +70,15 @@ function CorporateWebsite() {
             <span className="font-semibold text-white">+</span> Implemented secure
             document handling and user management systems
           </p>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Accessibility:</span> Optimized
@@ -99,17 +97,15 @@ function CorporateWebsite() {
               maintainability and scalability in mind
             </li>
           </ul>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> TypeScript,
@@ -127,17 +123,15 @@ function CorporateWebsite() {
               <span className="font-semibold text-white">Tools:</span> Git, Figma
             </li>
           </ul>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Corporate website development and optimization</li>
             <li>Interactive dashboard implementation</li>
@@ -145,17 +139,15 @@ function CorporateWebsite() {
             <li>User and document management</li>
             <li>Security and accessibility features</li>
           </ul>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Accessibility:</span> Ensure the
@@ -174,23 +166,22 @@ function CorporateWebsite() {
               maintainable and scalable solution
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function Pulse() {
+const Pulse = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Delivered a tailored
             Jostle-like application saving ~$8,000 annually
@@ -203,17 +194,15 @@ function Pulse() {
             <span className="font-semibold text-white">+</span> Developed secure document
             storage and user management systems
           </p>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Cost Savings:</span> ~$8,000
@@ -232,17 +221,15 @@ function Pulse() {
               integration with existing systems
             </li>
           </ul>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> TypeScript,
@@ -260,17 +247,15 @@ function Pulse() {
               <span className="font-semibold text-white">Tools:</span> Git, Figma
             </li>
           </ul>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Internal communication platform development</li>
             <li>Event and announcement management</li>
@@ -278,17 +263,15 @@ function Pulse() {
             <li>User management and permissions</li>
             <li>Email notification system</li>
           </ul>
-        </div>
-      </div>
-
+        </Column>
+      </Column>
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
-
-        <div className="flex flex-col gap-2">
+        </Row>
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Cost Efficiency:</span> Reduce
@@ -307,11 +290,11 @@ function Pulse() {
               tailored solution for specific needs
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
 const projects = [
   {
@@ -358,10 +341,10 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-function DominionLendingHeader() {
+const DominionLendingHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      className="flex flex-col items-center gap-8 px-4 pt-24 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -381,7 +364,6 @@ function DominionLendingHeader() {
           Dominion Lending Centres
         </motion.h2>
       </motion.div>
-
       <motion.div
         className="flex items-center gap-4 text-sm text-gray-400"
         initial={{ opacity: 0 }}
@@ -389,12 +371,11 @@ function DominionLendingHeader() {
         transition={{ delay: 0.6, duration: 0.5 }}
       >
         <span>Software Developer</span>
-        <span>•</span>
+        <span className="hidden sm:flex">•</span>
         <span>Jul 2023 - Sep 2023</span>
-        <span>•</span>
+        <span className="hidden sm:flex">•</span>
         <span>Kitchener, Ontario</span>
       </motion.div>
-
       <motion.div
         className="flex flex-wrap justify-center gap-2"
         initial={{ opacity: 0, y: 10 }}
@@ -419,9 +400,9 @@ function DominionLendingHeader() {
       </motion.div>
     </motion.div>
   );
-}
+};
 
-export default function DominionLendingPage() {
+const DominionLendingPage = () => {
   const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
   return (
@@ -429,86 +410,92 @@ export default function DominionLendingPage() {
       <Navbar />
       <FloatingTechGridScene />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center px-4 py-12">
-        <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
-          {/**
-           * Animated header denoting this is my Dominion Lending Experience
-           */}
-          <DominionLendingHeader />
+      {/* Animated header denoting this is my Dominion Lending Experience */}
+      <DominionLendingHeader />
 
-          {/**
-           * Accordion of projects
-           */}
-          <div className="relative flex min-h-full">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="relative ml-8 flex w-full flex-col gap-8 px-4 py-4"
-            >
-              <Accordion
-                type="single"
-                collapsible
-                className="flex w-full flex-col gap-4"
-                defaultValue="journey"
-              >
-                {projects.map((project) => {
-                  const isOpened = openedProjects.some((p) => p === project.id);
+      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col items-center">
+        {/* Accordion of projects */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="flex min-h-full w-full flex-col gap-8 px-4 py-4"
+        >
+          <Accordion
+            type="single"
+            collapsible
+            className="flex w-full flex-col gap-4"
+            defaultValue="journey"
+          >
+            {projects.map((project) => {
+              const isOpened = openedProjects.some((p) => p === project.id);
+              const openProject = () => {
+                setOpenedProjects((prev) => {
+                  return prev.includes(project.id) ? prev : [...prev, project.id];
+                });
+              };
+              return (
+                <motion.div
+                  key={project.id}
+                  variants={item}
+                  className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+                >
+                  <TimelineCircle
+                    className="absolute -top-3 -left-3"
+                    isOpened={isOpened}
+                  />
 
-                  const openProject = () => {
-                    setOpenedProjects((prev) => {
-                      return prev.includes(project.id) ? prev : [...prev, project.id];
-                    });
-                  };
-
-                  return (
-                    <motion.div
-                      key={project.id}
-                      variants={item}
-                      className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+                  <AccordionItem
+                    value={project.id}
+                    className="border-b-0 bg-transparent px-4 py-2"
+                  >
+                    <AccordionTrigger
+                      className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
+                      onClick={openProject}
                     >
-                      {/* Timeline circle */}
-                      <div className="bg-background absolute -top-3 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 backdrop-blur-md md:flex">
-                        <div
-                          className={cn(
-                            "h-3 w-3 rounded-full",
-                            !isOpened && "bg-blue-500",
-                          )}
-                        />
-                      </div>
-
-                      <AccordionItem
-                        value={project.id}
-                        className="relative border-b-0 bg-transparent px-4 py-2"
-                      >
-                        <AccordionTrigger
-                          className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
-                          onClick={openProject}
-                        >
-                          <span className="flex items-center gap-4">
-                            {project.icon}
-                            {project.title}
-                            {project.tags &&
-                              project.tags.length > 0 &&
-                              project.tags.map((tag, i) => (
-                                <Badge key={i} variant="outline">
-                                  {tag}
-                                </Badge>
-                              ))}
-                          </span>
-                        </AccordionTrigger>
-                        <AccordionContent className="pt-2 pb-4">
-                          <project.Component />
-                        </AccordionContent>
-                      </AccordionItem>
-                    </motion.div>
-                  );
-                })}
-              </Accordion>
-            </motion.div>
-          </div>
-        </ScrollArea>
-      </div>
+                      <Row className="items-center gap-4">
+                        {project.icon}
+                        {project.title}
+                        {project.tags &&
+                          project.tags.length > 0 &&
+                          project.tags.map((tag, i) => (
+                            <Badge key={i} variant="outline">
+                              {tag}
+                            </Badge>
+                          ))}
+                      </Row>
+                    </AccordionTrigger>
+                    <AccordionContent className="pt-2 pb-4">
+                      <project.Component />
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
+              );
+            })}
+          </Accordion>
+        </motion.div>
+      </ScrollArea>
     </main>
   );
-}
+};
+
+const TimelineCircle = ({
+  className,
+  isOpened,
+}: {
+  className?: string;
+  isOpened: boolean;
+}) => {
+  return (
+    <div
+      className={cn(
+        "bg-background hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 backdrop-blur-md md:flex",
+        className,
+      )}
+    >
+      <div className={cn("h-3 w-3 rounded-full", !isOpened && "bg-blue-500")} />
+    </div>
+  );
+};
+
+export default DominionLendingPage;

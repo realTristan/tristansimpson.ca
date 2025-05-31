@@ -1397,7 +1397,7 @@ const MortgageCampaign = () => {
 const YNCUHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      className="flex flex-col items-center gap-8 px-4 pt-24 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -1585,14 +1585,15 @@ const YNCUPage: React.FC = () => {
       <Navbar />
       <FloatingTechGridScene />
 
-      <ScrollArea className="scrollbar-hide relative z-10 mx-auto mt-12 flex h-full w-full max-w-7xl flex-1 flex-col items-center">
+      <YNCUHeader />
+
+      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col items-center">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="relative flex min-h-full w-full flex-col gap-8 px-4 py-4"
+          className="flex min-h-full w-full flex-col gap-8 px-4 py-4"
         >
-          <YNCUHeader />
           <Accordion
             type="single"
             collapsible
@@ -1621,7 +1622,7 @@ const YNCUPage: React.FC = () => {
 
                   <AccordionItem
                     value={project.id}
-                    className="relative border-b-0 bg-transparent px-4 py-2"
+                    className="border-b-0 bg-transparent px-4 py-2"
                   >
                     <AccordionTrigger
                       className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"

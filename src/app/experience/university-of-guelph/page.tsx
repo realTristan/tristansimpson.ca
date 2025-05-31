@@ -24,18 +24,20 @@ import { Badge } from "@/components/ui/badge";
 import React, { useState } from "react";
 import { FileText, Layers, ClipboardList, Zap, TrendingUp } from "lucide-react";
 import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
+import { Column } from "@/components/ui/column";
+import { Row } from "@/components/ui/row";
 
-function EngineeringAmbition() {
+const EngineeringAmbition = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Founded and led a team of
             15 student software engineers and designers
@@ -48,17 +50,17 @@ function EngineeringAmbition() {
             <span className="font-semibold text-white">+</span> Managed project workflows
             and team coordination using ClickUp
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Team Size:</span> Led 15 student
@@ -77,17 +79,17 @@ function EngineeringAmbition() {
               multiple full-stack applications
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Next.js, React,
@@ -105,17 +107,17 @@ function EngineeringAmbition() {
               Git, Vercel, AWS
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Led team collaboration for ideation, design, and implementation</li>
             <li>Managed project workflows, milestones, and documentation</li>
@@ -123,17 +125,17 @@ function EngineeringAmbition() {
             <li>Coordinated team meetings and brainstorming sessions</li>
             <li>Maintained development systems and infrastructure</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Experience:</span> Provide
@@ -152,23 +154,23 @@ function EngineeringAmbition() {
               connections between students and local organizations
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function GoogleDeveloperStudentClub() {
+const GoogleDeveloperStudentClub = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the GDSC events team
             in organizing workshops and the GDSC Hacks 2024 hackathon
@@ -181,17 +183,17 @@ function GoogleDeveloperStudentClub() {
             <span className="font-semibold text-white">+</span> Hosted workshops on React,
             OpenCV + ML, and Gemini 101
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Events:</span> Organized multiple
@@ -210,17 +212,17 @@ function GoogleDeveloperStudentClub() {
               engaging atmosphere for GDSC Hacks 2024
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> React, Angular,
@@ -238,17 +240,17 @@ function GoogleDeveloperStudentClub() {
               <span className="font-semibold text-white">AI/ML:</span> Gemini, OpenCV
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Organized and managed GDSC Hacks 2024 hackathon</li>
             <li>Developed event registration system</li>
@@ -256,17 +258,17 @@ function GoogleDeveloperStudentClub() {
             <li>Served as judge for GDSC Hacks 2024</li>
             <li>Connected with students to improve event quality</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Learning:</span> Expose students
@@ -285,156 +287,156 @@ function GoogleDeveloperStudentClub() {
               hands-on experience with modern technologies
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function STEMFellowship() {
+const STEMFellowship = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
-            <span className="font-semibold text-white">+</span> Conducted computer science
-            research on the Traveling Salesman Problem (TSP)
+            <span className="font-semibold text-white">+</span> Led the STEM Fellowship
+            events team in organizing workshops and events
           </p>
           <p className="text-gray-200">
-            <span className="font-semibold text-white">+</span> Represented UofG in the
-            STEM Fellowship&apos;s Indicium National Research Competition
+            <span className="font-semibold text-white">+</span> Developed the backend
+            software for the STEM Fellowship event registration system
           </p>
           <p className="text-gray-200">
-            <span className="font-semibold text-white">+</span> Implemented algorithms in
-            Python using OOP paradigms
+            <span className="font-semibold text-white">+</span> Hosted workshops on React,
+            OpenCV + ML, and Gemini 101
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
-              <span className="font-semibold text-white">Research:</span> In-depth study
-              of Simulated Annealing and hybrid algorithms
+              <span className="font-semibold text-white">Events:</span> Organized multiple
+              workshops and events
             </li>
             <li>
-              <span className="font-semibold text-white">Competition:</span>
-              Represented UofG in national research competition
+              <span className="font-semibold text-white">Workshops:</span> Hosted three
+              major technical workshops
             </li>
             <li>
-              <span className="font-semibold text-white">Collaboration:</span> Worked with
-              researchers and developers
+              <span className="font-semibold text-white">Engagement:</span> Connected with
+              students to improve workshops and events
             </li>
             <li>
-              <span className="font-semibold text-white">Implementation:</span>
-              Developed algorithms using Python and OOP
+              <span className="font-semibold text-white">Innovation:</span> Created an
+              engaging atmosphere for STEM events
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
-              <span className="font-semibold text-white">Language:</span> Python
+              <span className="font-semibold text-white">Frontend:</span> React, Angular,
+              HTML/CSS, JavaScript
             </li>
             <li>
-              <span className="font-semibold text-white">Paradigms:</span> Object-Oriented
-              Programming
+              <span className="font-semibold text-white">Backend:</span> TypeScript,
+              Firebase
             </li>
             <li>
-              <span className="font-semibold text-white">Algorithms:</span> Simulated
-              Annealing, Reinforcement Learning
+              <span className="font-semibold text-white">Cloud:</span> Google Cloud
+              Platform (GCP)
             </li>
             <li>
-              <span className="font-semibold text-white">Research:</span> Combinatorial
-              Optimization, Operations Research
+              <span className="font-semibold text-white">AI/ML:</span> Gemini, OpenCV
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
-            <li>Research on TSP and combinatorial optimization</li>
-            <li>Implementation of heuristic and approximation algorithms</li>
-            <li>Study of reinforcement learning and neural networks</li>
-            <li>Development of hybrid algorithms</li>
-            <li>Participation in national research competition</li>
+            <li>Organized and managed STEM events</li>
+            <li>Developed event registration system</li>
+            <li>Hosted technical workshops on various technologies</li>
+            <li>Served as judge for STEM events</li>
+            <li>Connected with students to improve event quality</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
-              <span className="font-semibold text-white">Research:</span> Advance
-              understanding of optimization algorithms
+              <span className="font-semibold text-white">Learning:</span> Expose students
+              to STEM technologies and development
             </li>
             <li>
-              <span className="font-semibold text-white">Learning:</span> Develop
-              expertise in algorithm design and implementation
+              <span className="font-semibold text-white">Community:</span> Build a strong
+              tech community at UofG
             </li>
             <li>
-              <span className="font-semibold text-white">Competition:</span> Represent
-              UofG in national research competition
+              <span className="font-semibold text-white">Innovation:</span> Foster
+              creativity and technical skills
             </li>
             <li>
-              <span className="font-semibold text-white">Innovation:</span> Explore new
-              approaches to solving complex problems
+              <span className="font-semibold text-white">Experience:</span> Provide
+              hands-on experience with modern technologies
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function EclipseExpositions() {
+const EclipseExpositions = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the design and
             development of full-stack applications and UI components
@@ -447,17 +449,17 @@ function EclipseExpositions() {
             <span className="font-semibold text-white">+</span> Developed and deployed the
             Eclipse Expositions React component library
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Architecture:</span>
@@ -476,17 +478,17 @@ function EclipseExpositions() {
               collaboration and code quality
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Next.js, React,
@@ -502,17 +504,17 @@ function EclipseExpositions() {
               <span className="font-semibold text-white">Cloud:</span> AWS, Vercel
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Designed and implemented intuitive web interfaces</li>
             <li>Migrated from REST to tRPC architecture</li>
@@ -520,17 +522,17 @@ function EclipseExpositions() {
             <li>Refactored and optimized team code</li>
             <li>Implemented DevOps and workflow improvements</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Architecture:</span> Improve
@@ -549,23 +551,23 @@ function EclipseExpositions() {
               modern development practices
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function SolcoaTechnologies() {
+const SolcoaTechnologies = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Designed and developed web
             applications and software solutions
@@ -574,17 +576,17 @@ function SolcoaTechnologies() {
             <span className="font-semibold text-white">+</span> Contributed to science and
             technology initiatives
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Web Development:</span>{" "}
@@ -595,23 +597,23 @@ function SolcoaTechnologies() {
               solutions
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function EnactusGuelph() {
+const EnactusGuelph = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Spearheaded the design and
             development of Enactus full-stack web applications
@@ -624,17 +626,17 @@ function EnactusGuelph() {
             <span className="font-semibold text-white">+</span> Designed and developed
             Konsioux, connecting consumers with local and ethical brands
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> TypeScript,
@@ -648,23 +650,23 @@ function EnactusGuelph() {
               (PostgreSQL), Prisma
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function GuelphCyberSecuritySociety() {
+const GuelphCyberSecuritySociety = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the Machine Learning
             Turret Project
@@ -677,17 +679,17 @@ function GuelphCyberSecuritySociety() {
             <span className="font-semibold text-white">+</span> Designed and developed an
             event management system
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Next.js, React,
@@ -705,23 +707,23 @@ function GuelphCyberSecuritySociety() {
               Storage
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function SocietyOfComputingAndInformationScience() {
+const SocietyOfComputingAndInformationScience = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led, organized, and
             managed tech initiatives, projects, and sponsorships as Vice President of
@@ -748,17 +750,17 @@ function SocietyOfComputingAndInformationScience() {
             <span className="font-semibold text-white">+</span> Coordinated project
             schedules, objectives, and timelines as Project Manager
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Website:</span> Developed and
@@ -786,17 +788,17 @@ function SocietyOfComputingAndInformationScience() {
               system operations and technical infrastructure
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Next.js, React,
@@ -814,17 +816,17 @@ function SocietyOfComputingAndInformationScience() {
               Google Calendar, Atlassian
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Community:</span> Build and
@@ -843,23 +845,23 @@ function SocietyOfComputingAndInformationScience() {
               maintain essential technical infrastructure
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function SkiAndSnowboardClub() {
+const SkiAndSnowboardClub = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Developed and maintained a
             functional and visually appealing full-stack web application
@@ -872,17 +874,17 @@ function SkiAndSnowboardClub() {
             <span className="font-semibold text-white">+</span> Designed and implemented a
             modern UI with NextUI, shadcn, and Tailwind CSS
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Next.js,
@@ -903,23 +905,23 @@ function SkiAndSnowboardClub() {
               Notion, Figma
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function ArtificialIntelligenceClub() {
+const ArtificialIntelligenceClub = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Contributed to AI
             initiatives and projects
@@ -932,28 +934,28 @@ function ArtificialIntelligenceClub() {
             <span className="font-semibold text-white">+</span> Collaborated on GitHub
             projects
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Tools:</span> GitHub, AI/ML
               technologies
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
 const projects = [
   {
@@ -1063,10 +1065,10 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-function UofGHeader() {
+const UofGHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      className="flex flex-col items-center gap-8 px-4 pt-24 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -1088,15 +1090,15 @@ function UofGHeader() {
       </motion.div>
 
       <motion.div
-        className="flex items-center gap-4 text-sm text-gray-400"
+        className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 sm:flex-row"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
         <span>Computer Science Student</span>
-        <span>•</span>
+        <span className="hidden sm:flex">•</span>
         <span>2023 - 2028</span>
-        <span>•</span>
+        <span className="hidden sm:flex">•</span>
         <span>Guelph, Ontario</span>
       </motion.div>
 
@@ -1124,9 +1126,9 @@ function UofGHeader() {
       </motion.div>
     </motion.div>
   );
-}
+};
 
-export default function UniversityOfGuelphPage() {
+const UniversityOfGuelphPage = () => {
   const [openedProjects, setOpenedProjects] = useState<string[]>([
     "engineering-ambition",
   ]);
@@ -1136,14 +1138,15 @@ export default function UniversityOfGuelphPage() {
       <Navbar />
       <FloatingTechGridScene />
 
-      <ScrollArea className="scrollbar-hide relative z-10 mx-auto mt-12 flex h-full min-h-full w-full max-w-7xl flex-1 flex-col items-center px-4 py-12">
+      <UofGHeader />
+
+      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col items-center">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="relative flex w-full flex-col gap-8 px-4 py-4"
+          className="flex min-h-full w-full flex-col gap-8 px-4 py-4"
         >
-          <UofGHeader />
           <Accordion
             type="single"
             collapsible
@@ -1172,13 +1175,13 @@ export default function UniversityOfGuelphPage() {
 
                   <AccordionItem
                     value={project.id}
-                    className="relative border-b-0 bg-transparent px-4 py-2"
+                    className="border-b-0 bg-transparent px-4 py-2"
                   >
                     <AccordionTrigger
                       className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
                       onClick={openProject}
                     >
-                      <span className="flex items-center gap-4">
+                      <Row className="items-center gap-4">
                         {project.icon}
                         {project.title}
                         {project.tags &&
@@ -1188,7 +1191,7 @@ export default function UniversityOfGuelphPage() {
                               {tag}
                             </Badge>
                           ))}
-                      </span>
+                      </Row>
                     </AccordionTrigger>
                     <AccordionContent className="pt-2 pb-4">
                       <project.Component />
@@ -1202,7 +1205,7 @@ export default function UniversityOfGuelphPage() {
       </ScrollArea>
     </main>
   );
-}
+};
 
 const TimelineCircle = ({
   className,
@@ -1222,3 +1225,5 @@ const TimelineCircle = ({
     </div>
   );
 };
+
+export default UniversityOfGuelphPage;
