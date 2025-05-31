@@ -27,7 +27,7 @@ const HomePage = () => {
         firstName="realtristan"
         lastName="simpson"
         subheader="full stack developer"
-        className="relative z-50"
+        className="relative z-50 pt-40 sm:pt-0"
       />
     </main>
   );
@@ -70,7 +70,7 @@ const AnimatedHeader = ({
   return (
     <motion.div
       className={cn(
-        "flex h-full flex-col items-center gap-12 pt-52 text-center sm:justify-center sm:pt-0",
+        "flex h-full flex-col items-center gap-12 text-center sm:justify-center",
         className,
       )}
       variants={container}
@@ -133,12 +133,7 @@ const AnimatedHeader = ({
         variants={container}
       >
         <motion.div variants={letter}>
-          <MagneticButton
-            className={cn(
-              "transition-colors duration-200 ease-linear hover:text-blue-500",
-              className,
-            )}
-          >
+          <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
             <a
               href="https://github.com/realtristan"
               target="_blank"
