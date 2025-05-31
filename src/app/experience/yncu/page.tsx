@@ -58,8 +58,8 @@ const Journey = () => {
           <li>Led our workspace management dashboard project</li>
           <li>Led our application management dashboard project</li>
           <li>
-            Initiated and now primary maintainer of our "YNCU Quickstart" repo (templates,
-            configs, docs, style guides, security best practices)
+            Initiated and now primary maintainer of our &quot;YNCU Quickstart&quot; repo
+            (templates, configs, docs, style guides, security best practices)
           </li>
         </ul>
       </Column>
