@@ -28,6 +28,8 @@ import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 import { JSX } from "react";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Cursor } from "@/components/cursor";
 
 interface Project {
   id: string;
@@ -1580,10 +1582,18 @@ const item: MotionVariants = {
 const YNCUPage: React.FC = () => {
   const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
+  const isMobile = useIsMobile();
+
   return (
-    <main className="relative flex h-screen w-full flex-col">
+    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
-      <FloatingTechGridScene />
+
+      {!isMobile && (
+        <>
+          <FloatingTechGridScene />
+          <Cursor />
+        </>
+      )}
 
       <YNCUHeader />
 

@@ -25,6 +25,8 @@ import { FileText } from "lucide-react";
 import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
+import { Cursor } from "@/components/cursor";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Journey = () => {
   return (
@@ -405,10 +407,18 @@ const DominionLendingHeader = () => {
 const DominionLendingPage = () => {
   const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
+  const isMobile = useIsMobile();
+
   return (
-    <main className="relative flex h-screen w-full flex-col">
+    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
-      <FloatingTechGridScene />
+
+      {!isMobile && (
+        <>
+          <FloatingTechGridScene />
+          <Cursor />
+        </>
+      )}
 
       {/* Animated header denoting this is my Dominion Lending Experience */}
       <DominionLendingHeader />

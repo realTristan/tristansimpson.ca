@@ -13,21 +13,21 @@ import { Html } from "@react-three/drei";
 
 interface RapierBallsSceneProps {
   className?: string;
-  onLoaded?: () => void;
+  onLoad?: () => void;
   animateIn?: boolean;
   pointerColor?: "primary" | "secondary";
 }
 
 export default function RapierBallsScene({
   className,
-  onLoaded,
+  onLoad,
   animateIn = true,
   pointerColor = "primary",
 }: RapierBallsSceneProps) {
-  // Call onLoaded after Suspense resolves (after first render)
+  // Call onLoad after Suspense resolves (after first render)
   useEffect(() => {
-    onLoaded?.();
-  }, [onLoaded]);
+    onLoad?.();
+  }, [onLoad]);
 
   return (
     <div className={cn("fixed top-0 left-0 z-40 h-screen w-screen", className)}>

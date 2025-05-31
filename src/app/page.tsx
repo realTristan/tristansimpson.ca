@@ -10,11 +10,21 @@ import { ExternalLink } from "lucide-react";
 import { MagneticButton } from "@/components/magnetic-button";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const HomePage = () => {
+  const isMobile = useIsMobile();
+
   return (
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
+
+      {!isMobile && (
+        <>
+          <ParticleSphereScene />
+          <Cursor />
+        </>
+      )}
 
       <AnimatedHeader
         firstName="realtristan"
@@ -22,10 +32,6 @@ const HomePage = () => {
         subheader="full stack developer"
         className="relative z-50"
       />
-
-      <ParticleSphereScene />
-
-      <Cursor />
     </main>
   );
 };

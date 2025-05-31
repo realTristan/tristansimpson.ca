@@ -17,6 +17,7 @@ import { Row } from "@/components/ui/row";
 
 import dynamic from "next/dynamic";
 import Navbar from "@/components/navbar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // dynamic import with SSR disabled
 const LionScene = dynamic(() => import("@/components/threejs/lion-scene"), {
@@ -25,34 +26,41 @@ const LionScene = dynamic(() => import("@/components/threejs/lion-scene"), {
 
 const HomePage = () => {
   const modelPath = "/lion.glb";
+
   const [isLoading, setIsLoading] = useState(true);
 
+  const isMobile = useIsMobile();
+
   return (
-    <main className="relative w-full overflow-x-hidden">
+    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
 
-      <section className="relative h-screen w-screen overflow-hidden">
-        <LionScene modelPath={modelPath} onObjectLoad={() => setIsLoading(false)} />
+      {!isMobile && (
+        <>
+          <section className="relative h-screen w-screen overflow-hidden">
+            <LionScene modelPath={modelPath} onObjectLoad={() => setIsLoading(false)} />
+          </section>
 
-        {isLoading ? (
-          <SceneLoading />
-        ) : (
-          <>
-            <div
-              id="wrapper"
-              className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(5,5,5,1) 15%, rgba(39,39,39,0) 80%)",
-              }}
-            >
-              <AnimatedHeader className="absolute z-50 mx-12 sm:top-1/4 2xl:left-1/2" />
-            </div>
-          </>
-        )}
-      </section>
+          <Cursor />
+        </>
+      )}
 
-      <Cursor />
+      {isLoading ? (
+        <SceneLoading />
+      ) : (
+        <>
+          <div
+            id="wrapper"
+            className="pointer-events-none absolute inset-0 z-50 flex flex-col items-center justify-center px-6 text-center"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(5,5,5,1) 15%, rgba(39,39,39,0) 80%)",
+            }}
+          >
+            <AnimatedHeader className="absolute mx-12 sm:top-1/5 2xl:left-1/2" />
+          </div>
+        </>
+      )}
     </main>
   );
 };

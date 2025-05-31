@@ -15,20 +15,44 @@ import {
 import { ExternalLink, Cpu, GitMerge, Bolt } from "lucide-react";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
+import { SceneLoading } from "@/components/scene-loading";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  const isMobile = useIsMobile();
 
   return (
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
 
-      {!isLoading && (
-        <AnimatedHeader className="absolute z-50 mx-12 sm:top-1/4 2xl:left-1/2" />
+      {!isMobile && (
+        <>
+          <section className="relative h-screen w-screen overflow-hidden">
+            <RapierBallsScene onLoad={() => setIsLoading(false)} animateIn={!isLoading} />
+          </section>
+
+          <Cursor />
+        </>
       )}
 
-      <RapierBallsScene onLoaded={() => setIsLoading(false)} animateIn={!isLoading} />
-      <Cursor />
+      {isLoading ? (
+        <SceneLoading />
+      ) : (
+        <>
+          <div
+            id="wrapper"
+            className="pointer-events-none absolute inset-0 z-50 flex flex-col items-center justify-center px-6 text-center"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(5,5,5,1) 15%, rgba(39,39,39,0) 80%)",
+            }}
+          >
+            <AnimatedHeader className="absolute mx-12 sm:top-1/5 2xl:left-1/2" />
+          </div>
+        </>
+      )}
     </main>
   );
 };

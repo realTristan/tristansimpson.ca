@@ -7,6 +7,11 @@ import Navbar from "@/components/navbar";
 import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import { Column } from "@/components/ui/column";
+import { Row } from "@/components/ui/row";
+import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Cursor } from "@/components/cursor";
 
 const experiences = [
   {
@@ -62,20 +67,15 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-function ExperienceHeader() {
+const ExperienceHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      className="flex flex-col items-center gap-8 pt-24 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.div
-        className="flex flex-col items-center gap-4"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
+      <Column className="items-center gap-4">
         <motion.h2
           className="text-2xl font-light tracking-widest text-gray-400"
           initial={{ opacity: 0, y: 10 }}
@@ -84,27 +84,17 @@ function ExperienceHeader() {
         >
           Experience Timeline
         </motion.h2>
-      </motion.div>
+      </Column>
 
-      <motion.div
-        className="flex items-center gap-4 text-sm text-gray-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-      >
+      <Row className="items-center gap-4 text-sm text-gray-400">
         <span>Full Stack Developer</span>
-        <span>•</span>
+        <span className="hidden sm:flex">•</span>
         <span>2023 - Present</span>
-        <span>•</span>
+        <span className="hidden sm:flex">•</span>
         <span>Ontario, Canada</span>
-      </motion.div>
+      </Row>
 
-      <motion.div
-        className="flex flex-wrap justify-center gap-2"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.5 }}
-      >
+      <Row className="flex-wrap justify-center gap-2">
         <Badge variant="outline" className="text-xs">
           TypeScript
         </Badge>
@@ -123,65 +113,87 @@ function ExperienceHeader() {
         <Badge variant="outline" className="text-xs">
           AWS
         </Badge>
-      </motion.div>
+      </Row>
     </motion.div>
   );
-}
+};
 
-export default function ExperiencePage() {
+const ExperiencePage = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <main className="relative flex h-screen w-full flex-col">
+    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
-      <FloatingTechGridScene />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col px-4 py-12">
-        <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="relative ml-8 flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
-          >
-            <ExperienceHeader />
+      {!isMobile && (
+        <>
+          <FloatingTechGridScene />
+          <Cursor />
+        </>
+      )}
 
-            {experiences.map((experience) => (
-              <motion.div
-                key={experience.id}
-                variants={item}
-                className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-transparent p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
-              >
-                <div className="bg-background absolute top-6 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 md:flex">
-                  <div className="h-3 w-3 rounded-full bg-blue-500" />
-                </div>
+      <ExperienceHeader />
 
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 text-white transition-colors group-hover:border-blue-500/50">
-                      {experience.icon}
-                    </div>
+      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative ml-8 flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
+        >
+          {experiences.map((experience) => (
+            <motion.div
+              key={experience.id}
+              variants={item}
+              className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-transparent p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+            >
+              <TimelineCircle className="absolute top-6 -left-3" />
 
-                    <div>
-                      <h2 className="text-xl font-semibold text-white">
-                        {experience.title}
-                      </h2>
-                      <p className="text-sm text-gray-400">{experience.role}</p>
-                    </div>
+              <Row className="items-start justify-between gap-4">
+                <Row className="items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 text-white transition-colors group-hover:border-blue-500/50">
+                    {experience.icon}
                   </div>
-                  <span className="text-sm text-gray-500">{experience.period}</span>
-                </div>
-                <p className="text-gray-400">{experience.description}</p>
-                <Link
-                  href={experience.link}
-                  className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
-                >
-                  Learn more
-                  <ExternalLink className="h-4 w-4" />
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </ScrollArea>
-      </div>
+
+                  <Column>
+                    <h2 className="text-xl font-semibold text-white">
+                      {experience.title}
+                    </h2>
+                    <p className="text-sm text-gray-400">{experience.role}</p>
+                  </Column>
+                </Row>
+
+                <span className="text-sm text-gray-500">{experience.period}</span>
+              </Row>
+
+              <p className="text-gray-400">{experience.description}</p>
+
+              <Link
+                href={experience.link}
+                className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
+              >
+                Learn more
+                <ExternalLink className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </ScrollArea>
     </main>
   );
-}
+};
+
+const TimelineCircle = ({ className }: { className?: string }) => {
+  return (
+    <div
+      className={cn(
+        "hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 md:flex",
+        className,
+      )}
+    >
+      <div className="h-3 w-3 rounded-full bg-blue-500" />
+    </div>
+  );
+};
+
+export default ExperiencePage;

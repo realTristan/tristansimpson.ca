@@ -26,6 +26,8 @@ import { FileText, Layers, ClipboardList, Zap, TrendingUp } from "lucide-react";
 import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
+import { Cursor } from "@/components/cursor";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const EngineeringAmbition = () => {
   return (
@@ -1133,10 +1135,18 @@ const UniversityOfGuelphPage = () => {
     "engineering-ambition",
   ]);
 
+  const isMobile = useIsMobile();
+
   return (
-    <main className="relative flex h-screen w-full flex-col">
+    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
-      <FloatingTechGridScene />
+
+      {!isMobile && (
+        <>
+          <FloatingTechGridScene />
+          <Cursor />
+        </>
+      )}
 
       <UofGHeader />
 
