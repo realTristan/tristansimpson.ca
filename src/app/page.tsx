@@ -19,12 +19,9 @@ const HomePage = () => {
     <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
       <Navbar />
 
-      {!isMobile && (
-        <>
-          <ParticleSphereScene />
-          <Cursor />
-        </>
-      )}
+      <ParticleSphereScene />
+
+      {!isMobile && <Cursor />}
 
       <AnimatedHeader
         firstName="realtristan"
