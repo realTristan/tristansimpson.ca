@@ -236,7 +236,7 @@ function ResumeDropdown({ className }: { className?: string }) {
               className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
             >
               <a
-                href="/resume.pdf"
+                href="/Tristan_Simpson___Resume_2025.pdf"
                 download
                 className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
@@ -404,7 +404,7 @@ export default function Navbar() {
                   <span>Home</span>
                 </Link>
                 <a
-                  href="/resume.pdf"
+                  href="/Tristan_Simpson___Resume_2025.pdf"
                   download
                   className="cursor-active flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
                 >

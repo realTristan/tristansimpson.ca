@@ -42,7 +42,9 @@ function Journey() {
 
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
           <li>Continued development of our commercial loan origination system (CLOS)</li>
+          <li>Co-led our Summer 2025 hiring process</li>
           <li>Leading our Mortgage Renewal project</li>
+          <li>Led our Mortgage Campaign project</li>
           <li>Led our workspace management dashboard project</li>
           <li>Led our application management dashboard project</li>
         </ul>
@@ -468,7 +470,8 @@ function ApplicantManagementDashboard() {
             </li>
             <li>
               <span className="font-semibold text-white">Efficiency:</span> Thousands of
-              hours saved from manual applicant review
+              hours saved from manual applicant review; approximately ~$22,000 in cost
+              savings annually.
             </li>
             <li>
               <span className="font-semibold text-white">Growth:</span> Significant
@@ -1000,8 +1003,8 @@ function YNCUTools() {
         <div className="flex flex-col gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
-              <span className="font-semibold text-white">Performance:</span> 10x
-              improvement in overall system performance
+              <span className="font-semibold text-white">Optimizations:</span> Achieving
+              significant performance & accessibility improvements
             </li>
             <li>
               <span className="font-semibold text-white">Code Quality:</span> Over 20,000

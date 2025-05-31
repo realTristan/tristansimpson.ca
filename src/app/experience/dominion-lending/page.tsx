@@ -31,6 +31,29 @@ import React, { useState } from "react";
 import { FileText } from "lucide-react";
 import FloatingTechGridScene from "@/components/floating-tech-grid";
 
+function Journey() {
+  return (
+    <div className="space-y-8">
+      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <Briefcase className="h-5 w-5 text-blue-400" />
+          <span className="text-lg font-semibold text-white">
+            Software Developer{" "}
+            <span className="text-sm text-gray-400">(July 2023 – September 2023)</span>
+          </span>
+        </div>
+
+        <ul className="list-disc space-y-1 pl-5 text-gray-200">
+          <li>Led the development of our corporate website</li>
+          <li>Led the development of our internal communication platform (Pulse)</li>
+          <li>Implemented secure document handling and user management systems</li>
+          <li>Integrated with Azure services for data storage and management</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 function CorporateWebsite() {
   return (
     <div className="space-y-8">
@@ -299,6 +322,16 @@ function Pulse() {
 
 const projects = [
   {
+    id: "journey",
+    title: "My Journey",
+    icon: (
+      <Users className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
+    ),
+    images: [],
+    Component: Journey,
+    tags: ["Journey"],
+  },
+  {
     id: "pulse",
     title: "Pulse",
     icon: (
@@ -422,7 +455,7 @@ function DominionLendingHeader() {
 }
 
 export default function DominionLendingPage() {
-  const [openedProjects, setOpenedProjects] = useState<string[]>(["pulse"]);
+  const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
   return (
     <main className="relative flex h-screen w-full flex-col">
@@ -450,7 +483,7 @@ export default function DominionLendingPage() {
                 type="single"
                 collapsible
                 className="flex w-full flex-col gap-4"
-                defaultValue="pulse"
+                defaultValue="journey"
               >
                 {projects.map((project, index) => {
                   const isOpened = openedProjects.some((p) => p === project.id);
