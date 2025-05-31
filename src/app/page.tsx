@@ -149,7 +149,7 @@ const AnimatedHeader = ({
         <motion.div variants={letter}>
           <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
             <a
-              href="https://linkedin.com/in/realtristan"
+              href="https://www.linkedin.com/in/tristansimpsonn"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-row items-center justify-center gap-2 font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
