@@ -469,8 +469,7 @@ function ApplicantManagementDashboard() {
             </li>
             <li>
               <span className="font-semibold text-white">Efficiency:</span> Thousands of
-              hours saved from manual applicant review; around ~$22,000 in cost savings
-              annually.
+              hours saved from manual applicant review.
             </li>
             <li>
               <span className="font-semibold text-white">Growth:</span> Significant
