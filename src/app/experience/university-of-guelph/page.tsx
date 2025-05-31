@@ -1136,79 +1136,89 @@ export default function UniversityOfGuelphPage() {
       <Navbar />
       <FloatingTechGridScene />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center px-4 py-12">
-        <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
-          <div className="relative flex min-h-full">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="relative ml-8 flex w-full flex-col gap-8 px-4 py-4"
-            >
-              <UofGHeader />
-              <Accordion
-                type="single"
-                collapsible
-                className="flex w-full flex-col gap-4"
-                defaultValue="engineering-ambition"
-              >
-                {projects.map((project) => {
-                  const isOpened = openedProjects.some((p) => p === project.id);
+      <ScrollArea className="scrollbar-hide relative z-10 mx-auto mt-12 flex h-full min-h-full w-full max-w-7xl flex-1 flex-col items-center px-4 py-12">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative flex w-full flex-col gap-8 px-4 py-4"
+        >
+          <UofGHeader />
+          <Accordion
+            type="single"
+            collapsible
+            className="flex w-full flex-col gap-4"
+            defaultValue="engineering-ambition"
+          >
+            {projects.map((project) => {
+              const isOpened = openedProjects.some((p) => p === project.id);
 
-                  const openProject = () => {
-                    setOpenedProjects((prev) => {
-                      return prev.includes(project.id) ? prev : [...prev, project.id];
-                    });
-                  };
+              const openProject = () => {
+                setOpenedProjects((prev) => {
+                  return prev.includes(project.id) ? prev : [...prev, project.id];
+                });
+              };
 
-                  return (
-                    <motion.div
-                      key={project.id}
-                      variants={item}
-                      className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+              return (
+                <motion.div
+                  key={project.id}
+                  variants={item}
+                  className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+                >
+                  <TimelineCircle
+                    className="absolute -top-3 -left-3"
+                    isOpened={isOpened}
+                  />
+
+                  <AccordionItem
+                    value={project.id}
+                    className="relative border-b-0 bg-transparent px-4 py-2"
+                  >
+                    <AccordionTrigger
+                      className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
+                      onClick={openProject}
                     >
-                      {/* Timeline circle */}
-                      <div className="bg-background absolute -top-3 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 backdrop-blur-md md:flex">
-                        <div
-                          className={cn(
-                            "h-3 w-3 rounded-full",
-                            !isOpened && "bg-blue-500",
-                          )}
-                        />
-                      </div>
-
-                      <AccordionItem
-                        value={project.id}
-                        className="relative border-b-0 bg-transparent px-4 py-2"
-                      >
-                        <AccordionTrigger
-                          className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
-                          onClick={openProject}
-                        >
-                          <span className="flex items-center gap-4">
-                            {project.icon}
-                            {project.title}
-                            {project.tags &&
-                              project.tags.length > 0 &&
-                              project.tags.map((tag, i) => (
-                                <Badge key={i} variant="outline">
-                                  {tag}
-                                </Badge>
-                              ))}
-                          </span>
-                        </AccordionTrigger>
-                        <AccordionContent className="pt-2 pb-4">
-                          <project.Component />
-                        </AccordionContent>
-                      </AccordionItem>
-                    </motion.div>
-                  );
-                })}
-              </Accordion>
-            </motion.div>
-          </div>
-        </ScrollArea>
-      </div>
+                      <span className="flex items-center gap-4">
+                        {project.icon}
+                        {project.title}
+                        {project.tags &&
+                          project.tags.length > 0 &&
+                          project.tags.map((tag, i) => (
+                            <Badge key={i} variant="outline">
+                              {tag}
+                            </Badge>
+                          ))}
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent className="pt-2 pb-4">
+                      <project.Component />
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
+              );
+            })}
+          </Accordion>
+        </motion.div>
+      </ScrollArea>
     </main>
   );
 }
+
+const TimelineCircle = ({
+  className,
+  isOpened,
+}: {
+  className?: string;
+  isOpened: boolean;
+}) => {
+  return (
+    <div
+      className={cn(
+        "bg-background hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 backdrop-blur-md md:flex",
+        className,
+      )}
+    >
+      <div className={cn("h-3 w-3 rounded-full", !isOpened && "bg-blue-500")} />
+    </div>
+  );
+};

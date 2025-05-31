@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants as MotionVariants } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -25,19 +25,30 @@ import { Badge } from "@/components/ui/badge";
 import React, { useState } from "react";
 import { FileText, Layers, ClipboardList, Zap, TrendingUp } from "lucide-react";
 import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
+import { JSX } from "react";
+import { Column } from "@/components/ui/column";
+import { Row } from "@/components/ui/row";
 
-function Journey() {
+interface Project {
+  id: string;
+  title: string;
+  icon: JSX.Element;
+  Component: React.FC;
+  tags: string[];
+}
+
+const Journey = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Full Stack Developer I, Full-time */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Briefcase className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">
             Full Stack Developer I, Full-time{" "}
             <span className="text-sm text-gray-400">(May 2025 – Present)</span>
           </span>
-        </div>
+        </Row>
 
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
           <li>Continued development of our commercial loan origination system (CLOS)</li>
@@ -47,21 +58,21 @@ function Journey() {
           <li>Led our workspace management dashboard project</li>
           <li>Led our application management dashboard project</li>
           <li>
-            Initiated and now primary maintainer of our “YNCU Quickstart” repo (templates,
+            Initiated and now primary maintainer of our "YNCU Quickstart" repo (templates,
             configs, docs, style guides, security best practices)
           </li>
         </ul>
-      </div>
+      </Column>
 
       {/* Full Stack Developer I, Part-time */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Briefcase className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">
             Full Stack Developer I, Part-time{" "}
             <span className="text-sm text-gray-400">(September 2024 – May 2025)</span>
           </span>
-        </div>
+        </Row>
 
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
           <li>Continued development of our commercial loan origination system (CLOS)</li>
@@ -69,38 +80,38 @@ function Journey() {
           <li>Developed the Automatic Onboarding System project with Salesforce</li>
           <li>Refactored and improved our DNA API</li>
         </ul>
-      </div>
+      </Column>
 
       {/* Full Stack Developer Intern, Full-time */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Briefcase className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">
             Full Stack Developer Intern, Full-time{" "}
             <span className="text-sm text-gray-400">(June 2024 – September 2024)</span>
           </span>
-        </div>
+        </Row>
 
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
           <li>Started development for our commercial loan origination system (CLOS)</li>
           <li>Refactored and improved our YNCU Tools project</li>
         </ul>
-      </div>
-    </div>
+      </Column>
+    </Column>
   );
-}
+};
 
-function Summer2025Hiring() {
+const Summer2025Hiring = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summer 2025 Hiring */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="text-gray-200">
             <span className="font-semibold text-white">+</span> Co-led hiring full stack
             developer interns for Summer 2025
@@ -122,23 +133,23 @@ function Summer2025Hiring() {
             <span className="font-semibold text-white">+</span> Mentored the Summer 2025
             intern cohort
           </p>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function CommercialLoanOriginationSystem() {
+const CommercialLoanOriginationSystem = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the development of our
             Commercial Loan Origination Software (CLOS); Designed and implemented the
@@ -154,17 +165,17 @@ function CommercialLoanOriginationSystem() {
             real-time data and established the core tools, security checks, and testing
             routines that now power many of our projects.
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Cost savings:</span> ~$500 000
@@ -179,17 +190,17 @@ function CommercialLoanOriginationSystem() {
               project starts, tighter security checks, and reliable testing across teams
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Vite, React,
@@ -218,17 +229,17 @@ function CommercialLoanOriginationSystem() {
               tooling and automation
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               Built every piece of CLOS from UI components to backend services, data
@@ -244,17 +255,17 @@ function CommercialLoanOriginationSystem() {
               smooth user adoption
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">New rules:</span> FSRA introduced
@@ -269,23 +280,23 @@ function CommercialLoanOriginationSystem() {
               database for one-time entry, data accuracy, and easier management
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function WorkspaceManagementDashboard() {
+const WorkspaceManagementDashboard = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the development of our
             Workspace Management Dashboard; Designed and implemented the interface, user
@@ -303,17 +314,17 @@ function WorkspaceManagementDashboard() {
             <span className="font-semibold text-white">+</span> Seamless authentication
             for YNCU employees and visitors.
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Cost savings:</span> ~$10,000 at
@@ -324,17 +335,17 @@ function WorkspaceManagementDashboard() {
               of code
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Vite, React,
@@ -363,17 +374,17 @@ function WorkspaceManagementDashboard() {
               tooling and automation
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               Designed and built the UI for facility, workspace, and reservation
@@ -395,17 +406,17 @@ function WorkspaceManagementDashboard() {
               Documented components and on-boarded team members with guides and templates.
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Affordability:</span> Other
@@ -420,23 +431,23 @@ function WorkspaceManagementDashboard() {
               visitor management metrics
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function ApplicantManagementDashboard() {
+const ApplicantManagementDashboard = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the development of our
             Applicant Management Dashboard; Designed and implemented the interface, user
@@ -451,17 +462,17 @@ function ApplicantManagementDashboard() {
             dashboard for tracking, reviewing, and managing applications across all
             stages.
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Cost savings:</span> ~$6,000
@@ -480,17 +491,17 @@ function ApplicantManagementDashboard() {
               increase in application volume and processing speed
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> Vite, React,
@@ -519,17 +530,17 @@ function ApplicantManagementDashboard() {
               tooling and automation
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               Designed and built an intuitive dashboard for tracking applications across
@@ -556,17 +567,17 @@ function ApplicantManagementDashboard() {
               data management
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Affordability:</span> Other
@@ -585,23 +596,23 @@ function ApplicantManagementDashboard() {
               metrics and insights for optimizing our hiring process
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function MortgageRenewalSystem() {
+const MortgageRenewalSystem = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the development of our
             Mortgage Renewal System; Designed and implemented automated renewal workflows,
@@ -615,17 +626,17 @@ function MortgageRenewalSystem() {
             <span className="font-semibold text-white">+</span> Integrated with existing
             systems for seamless member communication and document management.
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Platform:</span> Salesforce
@@ -642,17 +653,17 @@ function MortgageRenewalSystem() {
               APIs, Email Services
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Member Experience:</span> Large
@@ -676,23 +687,23 @@ function MortgageRenewalSystem() {
               Proactive engagement to maintain member relationships during renewal periods
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function IDVerification() {
+const IDVerification = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Developed, alongside four
             other team members, our Automatic ID Verification System
@@ -705,17 +716,17 @@ function IDVerification() {
             <span className="font-semibold text-white">+</span> Integrated with our DNA
             API backend for real-time verification and compliance reporting.
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Efficiency:</span> Thousands of
@@ -734,17 +745,17 @@ function IDVerification() {
               processed over 20,000 member ID verifications
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Platform:</span> Salesforce
@@ -761,17 +772,17 @@ function IDVerification() {
               APIs, Email Services, DNA API Backend
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               Designed and implemented automated ID verification workflows for all member
@@ -787,17 +798,17 @@ function IDVerification() {
             </li>
             <li>Implemented secure document storage and verification processes</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Compliance:</span> Required to
@@ -820,23 +831,23 @@ function IDVerification() {
               automated system for tracking and reporting ID status
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function AutomaticOnboardingSystem() {
+const AutomaticOnboardingSystem = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Developed, alongside four
             other team members, our Automatic Onboarding System
@@ -849,17 +860,17 @@ function AutomaticOnboardingSystem() {
             <span className="font-semibold text-white">+</span> Integrated with our DNA
             API backend for real-time account creation and verification
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Efficiency:</span> Reduced
@@ -878,17 +889,17 @@ function AutomaticOnboardingSystem() {
               onboarded thousands of new members
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Platform:</span> Salesforce
@@ -905,17 +916,17 @@ function AutomaticOnboardingSystem() {
               APIs, Email Services, DNA API Backend
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               Designed and implemented automated onboarding workflows for all member
@@ -930,17 +941,17 @@ function AutomaticOnboardingSystem() {
             </li>
             <li>Implemented secure document storage and verification processes</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Member Experience:</span> Long
@@ -963,23 +974,23 @@ function AutomaticOnboardingSystem() {
               onboarding process for increasing member base
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function YNCUTools() {
+const YNCUTools = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the complete redesign
             and refactoring of our internal tools platform
@@ -992,17 +1003,17 @@ function YNCUTools() {
             <span className="font-semibold text-white">+</span> Enhanced key workflows
             including Equifax Credit Check, Performance Calculator, and Vendor Management
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Optimizations:</span> Achieving
@@ -1021,17 +1032,17 @@ function YNCUTools() {
               numerous bugs and improved system stability
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Frontend:</span> React, React
@@ -1050,17 +1061,17 @@ function YNCUTools() {
               Vendor Management Systems
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Completely redesigned and modernized the frontend interface</li>
             <li>
@@ -1072,17 +1083,17 @@ function YNCUTools() {
             </li>
             <li>Fixed numerous bugs and improved overall system stability</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Performance:</span> System was
@@ -1105,23 +1116,23 @@ function YNCUTools() {
               better code organization and type safety
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function FiservDNAAPI() {
+const FiservDNAAPI = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Co-led the development and
             enhancement of our Fiserv DNA API integration
@@ -1134,17 +1145,17 @@ function FiservDNAAPI() {
             <span className="font-semibold text-white">+</span> Established route & file
             organization standards and security protocols
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Integration:</span> Successfully
@@ -1163,17 +1174,17 @@ function FiservDNAAPI() {
               Established clear organization standards
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Backend:</span> Node.js, Express
@@ -1186,17 +1197,17 @@ function FiservDNAAPI() {
               Core Banking System
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               Developed and implemented 10 new API endpoints for various business
@@ -1207,17 +1218,17 @@ function FiservDNAAPI() {
             <li>Created detailed API documentation and integration guides</li>
             <li>Set up monitoring and logging for API performance and security</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Integration Needs:</span>
@@ -1240,23 +1251,23 @@ function FiservDNAAPI() {
               scalable API infrastructure for upcoming projects
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-function MortgageCampaign() {
+const MortgageCampaign = () => {
   return (
-    <div className="space-y-8">
+    <Column className="space-y-8">
       {/* Summary */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <FileText className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Summary</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <p className="max-w-2xl text-gray-200">
             <span className="font-semibold text-white">+</span> Led the development of
             five tailored websites for our mortgage campaign
@@ -1269,17 +1280,17 @@ function MortgageCampaign() {
             <span className="font-semibold text-white">+</span> Built custom components
             and workflows for each campaign website
           </p>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Impact & Stats */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Impact & Stats</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Scale:</span> Successfully
@@ -1298,17 +1309,17 @@ function MortgageCampaign() {
               generation and application rates
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Tech Stack */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Layers className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Tech Stack</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Platform:</span> Salesforce,
@@ -1326,17 +1337,17 @@ function MortgageCampaign() {
               Cloud APIs, Email Services
             </li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Project Scope */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <ClipboardList className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Project Scope</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>Designed and developed five unique campaign websites</li>
             <li>Created custom Lightning Web Components for each campaign</li>
@@ -1344,17 +1355,17 @@ function MortgageCampaign() {
             <li>Built lead capture and tracking systems</li>
             <li>Integrated with Salesforce Marketing Cloud for campaign management</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Column>
 
       {/* Why We Did It */}
-      <div className="flex flex-col gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
-        <div className="flex items-center gap-2">
+      <Column className="gap-4 rounded-xl border border-white/10 p-6 backdrop-blur-md">
+        <Row className="items-center gap-2">
           <Zap className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">Why We Did It</span>
-        </div>
+        </Row>
 
-        <div className="flex flex-col gap-2">
+        <Column className="gap-2">
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Campaign Needs:</span> Required
@@ -1377,13 +1388,79 @@ function MortgageCampaign() {
               seamless connection with our marketing automation platform
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </Column>
+      </Column>
+    </Column>
   );
-}
+};
 
-const projects = [
+const YNCUHeader = () => {
+  return (
+    <motion.div
+      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="flex flex-col items-center gap-4"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        <motion.h2
+          className="text-2xl font-light tracking-widest text-gray-400"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          Your Neighbourhood Credit Union
+        </motion.h2>
+      </motion.div>
+
+      <motion.div
+        className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 sm:flex-row"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+      >
+        <span>Full Stack Developer</span>
+        <span className="hidden sm:flex">•</span>
+        <span>June 2024 - Present</span>
+        <span className="hidden sm:flex">•</span>
+        <span>Kitchener, Ontario</span>
+      </motion.div>
+
+      <motion.div
+        className="flex flex-wrap justify-center gap-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.5 }}
+      >
+        <Badge variant="outline" className="text-xs">
+          TypeScript
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          React.js
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Next.js
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          tRPC
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          Azure
+        </Badge>
+        <Badge variant="outline" className="text-xs">
+          shadcn
+        </Badge>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const projects: Project[] = [
   {
     id: "journey",
     title: "My Journey",
@@ -1485,7 +1562,7 @@ const projects = [
   },
 ];
 
-const container = {
+const container: MotionVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -1495,78 +1572,12 @@ const container = {
   },
 };
 
-const item = {
+const item: MotionVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
 };
 
-function YNCUHeader() {
-  return (
-    <motion.div
-      className="flex flex-col items-center gap-8 pt-32 pb-16 text-center"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <motion.div
-        className="flex flex-col items-center gap-4"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <motion.h2
-          className="text-2xl font-light tracking-widest text-gray-400"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          Your Neighbourhood Credit Union
-        </motion.h2>
-      </motion.div>
-
-      <motion.div
-        className="flex items-center gap-4 text-sm text-gray-400"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-      >
-        <span>Full Stack Developer</span>
-        <span>•</span>
-        <span>June 2024 - Present</span>
-        <span>•</span>
-        <span>Kitchener, Ontario</span>
-      </motion.div>
-
-      <motion.div
-        className="flex flex-wrap justify-center gap-2"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.5 }}
-      >
-        <Badge variant="outline" className="text-xs">
-          TypeScript
-        </Badge>
-        <Badge variant="outline" className="text-xs">
-          React.js
-        </Badge>
-        <Badge variant="outline" className="text-xs">
-          Next.js
-        </Badge>
-        <Badge variant="outline" className="text-xs">
-          tRPC
-        </Badge>
-        <Badge variant="outline" className="text-xs">
-          Azure
-        </Badge>
-        <Badge variant="outline" className="text-xs">
-          shadcn
-        </Badge>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-export default function YNCUPage() {
+const YNCUPage: React.FC = () => {
   const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
   return (
@@ -1574,79 +1585,91 @@ export default function YNCUPage() {
       <Navbar />
       <FloatingTechGridScene />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center px-4 py-12">
-        <ScrollArea className="scrollbar-hide mt-12 w-full flex-1">
-          <div className="relative flex min-h-full">
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="relative ml-8 flex w-full flex-col gap-8 px-4 py-4"
-            >
-              <YNCUHeader />
-              <Accordion
-                type="single"
-                collapsible
-                className="flex w-full flex-col gap-4"
-                defaultValue="journey"
-              >
-                {projects.map((project) => {
-                  const isOpened = openedProjects.some((p) => p === project.id);
+      <ScrollArea className="scrollbar-hide relative z-10 mx-auto mt-12 flex h-full w-full max-w-7xl flex-1 flex-col items-center">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative flex min-h-full w-full flex-col gap-8 px-4 py-4"
+        >
+          <YNCUHeader />
+          <Accordion
+            type="single"
+            collapsible
+            className="flex w-full flex-col gap-4"
+            defaultValue="journey"
+          >
+            {projects.map((project) => {
+              const isOpened = openedProjects.some((p) => p === project.id);
 
-                  const openProject = () => {
-                    setOpenedProjects((prev) => {
-                      return prev.includes(project.id) ? prev : [...prev, project.id];
-                    });
-                  };
+              const openProject = () => {
+                setOpenedProjects((prev) => {
+                  return prev.includes(project.id) ? prev : [...prev, project.id];
+                });
+              };
 
-                  return (
-                    <motion.div
-                      key={project.id}
-                      variants={item}
-                      className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+              return (
+                <motion.div
+                  key={project.id}
+                  variants={item}
+                  className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+                >
+                  <TimelineCircle
+                    className="absolute -top-3 -left-3"
+                    isOpened={isOpened}
+                  />
+
+                  <AccordionItem
+                    value={project.id}
+                    className="relative border-b-0 bg-transparent px-4 py-2"
+                  >
+                    <AccordionTrigger
+                      className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
+                      onClick={openProject}
                     >
-                      {/* Timeline circle */}
-                      <div className="bg-background absolute -top-3 -left-3 hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 backdrop-blur-md md:flex">
-                        <div
-                          className={cn(
-                            "h-3 w-3 rounded-full",
-                            !isOpened && "bg-blue-500",
-                          )}
-                        />
-                      </div>
-
-                      <AccordionItem
-                        value={project.id}
-                        className="relative border-b-0 bg-transparent px-4 py-2"
-                      >
-                        <AccordionTrigger
-                          className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
-                          onClick={openProject}
-                        >
-                          <span className="flex items-center gap-4">
-                            {project.icon}
-                            {project.title}
-                            {project.tags &&
-                              project.tags.length > 0 &&
-                              project.tags.map((tag, i) => (
-                                <Badge key={i} variant="outline">
-                                  {tag}
-                                </Badge>
-                              ))}
-                          </span>
-                        </AccordionTrigger>
-                        <AccordionContent className="pt-2 pb-4">
-                          <project.Component />
-                        </AccordionContent>
-                      </AccordionItem>
-                    </motion.div>
-                  );
-                })}
-              </Accordion>
-            </motion.div>
-          </div>
-        </ScrollArea>
-      </div>
+                      <Row className="items-center gap-4">
+                        {project.icon}
+                        {project.title}
+                        {project.tags &&
+                          project.tags.length > 0 &&
+                          project.tags.map((tag: string, i: number) => (
+                            <Badge key={i} variant="outline">
+                              {tag}
+                            </Badge>
+                          ))}
+                      </Row>
+                    </AccordionTrigger>
+                    <AccordionContent className="pt-2 pb-4">
+                      <project.Component />
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
+              );
+            })}
+          </Accordion>
+        </motion.div>
+      </ScrollArea>
     </main>
   );
-}
+};
+
+const TimelineCircle = ({
+  className,
+  isOpened,
+}: {
+  className?: string;
+  isOpened: boolean;
+}) => {
+  return (
+    <div
+      className={cn(
+        "bg-background hidden h-6 w-6 items-center justify-center rounded-full border border-white/10 backdrop-blur-md md:flex",
+        className,
+      )}
+    >
+      <div className={cn("h-3 w-3 rounded-full", !isOpened && "bg-blue-500")} />
+    </div>
+  );
+};
+
+export default YNCUPage;

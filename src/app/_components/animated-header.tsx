@@ -43,7 +43,7 @@ export default function AnimatedHeader({
   return (
     <motion.div
       className={cn(
-        "flex h-full flex-col items-center gap-12 pt-72 text-center sm:justify-center sm:pt-0",
+        "flex h-full flex-col items-center gap-12 pt-52 text-center sm:justify-center sm:pt-0",
         className,
       )}
       variants={container}
@@ -69,7 +69,7 @@ export default function AnimatedHeader({
           variants={container}
         >
           {/* First Name */}
-          <span className="flex flex-row items-center justify-center gap-4 text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
+          <span className="flex flex-row items-center justify-center gap-4 text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
             <motion.span className="text-5xl text-blue-500 sm:text-6xl md:text-7xl lg:text-8xl">
               @
             </motion.span>
