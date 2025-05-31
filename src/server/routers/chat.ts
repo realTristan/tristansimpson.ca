@@ -33,7 +33,7 @@ export const chatRouter = router({
     .use(createRateLimitMiddleware(rateLimitConfig))
     .input(
       z.object({
-        content: z.string().min(1),
+        content: z.string().min(1).max(500, "Message is too long"),
       }),
     )
     .mutation(async ({ input }) => {
