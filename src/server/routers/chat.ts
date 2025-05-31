@@ -8,7 +8,7 @@ const welcomeMessages = [
   {
     id: uuidv4(),
     content:
-      "Hi! I'm Tristan. I'm a full-stack developer with over three years of experience designing, developing, and implementing solutions using a vast range of technologies and programming languages. Because of my professional experience in developing high-quality applications, I can confidently understand the majority of languages and services.\n\nFeel free to ask me anything about my experience, projects, or technical topics!",
+      "Hi! I'm Tristan. I'm a full-stack developer with over five years of experience designing, developing, and implementing solutions using a vast range of technologies and programming languages. Because of my professional experience in developing high-quality applications, I can confidently understand the majority of languages and services.\n\nFeel free to ask me anything about my experience, projects, or technical topics!",
     role: "assistant" as const,
     timestamp: new Date().toISOString(),
   },
