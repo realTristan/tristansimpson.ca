@@ -37,7 +37,7 @@ const HomePage = () => {
         </>
       )}
 
-      {isLoading ? (
+      {!isMobile && isLoading ? (
         <SceneLoading />
       ) : (
         <>
@@ -49,7 +49,7 @@ const HomePage = () => {
                 "linear-gradient(to top, rgba(5,5,5,1) 15%, rgba(39,39,39,0) 80%)",
             }}
           >
-            <AnimatedHeader className="absolute mx-12 sm:top-1/5 2xl:left-1/2" />
+            <AnimatedHeader className="absolute top-40 mx-12 sm:top-60 2xl:left-1/2" />
           </div>
         </>
       )}

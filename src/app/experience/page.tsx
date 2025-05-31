@@ -157,7 +157,7 @@ const ExperiencePage = () => {
               <TimelineCircle className="absolute top-6 -left-3" />
 
               <Row className="items-start justify-between gap-4">
-                <Row className="items-center gap-4">
+                <Row className="w-full items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 text-white transition-colors group-hover:border-blue-500/50">
                     {experience.icon}
                   </div>
@@ -170,7 +170,9 @@ const ExperiencePage = () => {
                   </Column>
                 </Row>
 
-                <span className="text-sm text-gray-500">{experience.period}</span>
+                <span className="min-w-fit text-sm text-gray-500">
+                  {experience.period}
+                </span>
               </Row>
 
               <p className="text-gray-400">{experience.description}</p>

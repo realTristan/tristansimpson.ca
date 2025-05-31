@@ -1092,7 +1092,7 @@ const UofGHeader = () => {
       </motion.div>
 
       <motion.div
-        className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 sm:flex-row"
+        className="flex items-center gap-4 text-sm text-gray-400"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}

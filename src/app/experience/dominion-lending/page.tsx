@@ -439,11 +439,13 @@ const DominionLendingPage = () => {
           >
             {projects.map((project) => {
               const isOpened = openedProjects.some((p) => p === project.id);
+
               const openProject = () => {
                 setOpenedProjects((prev) => {
                   return prev.includes(project.id) ? prev : [...prev, project.id];
                 });
               };
+
               return (
                 <motion.div
                   key={project.id}
