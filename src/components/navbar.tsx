@@ -10,7 +10,6 @@ import {
   Mail,
   File,
   University,
-  Banknote,
   Clock,
   Home,
   Code,

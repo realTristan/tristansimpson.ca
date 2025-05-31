@@ -87,7 +87,7 @@ function Model({ modelPath, onLoad }: ModelProps) {
     camera.lookAt(0, size.y * 0.5, 0);
 
     onLoad();
-  }, [gltf, camera, lift]);
+  }, [gltf, camera, lift, onLoad]);
 
   // Keep animated light + parallax
   useEffect(() => {
@@ -101,9 +101,10 @@ function Model({ modelPath, onLoad }: ModelProps) {
     return () => window.removeEventListener("mousemove", onMouse);
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     const t = state.clock.elapsedTime;
     const dt = t - prevTime.current;
+
     prevTime.current = t;
 
     if (dt > 0.1) {

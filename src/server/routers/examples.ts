@@ -6,7 +6,7 @@ export const exampleRouter = router({
     return;
   }),
 
-  createExample: publicProcedure.input(z.object({})).mutation(async ({ input }) => {
+  createExample: publicProcedure.input(z.object({})).mutation(async ({}) => {
     return;
   }),
 });

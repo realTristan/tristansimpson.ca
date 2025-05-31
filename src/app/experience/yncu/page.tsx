@@ -405,7 +405,7 @@ function WorkspaceManagementDashboard() {
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Affordability:</span> Other
-              solutions weren't budget friendly
+              solutions weren&apos;t budget friendly
             </li>
             <li>
               <span className="font-semibold text-white">Flexibility:</span> Needed custom
@@ -567,7 +567,7 @@ function ApplicantManagementDashboard() {
           <ul className="list-disc space-y-1 pl-5 text-gray-200">
             <li>
               <span className="font-semibold text-white">Affordability:</span> Other
-              solutions weren't budget friendly
+              solutions weren&apos;t budget friendly
             </li>
             <li>
               <span className="font-semibold text-white">Flexibility:</span> Required
@@ -575,7 +575,7 @@ function ApplicantManagementDashboard() {
             </li>
             <li>
               <span className="font-semibold text-white">Legacy System:</span> Excel-based
-              tracking was error-prone and couldn't scale with our growing needs
+              tracking was error-prone and couldn&apos;t scale with our growing needs
             </li>
             <li>
               <span className="font-semibold text-white">Analytics:</span> Needed custom
@@ -1387,7 +1387,6 @@ const projects = [
     icon: (
       <Users className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: Journey,
     tags: ["Journey"],
   },
@@ -1397,7 +1396,6 @@ const projects = [
     icon: (
       <UserPlus className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: Summer2025Hiring,
     tags: ["Project", "Co-Lead"],
   },
@@ -1407,7 +1405,6 @@ const projects = [
     icon: (
       <Banknote className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: CommercialLoanOriginationSystem,
     tags: ["Project", "Lead"],
   },
@@ -1417,7 +1414,6 @@ const projects = [
     icon: (
       <LayoutDashboard className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: WorkspaceManagementDashboard,
     tags: ["Project", "Lead"],
   },
@@ -1427,7 +1423,6 @@ const projects = [
     icon: (
       <Users className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: ApplicantManagementDashboard,
     tags: ["Project", "Lead"],
   },
@@ -1437,7 +1432,6 @@ const projects = [
     icon: (
       <Banknote className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: MortgageRenewalSystem,
     tags: ["Project", "Lead", "In Progress"],
   },
@@ -1447,7 +1441,6 @@ const projects = [
     icon: (
       <Banknote className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: MortgageCampaign,
     tags: ["Project", "Lead"],
   },
@@ -1457,7 +1450,6 @@ const projects = [
     icon: (
       <IdCard className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: IDVerification,
     tags: ["Project", "Salesforce"],
   },
@@ -1467,7 +1459,6 @@ const projects = [
     icon: (
       <Link2 className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: FiservDNAAPI,
     tags: ["Project", "Co-Lead"],
   },
@@ -1477,7 +1468,6 @@ const projects = [
     icon: (
       <Rocket className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: AutomaticOnboardingSystem,
     tags: ["Project", "Salesforce"],
   },
@@ -1487,7 +1477,6 @@ const projects = [
     icon: (
       <Wrench className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: YNCUTools,
     tags: ["Project", "Refactor"],
   },
@@ -1506,29 +1495,6 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
-};
-
-const headerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const headerLetter = {
-  hidden: { y: 10, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
-    },
-  },
 };
 
 function YNCUHeader() {
@@ -1621,7 +1587,7 @@ export default function YNCUPage() {
                 className="flex w-full flex-col gap-4"
                 defaultValue="journey"
               >
-                {projects.map((project, index) => {
+                {projects.map((project) => {
                   const isOpened = openedProjects.some((p) => p === project.id);
 
                   const openProject = () => {
@@ -1667,22 +1633,7 @@ export default function YNCUPage() {
                           </span>
                         </AccordionTrigger>
                         <AccordionContent className="pt-2 pb-4">
-                          <div className="flex flex-col gap-6">
-                            <project.Component />
-                            {/* Images at the bottom */}
-                            {project.images && project.images.length > 0 && (
-                              <div className="mt-4 flex flex-wrap gap-4">
-                                {project.images.map((img, i) => (
-                                  <img
-                                    key={i}
-                                    src={img}
-                                    alt={`${project.title} screenshot ${i + 1}`}
-                                    className="h-32 w-48 rounded-lg border border-white/10 object-cover"
-                                  />
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                          <project.Component />
                         </AccordionContent>
                       </AccordionItem>
                     </motion.div>

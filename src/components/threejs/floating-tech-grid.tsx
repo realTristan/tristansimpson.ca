@@ -90,7 +90,7 @@ function FloatingTechGrid({
       speed: 0.1 + Math.random() * 0.2, // random speed between 0.15 and 0.35
       phase: Math.random(),
     }));
-  }, [connections.length]);
+  }, [connections.length, connections]);
 
   // Handle mouse movement
   React.useEffect(() => {

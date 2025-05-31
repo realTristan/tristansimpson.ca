@@ -144,7 +144,7 @@ export default function ExperiencePage() {
           >
             <ExperienceHeader />
 
-            {experiences.map((experience, index) => (
+            {experiences.map((experience) => (
               <motion.div
                 key={experience.id}
                 variants={item}

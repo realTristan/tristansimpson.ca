@@ -308,7 +308,7 @@ function STEMFellowship() {
           </p>
           <p className="text-gray-200">
             <span className="font-semibold text-white">+</span> Represented UofG in the
-            STEM Fellowship's Indicium National Research Competition
+            STEM Fellowship&apos;s Indicium National Research Competition
           </p>
           <p className="text-gray-200">
             <span className="font-semibold text-white">+</span> Implemented algorithms in
@@ -962,7 +962,6 @@ const projects = [
     icon: (
       <Rocket className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: EngineeringAmbition,
     tags: ["Founder", "Lead"],
   },
@@ -972,7 +971,6 @@ const projects = [
     icon: (
       <Code2 className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: GoogleDeveloperStudentClub,
     tags: ["Director", "Lead"],
   },
@@ -982,7 +980,6 @@ const projects = [
     icon: (
       <GraduationCap className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: STEMFellowship,
     tags: ["Researcher"],
   },
@@ -992,7 +989,6 @@ const projects = [
     icon: (
       <Building2 className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: EclipseExpositions,
     tags: ["Developer"],
   },
@@ -1002,7 +998,6 @@ const projects = [
     icon: (
       <Code2 className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: SolcoaTechnologies,
     tags: ["Volunteer Developer"],
   },
@@ -1012,7 +1007,6 @@ const projects = [
     icon: (
       <Users className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: EnactusGuelph,
     tags: ["Web Developer"],
   },
@@ -1022,7 +1016,6 @@ const projects = [
     icon: (
       <Shield className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: GuelphCyberSecuritySociety,
     tags: ["Project Lead", "Web Developer"],
   },
@@ -1032,7 +1025,6 @@ const projects = [
     icon: (
       <Users className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: SocietyOfComputingAndInformationScience,
     tags: ["Vice President", "Lead Developer", "Systems Admin", "Project Manager"],
   },
@@ -1042,7 +1034,6 @@ const projects = [
     icon: (
       <Mountain className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: SkiAndSnowboardClub,
     tags: ["Software Developer"],
   },
@@ -1052,7 +1043,6 @@ const projects = [
     icon: (
       <Brain className="size-5 text-white transition group-hover:text-blue-400 group-focus:text-blue-400" />
     ),
-    images: [],
     Component: ArtificialIntelligenceClub,
     tags: ["Executive Team"],
   },
@@ -1071,29 +1061,6 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
-};
-
-const headerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const headerLetter = {
-  hidden: { y: 10, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
-    },
-  },
 };
 
 function UofGHeader() {
@@ -1185,7 +1152,7 @@ export default function UniversityOfGuelphPage() {
                 className="flex w-full flex-col gap-4"
                 defaultValue="engineering-ambition"
               >
-                {projects.map((project, index) => {
+                {projects.map((project) => {
                   const isOpened = openedProjects.some((p) => p === project.id);
 
                   const openProject = () => {
@@ -1231,22 +1198,7 @@ export default function UniversityOfGuelphPage() {
                           </span>
                         </AccordionTrigger>
                         <AccordionContent className="pt-2 pb-4">
-                          <div className="flex flex-col gap-6">
-                            <project.Component />
-                            {/* Images at the bottom */}
-                            {project.images && project.images.length > 0 && (
-                              <div className="mt-4 flex flex-wrap gap-4">
-                                {project.images.map((img, i) => (
-                                  <img
-                                    key={i}
-                                    src={img}
-                                    alt={`${project.title} screenshot ${i + 1}`}
-                                    className="h-32 w-48 rounded-lg border border-white/10 object-cover"
-                                  />
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                          <project.Component />
                         </AccordionContent>
                       </AccordionItem>
                     </motion.div>
