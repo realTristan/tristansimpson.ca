@@ -359,12 +359,14 @@ export default function Navbar() {
               <ResumeDropdown />
             </motion.div>
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={1}>
-              <Link
-                href="/journey"
-                className="font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
-              >
-                Journey
-              </Link>
+              <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
+                <Link
+                  href="/journey"
+                  className="font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
+                >
+                  Journey
+                </Link>
+              </MagneticButton>
             </motion.div>
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={2}>
               <ExperienceDropdown />
