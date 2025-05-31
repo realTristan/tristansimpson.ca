@@ -17,6 +17,8 @@ import { Cursor } from "@/components/cursor";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import ReactMarkdown from "react-markdown";
+import parse from "html-react-parser";
 
 interface Message {
   id: string;
@@ -82,12 +84,20 @@ const JourneyHeader = () => {
 };
 
 const MessageContent = ({ content }: { content: string }) => {
-  // Split content by newlines and wrap each paragraph in a p tag
-  const paragraphs = content.split("\n\n").map((paragraph, index) => (
-    <p key={index} className={index > 0 ? "mt-4" : ""}>
-      {paragraph}
-    </p>
-  ));
+  // Split content by newlines and process each paragraph
+  const paragraphs = content.split("\n\n").map((paragraph, index) => {
+    // Check if paragraph contains HTML tags
+    const hasHtml = /<[^>]*>/g.test(paragraph);
+
+    return (
+      <div
+        key={index}
+        className={cn("prose prose-invert max-w-none", index > 0 && "mt-4")}
+      >
+        {hasHtml ? parse(paragraph) : <ReactMarkdown>{paragraph}</ReactMarkdown>}
+      </div>
+    );
+  });
 
   return <>{paragraphs}</>;
 };
@@ -209,6 +219,7 @@ export default function ChatPage() {
                     )}
                   >
                     <MessageContent content={message.content} />
+
                     <p className="mt-1 text-xs text-gray-400">
                       {new Date(message.timestamp).toLocaleTimeString()}
                     </p>
