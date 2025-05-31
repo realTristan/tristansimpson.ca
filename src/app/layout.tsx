@@ -4,6 +4,7 @@ import { TRPCProvider } from "@/lib/trpc/client";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import { FooterText } from "@/components/footer-text";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -95,6 +96,7 @@ export default function RootLayout({
             {children}
             <FooterText />
             <Toaster />
+            <Analytics />
           </TRPCProvider>
         </ThemeProvider>
       </body>
