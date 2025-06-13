@@ -8,7 +8,7 @@ export function FooterText() {
 
   return (
     <motion.p
-      className="absolute bottom-8 left-1/2 z-[100] hidden -translate-x-1/2 text-center text-sm text-gray-500 sm:block"
+      className="absolute bottom-8 left-1/2 z-[100] block -translate-x-1/2 text-center text-sm text-gray-500"
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: 1,

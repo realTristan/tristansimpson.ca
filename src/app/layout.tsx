@@ -86,12 +86,7 @@ export default function RootLayout({
         className={`${montserrat.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <TRPCProvider>
             {children}
             <FooterText />

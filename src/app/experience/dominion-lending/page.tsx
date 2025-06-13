@@ -27,6 +27,7 @@ import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
 import { Cursor } from "@/components/cursor";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Wrap } from "@/components/ui/wrap";
 
 const Journey = () => {
   return (
@@ -367,7 +368,7 @@ const DominionLendingHeader = () => {
         </motion.h2>
       </motion.div>
       <motion.div
-        className="flex items-center gap-4 text-sm text-gray-400"
+        className="flex flex-col items-center gap-4 text-sm text-gray-400 sm:flex-row"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
@@ -429,7 +430,7 @@ const DominionLendingPage = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
+          className="flex w-screen flex-col items-center justify-center gap-8 px-4 py-4 sm:w-full"
         >
           <Accordion
             type="single"
@@ -462,19 +463,21 @@ const DominionLendingPage = () => {
                     className="border-b-0 bg-transparent px-4 py-2"
                   >
                     <AccordionTrigger
-                      className="group flex items-center gap-3 text-left text-base font-normal text-white transition hover:text-blue-400 focus:text-blue-400"
+                      className="group flex items-center gap-3 text-left text-sm font-normal text-white transition hover:text-blue-400 focus:text-blue-400 md:text-base"
                       onClick={openProject}
                     >
-                      <Row className="items-center gap-4">
+                      <Row className="flex-col items-center gap-4 md:flex-row">
                         {project.icon}
                         {project.title}
-                        {project.tags &&
-                          project.tags.length > 0 &&
-                          project.tags.map((tag, i) => (
-                            <Badge key={i} variant="outline">
-                              {tag}
-                            </Badge>
-                          ))}
+                        {project.tags?.length && (
+                          <Wrap className="w-full max-w-fit items-center justify-center gap-1 md:gap-2">
+                            {project.tags.map((tag, i) => (
+                              <Badge key={i} variant="outline">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </Wrap>
+                        )}
                       </Row>
                     </AccordionTrigger>
                     <AccordionContent className="pt-2 pb-4">
