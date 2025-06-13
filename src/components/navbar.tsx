@@ -161,7 +161,7 @@ function ConnectDropdown({ className }: { className?: string }) {
                 className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Linkedin className="size-4" />
-                <span>LinkedIn</span>
+                <span>tristansimpsonn</span>
                 <ExternalLink className="size-4" />
               </a>
               <a
@@ -171,7 +171,7 @@ function ConnectDropdown({ className }: { className?: string }) {
                 className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <Twitter className="size-4" />
-                <span>Twitter</span>
+                <span>tristans121</span>
                 <ExternalLink className="size-4" />
               </a>
             </motion.div>
