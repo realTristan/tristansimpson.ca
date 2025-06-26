@@ -1191,12 +1191,12 @@ const UniversityOfGuelphPage = () => {
                     className="border-b-0 bg-transparent px-4 py-2"
                   >
                     <AccordionTrigger
-                      className="group flex items-center gap-3 text-left text-sm font-normal text-white transition hover:text-blue-400 focus:text-blue-400 md:text-base"
+                      className="group flex items-center gap-3 text-center text-sm font-normal text-white transition hover:text-blue-400 focus:text-blue-400 sm:text-left md:text-base"
                       onClick={openProject}
                     >
                       <Row className="flex-col items-center gap-4 md:flex-row">
                         {project.icon}
-                        {project.title}
+                        <span className="text-center sm:text-left">{project.title}</span>
                         {project.tags?.length && (
                           <Wrap className="w-full max-w-fit items-center justify-center gap-1 md:gap-2">
                             {project.tags.map((tag, i) => (
