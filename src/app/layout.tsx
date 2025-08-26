@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import { TRPCProvider } from "@/lib/trpc/client";
-import { ThemeProvider } from "next-themes";
-import { Toaster } from "sonner";
-import { FooterText } from "@/components/footer-text";
 import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { Montserrat } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -89,7 +88,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TRPCProvider>
             {children}
-            <FooterText />
             <Toaster />
             <Analytics />
           </TRPCProvider>

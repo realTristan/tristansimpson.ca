@@ -1,9 +1,8 @@
-import { z } from "zod";
-import { router, publicProcedure } from "@/lib/trpc/trpc";
-import { v4 as uuidv4 } from "uuid";
-import { TRPCError } from "@trpc/server";
 import { generateResponse } from "@/lib/gemini";
-import { createRateLimitMiddleware } from "@/lib/trpc/rate-limit";
+import { publicProcedure, router } from "@/lib/trpc/trpc";
+import { TRPCError } from "@trpc/server";
+import { v4 as uuidv4 } from "uuid";
+import { z } from "zod";
 
 const welcomeMessages = [
   {
@@ -22,15 +21,8 @@ const welcomeMessages = [
   },
 ];
 
-// Rate limit configuration: 10 requests per minute
-const rateLimitConfig = {
-  maxRequests: 10,
-  windowMs: 60 * 1000, // 1 minute
-};
-
 export const chatRouter = router({
   send: publicProcedure
-    .use(createRateLimitMiddleware(rateLimitConfig))
     .input(
       z.object({
         content: z.string().min(1).max(500, "Message is too long"),
