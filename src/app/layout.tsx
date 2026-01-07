@@ -50,7 +50,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.PROD_URL!),
   openGraph: {
     type: "website",
     locale: "en_US",
