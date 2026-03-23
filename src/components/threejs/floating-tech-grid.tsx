@@ -5,7 +5,6 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useSpring, animated } from "@react-spring/three";
-import { Line } from "@react-three/drei";
 
 interface FloatingTechGridProps {
   gridSize?: number;
@@ -16,6 +15,9 @@ interface FloatingTechGridProps {
   animateIn?: boolean;
 }
 
+const _streakP1 = new THREE.Vector3();
+const _streakP2 = new THREE.Vector3();
+
 function FloatingTechGrid({
   gridSize = 68,
   nodeCount = 24,
@@ -25,10 +27,8 @@ function FloatingTechGrid({
   animateIn = true,
 }: FloatingTechGridProps) {
   const groupRef = useRef<THREE.Group>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Initialize animation
   const { scale, opacity } = useSpring({
     from: { scale: 0, opacity: 0 },
     to: { scale: animateIn ? 1 : 0, opacity: animateIn ? 1 : 0 },
@@ -41,12 +41,10 @@ function FloatingTechGrid({
     },
   });
 
-  // Create nodes and connections
   const { nodes, connections } = useMemo(() => {
     const nodes: THREE.Vector3[] = [];
     const connections: [number, number][] = [];
 
-    // Generate random nodes
     for (let i = 0; i < nodeCount; i++) {
       nodes.push(
         new THREE.Vector3(
@@ -57,9 +55,7 @@ function FloatingTechGrid({
       );
     }
 
-    // Create limited connections between nearby nodes
     for (let i = 0; i < nodes.length; i++) {
-      // Find the 2 closest nodes for each node
       const distances = nodes.map((n, j) => ({
         index: j,
         dist: nodes[i].distanceTo(n),
@@ -84,46 +80,33 @@ function FloatingTechGrid({
     return { nodes, connections };
   }, [gridSize, nodeCount]);
 
-  // Streak animation parameters for each connection
   const streakParams = useMemo(() => {
     return connections.map(() => ({
-      speed: 0.1 + Math.random() * 0.2, // random speed between 0.15 and 0.35
+      speed: 0.1 + Math.random() * 0.2,
       phase: Math.random(),
     }));
   }, [connections]);
 
-  // Handle mouse movement
-  React.useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      mouseRef.current = {
-        x: (event.clientX / window.innerWidth) * 2 - 1,
-        y: -(event.clientY / window.innerHeight) * 2 + 1,
-      };
-    };
+  const connectionGeometries = useMemo(() => {
+    return connections.map(([start, end]) =>
+      new Float32Array([
+        nodes[start].x, nodes[start].y, nodes[start].z,
+        nodes[end].x, nodes[end].y, nodes[end].z,
+      ]),
+    );
+  }, [connections, nodes]);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  // Animation frame
   useFrame((state) => {
-    if (!groupRef.current) {
-      return;
-    }
-
+    if (!groupRef.current) return;
     const time = state.clock.getElapsedTime();
-
-    // Rotate the entire grid  and add subtle floating motion
     groupRef.current.rotation.y = time * 0.05;
     groupRef.current.position.y = Math.sin(time * 0.5) * 0.2;
   });
 
   return (
     <animated.group ref={groupRef} scale={scale}>
-      {/* Nodes */}
       {nodes.map((position, index) => (
         <mesh key={`node-${index}`} position={position}>
-          {/* Glow effect */}
           <sphereGeometry args={[0.18, 8, 8]} />
           <meshStandardMaterial
             color={index % 3 === 0 ? secondaryColor : primaryColor}
@@ -133,8 +116,11 @@ function FloatingTechGrid({
             emissiveIntensity={1.5}
             depthWrite={false}
           />
+        </mesh>
+      ))}
 
-          {/* Node core */}
+      {nodes.map((position, index) => (
+        <mesh key={`node-core-${index}`} position={position}>
           <sphereGeometry args={[0.1, 8, 8]} />
           <animated.meshBasicMaterial
             color={index % 3 === 0 ? secondaryColor : primaryColor}
@@ -144,24 +130,13 @@ function FloatingTechGrid({
         </mesh>
       ))}
 
-      {/* Connections */}
       {connections.map(([start, end], index) => (
         <React.Fragment key={`connection-${index}`}>
           <line>
             <bufferGeometry>
               <bufferAttribute
                 attach="attributes-position"
-                args={[
-                  new Float32Array([
-                    nodes[start].x,
-                    nodes[start].y,
-                    nodes[start].z,
-                    nodes[end].x,
-                    nodes[end].y,
-                    nodes[end].z,
-                  ]),
-                  3,
-                ]}
+                args={[connectionGeometries[index], 3]}
                 count={2}
                 itemSize={3}
               />
@@ -170,11 +145,9 @@ function FloatingTechGrid({
               color={primaryColor}
               transparent
               opacity={opacity}
-              linewidth={1}
             />
           </line>
 
-          {/* White streak traversing the line */}
           <StreakLine
             start={nodes[start]}
             end={nodes[end]}
@@ -188,7 +161,6 @@ function FloatingTechGrid({
   );
 }
 
-// Add the StreakLine component
 const StreakLine = React.memo(function StreakLine({
   start,
   end,
@@ -204,43 +176,49 @@ const StreakLine = React.memo(function StreakLine({
 }) {
   const maxOpacity = 0.95;
   const fadeInDuration = 0.2;
-  const pointsRef = useRef<[THREE.Vector3, THREE.Vector3]>([start, end]);
-  const opacityRef = useRef(0);
-  const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+  const lineRef = useRef<THREE.Line>(null);
+  const posArray = useMemo(() => new Float32Array(6), []);
 
   useFrame(({ clock }) => {
+    if (!lineRef.current) return;
+
     const t = (clock.getElapsedTime() * speed + phase) % 1;
     const fadeIn = Math.min(1, t / fadeInDuration);
     const currentLength = streakLength * fadeIn;
     const t2 = Math.min(t + currentLength, 0.999);
 
     if (t2 > t) {
-      const p1 = new THREE.Vector3().lerpVectors(start, end, t);
-      const p2 = new THREE.Vector3().lerpVectors(start, end, t2);
+      _streakP1.lerpVectors(start, end, t);
+      _streakP2.lerpVectors(start, end, t2);
 
-      // Only update if changed
-      const isChanged =
-        !pointsRef.current[0].equals(p1) ||
-        !pointsRef.current[1].equals(p2) ||
-        opacityRef.current !== maxOpacity * fadeIn;
+      posArray[0] = _streakP1.x;
+      posArray[1] = _streakP1.y;
+      posArray[2] = _streakP1.z;
+      posArray[3] = _streakP2.x;
+      posArray[4] = _streakP2.y;
+      posArray[5] = _streakP2.z;
 
-      if (isChanged) {
-        pointsRef.current = [p1, p2];
-        opacityRef.current = maxOpacity * fadeIn;
+      const geom = lineRef.current.geometry as THREE.BufferGeometry;
+      const attr = geom.attributes.position as THREE.BufferAttribute;
+      attr.needsUpdate = true;
 
-        forceUpdate();
-      }
+      const mat = lineRef.current.material as THREE.LineBasicMaterial;
+      mat.opacity = maxOpacity * fadeIn;
     }
   });
 
   return (
-    <Line
-      points={pointsRef.current}
-      color="#b0b0b0"
-      lineWidth={1}
-      transparent
-      opacity={opacityRef.current}
-    />
+    <line ref={lineRef as any}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          args={[posArray, 3]}
+          count={2}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <lineBasicMaterial color="#b0b0b0" transparent opacity={0} />
+    </line>
   );
 });
 
@@ -252,7 +230,7 @@ const FloatingTechGridScene = React.memo(function FloatingTechGridScene(
       <Canvas camera={{ position: [0, 0, 25], fov: 50 }}>
         <ambientLight intensity={0.8} />
         <FloatingTechGrid {...props} />
-        <EffectComposer enableNormalPass>
+        <EffectComposer>
           <Bloom intensity={0.5} luminanceThreshold={0.2} luminanceSmoothing={0.9} />
         </EffectComposer>
       </Canvas>

@@ -1,24 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Computer, University, ExternalLink } from "lucide-react";
-import Link from "next/link";
-import Navbar from "@/components/navbar";
-import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { PageShell } from "@/components/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
 import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Cursor } from "@/components/cursor";
+import { motion } from "framer-motion";
+import { Computer, ExternalLink, University } from "lucide-react";
+import Link from "next/link";
 
 const experiences = [
+  {
+    id: "textnow",
+    title: "TextNow",
+    role: "Software Developer",
+    period: "September 2025 - Present",
+    description: "Full-stack development and AI integration",
+    icon: <Computer className="h-6 w-6" />,
+    link: "/experience/textnow",
+  },
   {
     id: "yncu",
     title: "YNCU",
     role: "Full Stack Developer",
-    period: "June 2024 - Present",
+    period: "June 2024 - September 2025",
     description: "Full-stack development and system architecture",
     icon: <Computer className="h-6 w-6" />,
     link: "/experience/yncu",
@@ -70,7 +75,7 @@ const item = {
 const ExperienceHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center gap-8 px-4 pt-24 pb-16 text-center"
+      className="flex flex-col items-center justify-center gap-8 px-4 pt-16 pb-8 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -124,71 +129,52 @@ const ExperienceHeader = () => {
 };
 
 const ExperiencePage = () => {
-  const isMobile = useIsMobile();
-
   return (
-    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
-      <Navbar />
+    <PageShell>
+      <ExperienceHeader />
 
-      {!isMobile && (
-        <>
-          <FloatingTechGridScene />
-          <Cursor />
-        </>
-      )}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="flex w-full flex-col items-center justify-center gap-8 pb-16"
+      >
+        {experiences.map((experience) => (
+          <motion.div
+            key={experience.id}
+            variants={item}
+            className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-transparent p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+          >
+            <TimelineCircle className="absolute top-6 -left-3" />
 
-      {!isMobile && <ExperienceHeader />}
+            <Row className="items-start justify-between gap-4">
+              <Row className="w-full items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 text-white transition-colors group-hover:border-blue-500/50">
+                  {experience.icon}
+                </div>
 
-      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col">
-        {isMobile && <ExperienceHeader />}
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
-        >
-          {experiences.map((experience) => (
-            <motion.div
-              key={experience.id}
-              variants={item}
-              className="group relative flex w-full max-w-3xl flex-col gap-4 overflow-visible rounded-xl border border-white/10 bg-transparent p-6 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
-            >
-              <TimelineCircle className="absolute top-6 -left-3" />
-
-              <Row className="items-start justify-between gap-4">
-                <Row className="w-full items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 text-white transition-colors group-hover:border-blue-500/50">
-                    {experience.icon}
-                  </div>
-
-                  <Column>
-                    <h2 className="text-xl font-semibold text-white">
-                      {experience.title}
-                    </h2>
-                    <p className="text-sm text-gray-400">{experience.role}</p>
-                  </Column>
-                </Row>
-
-                <span className="min-w-fit text-sm text-gray-500">
-                  {experience.period}
-                </span>
+                <Column>
+                  <h2 className="text-xl font-semibold text-white">{experience.title}</h2>
+                  <p className="text-sm text-gray-400">{experience.role}</p>
+                </Column>
               </Row>
 
-              <p className="text-gray-400">{experience.description}</p>
+              <span className="min-w-fit text-sm text-gray-500">{experience.period}</span>
+            </Row>
 
-              <Link
-                href={experience.link}
-                className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
-              >
-                Learn more
-                <ExternalLink className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
-      </ScrollArea>
-    </main>
+            <p className="text-gray-400">{experience.description}</p>
+
+            <Link
+              href={experience.link}
+              className="inline-flex items-center gap-2 text-sm text-blue-500 transition-colors hover:text-blue-400"
+            >
+              Learn more
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
+    </PageShell>
   );
 };
 

@@ -9,13 +9,12 @@ import {
   X,
   Mail,
   File,
-  University,
-  Clock,
   Home,
   Code,
-  Computer,
   Linkedin,
   Twitter,
+  Briefcase,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/magnetic-button";
@@ -35,23 +34,20 @@ function ProjectsDropdown({ className }: { className?: string }) {
           className,
         )}
       >
-        <Link
-          href="#"
+        <span
           className={cn(
-            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
+            "cursor-pointer font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
             className,
           )}
         >
           Projects
-        </Link>
+        </span>
       </MagneticButton>
-      {/* Wrap bridge and dropdown in one container */}
       <div
         className="absolute top-full left-1/2 z-[100] w-80 -translate-x-1/2"
         style={{ pointerEvents: open ? "auto" : "none" }}
       >
-        {/* Hover bridge */}
-        <div className="h-10 w-full" />
+        <div className="h-6 w-full" />
         <AnimatePresence>
           {open && (
             <motion.div
@@ -82,16 +78,17 @@ function ProjectsDropdown({ className }: { className?: string }) {
                 <Code className="size-4" />
                 <span>Graphics & Physics</span>
               </Link>
-              <Link
+              <div className="mx-2 my-1 border-t border-white/5" />
+              <a
                 href="https://simpsonresearch.ca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
               >
                 <ExternalLink className="size-4" />
-                <span>Simpson Research (All Projects)</span>
-              </Link>
-              <Link
+                <span>Simpson Research (All)</span>
+              </a>
+              <a
                 href="https://github.com/realtristan"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -99,80 +96,6 @@ function ProjectsDropdown({ className }: { className?: string }) {
               >
                 <ExternalLink className="size-4" />
                 <span>GitHub (@realtristan)</span>
-              </Link>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
-}
-
-function ConnectDropdown({ className }: { className?: string }) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <MagneticButton
-        className={cn(
-          "transition-colors duration-200 ease-linear hover:text-blue-500",
-          className,
-        )}
-      >
-        <Link
-          href="mailto:tsimps01@uoguelph.ca"
-          className={cn(
-            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
-            className,
-          )}
-        >
-          Connect
-        </Link>
-      </MagneticButton>
-      <div
-        className="absolute top-full left-1/2 z-[100] w-72 -translate-x-1/2"
-        style={{ pointerEvents: open ? "auto" : "none" }}
-      >
-        <div className="h-10 w-full" />
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.18 }}
-              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
-            >
-              <a
-                href="mailto:tsimps01@uoguelph.ca"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Mail className="size-4" />
-                <span>tsimps01@uoguelph.ca</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/tristansimpsonn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Linkedin className="size-4" />
-                <span>tristansimpsonn</span>
-                <ExternalLink className="size-4" />
-              </a>
-              <a
-                href="http://x.com/tristans121"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Twitter className="size-4" />
-                <span>tristans121</span>
-                <ExternalLink className="size-4" />
               </a>
             </motion.div>
           )}
@@ -182,135 +105,54 @@ function ConnectDropdown({ className }: { className?: string }) {
   );
 }
 
-function ResumeDropdown({ className }: { className?: string }) {
-  const [open, setOpen] = useState(false);
+function NavLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
+  const cls = "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500";
+
+  if (external) {
+    return (
+      <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
+        <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+          {children}
+        </a>
+      </MagneticButton>
+    );
+  }
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <MagneticButton
-        className={cn(
-          "transition-colors duration-200 ease-linear hover:text-blue-500",
-          className,
-        )}
-      >
-        <Link
-          href="#"
-          className={cn(
-            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
-            className,
-          )}
-        >
-          Resume
-        </Link>
-      </MagneticButton>
-
-      <div
-        className="absolute top-full left-1/2 z-[100] w-48 -translate-x-1/2"
-        style={{ pointerEvents: open ? "auto" : "none" }}
-      >
-        <div className="h-10 w-full" />
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.18 }}
-              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
-            >
-              <a
-                href="/Tristan_Simpson___Resume_2025.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                type="application/pdf"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <File className="size-4" />
-                <span>Open Preview</span>
-              </a>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
+    <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
+      <Link href={href} className={cls}>
+        {children}
+      </Link>
+    </MagneticButton>
   );
 }
 
-function ExperienceDropdown({ className }: { className?: string }) {
-  const [open, setOpen] = useState(false);
+function ConnectIcons() {
+  const iconCls = "text-white/70 transition-colors duration-200 hover:text-blue-500";
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <MagneticButton
-        className={cn(
-          "transition-colors duration-200 ease-linear hover:text-blue-500",
-          className,
-        )}
+    <div className="flex items-center gap-3">
+      <a href="mailto:tsimps01@uoguelph.ca" className={iconCls} aria-label="Email">
+        <Mail className="size-4" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/tristansimpsonn/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={iconCls}
+        aria-label="LinkedIn"
       >
-        <Link
-          href="#"
-          className={cn(
-            "font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500",
-            className,
-          )}
-        >
-          Experience
-        </Link>
-      </MagneticButton>
-      <div
-        className="absolute top-full left-1/2 z-[100] w-64 -translate-x-1/2"
-        style={{ pointerEvents: open ? "auto" : "none" }}
+        <Linkedin className="size-4" />
+      </a>
+      <a
+        href="https://x.com/tristans121"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={iconCls}
+        aria-label="Twitter"
       >
-        <div className="h-10 w-full" />
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.18 }}
-              className="bg-background w-full rounded-xl border border-white/10 px-2 py-3 shadow-xl backdrop-blur-md"
-            >
-              <Link
-                href="/experience/yncu"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Computer className="size-4" />
-                <span>YNCU (Current 2025)</span>
-              </Link>
-              <Link
-                href="/experience/dominion-lending"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Computer className="size-4" />
-                <span>Dominion Lending</span>
-              </Link>
-              <Link
-                href="/experience/university-of-guelph"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <University className="size-4" />
-                <span>University of Guelph</span>
-              </Link>
-              <Link
-                href="/experience"
-                className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-              >
-                <Clock className="size-4" />
-                <span>Timeline (All)</span>
-              </Link>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+        <Twitter className="size-4" />
+      </a>
     </div>
   );
 }
@@ -322,28 +164,27 @@ export default function Navbar() {
     hidden: { opacity: 0 },
     visible: (i: number) => ({
       opacity: 1,
-      transition: { delay: i * 0.15, duration: 0.6 },
+      transition: { delay: i * 0.12, duration: 0.6 },
     }),
   };
 
   return (
     <>
-      <div className="h-20"></div>
+      <div className="h-20" />
 
-      <nav className="fixed top-6 left-1/2 z-[100] w-full max-w-4xl -translate-x-1/2 px-12">
+      <nav className="fixed top-6 left-1/2 z-[100] w-full max-w-4xl -translate-x-1/2 px-6 sm:px-12">
         <motion.div
-          className="flex items-center justify-between rounded-2xl border border-white/10 bg-transparent py-3 pr-8 pl-6 shadow-xl backdrop-blur-md"
+          className="flex items-center justify-between rounded-2xl border border-white/10 bg-transparent py-3 pr-6 pl-6 shadow-xl backdrop-blur-md sm:pr-8"
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          {/* Logo */}
           <motion.div
             variants={fadeIn}
             initial="hidden"
             animate="visible"
             custom={0}
-            className="flex-1"
+            className="flex-shrink-0"
           >
             <Link
               href="/"
@@ -353,42 +194,37 @@ export default function Navbar() {
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden flex-1 justify-end space-x-12 text-sm md:flex">
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-8 text-sm md:flex">
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}>
-              <ResumeDropdown />
+              <NavLink href="/experience">Experience</NavLink>
             </motion.div>
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={1}>
-              <MagneticButton className="transition-colors duration-200 ease-linear hover:text-blue-500">
-                <Link
-                  href="/journey"
-                  className="font-medium text-white/90 drop-shadow transition-colors duration-200 ease-linear hover:text-blue-500"
-                >
-                  Journey
-                </Link>
-              </MagneticButton>
-            </motion.div>
-            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={2}>
-              <ExperienceDropdown />
-            </motion.div>
-            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={3}>
               <ProjectsDropdown />
             </motion.div>
+            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={2}>
+              <NavLink href="/journey">Journey</NavLink>
+            </motion.div>
+            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={3}>
+              <NavLink href="/Tristan_Simpson___Resume_2025.pdf" external>Resume</NavLink>
+            </motion.div>
             <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={4}>
-              <ConnectDropdown />
+              <div className="ml-2 border-l border-white/10 pl-4">
+                <ConnectIcons />
+              </div>
             </motion.div>
           </div>
 
-          {/* Mobile Menu Button - Right */}
+          {/* Mobile Menu Button */}
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-1 justify-end p-2 text-white md:hidden md:w-0"
+            className="p-2 text-white md:hidden"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </motion.button>
 
-          {/* Mobile Menu Dropdown */}
+          {/* Mobile Menu */}
           <AnimatePresence>
             {isOpen && (
               <motion.div
@@ -398,148 +234,93 @@ export default function Navbar() {
                 transition={{ duration: 0.18 }}
                 className="bg-background absolute top-full left-0 mt-2 max-h-[calc(100vh-8rem)] w-full overflow-y-auto rounded-xl border border-white/10 px-2 py-3 text-sm shadow-xl backdrop-blur-md md:hidden"
               >
-                <div className="flex flex-col space-y-2">
+                <div className="flex flex-col space-y-1">
                   <Link
                     href="/"
-                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    onClick={() => setIsOpen(false)}
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 text-white/90 transition-colors hover:text-blue-400"
                   >
                     <Home className="size-4" />
                     <span>Home</span>
                   </Link>
                   <Link
-                    href="/journey"
-                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    href="/experience"
+                    onClick={() => setIsOpen(false)}
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 text-white/90 transition-colors hover:text-blue-400"
                   >
-                    <Clock className="size-4" />
+                    <Briefcase className="size-4" />
+                    <span>Experience</span>
+                  </Link>
+                  <Link
+                    href="/journey"
+                    onClick={() => setIsOpen(false)}
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 text-white/90 transition-colors hover:text-blue-400"
+                  >
+                    <MessageCircle className="size-4" />
                     <span>Journey</span>
                   </Link>
                   <a
                     href="/Tristan_Simpson___Resume_2025.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    type="application/pdf"
-                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 text-white/90 transition-colors hover:text-blue-400"
                   >
                     <File className="size-4" />
-                    <span>Open Preview</span>
+                    <span>Resume</span>
                   </a>
-                  <div className="space-y-1">
-                    <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
-                      <Computer className="size-4" />
-                      <span>Experience</span>
-                    </div>
-                    <div className="ml-8 space-y-1">
-                      <Link
-                        href="/experience/yncu"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Computer className="size-4" />
-                        <span>YNCU (Current 2025)</span>
-                      </Link>
-                      <Link
-                        href="/experience/dominion-lending"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Computer className="size-4" />
-                        <span>Dominion Lending</span>
-                      </Link>
-                      <Link
-                        href="/experience/university-of-guelph"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <University className="size-4" />
-                        <span>University of Guelph</span>
-                      </Link>
-                      <Link
-                        href="/experience"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Clock className="size-4" />
-                        <span>Timeline (All)</span>
-                      </Link>
-                    </div>
+
+                  <div className="mx-2 my-1 border-t border-white/10" />
+
+                  <div className="px-4 py-1 text-xs font-medium tracking-wider text-white/40">
+                    PROJECTS
                   </div>
-                  <div className="space-y-1">
-                    <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
-                      <Code className="size-4" />
-                      <span>Projects</span>
-                    </div>
-                    <div className="ml-8 space-y-1">
-                      <Link
-                        href="/projects/hermes"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Code className="size-4" />
-                        <span>Hermes</span>
-                      </Link>
-                      <Link
-                        href="/projects/versa"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Code className="size-4" />
-                        <span>Versa</span>
-                      </Link>
-                      <Link
-                        href="/projects/graphics"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Code className="size-4" />
-                        <span>Graphics & Physics</span>
-                      </Link>
-                      <a
-                        href="https://simpsonresearch.ca"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <ExternalLink className="size-4" />
-                        <span>Simpson Research (All Projects)</span>
-                      </a>
-                      <a
-                        href="https://github.com/realtristan"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <ExternalLink className="size-4" />
-                        <span>GitHub (@realtristan)</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90">
-                      <Mail className="size-4" />
-                      <span>Connect</span>
-                    </div>
-                    <div className="ml-8 space-y-1">
-                      <a
-                        href="mailto:tsimps01@uoguelph.ca"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Mail className="size-4" />
-                        <span>tsimps01@uoguelph.ca</span>
-                      </a>
-                      <a
-                        href="https://www.linkedin.com/in/tristansimpsonn/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Linkedin className="size-4" />
-                        <span>LinkedIn</span>
-                        <ExternalLink className="size-4" />
-                      </a>
-                      <a
-                        href="http://x.com/tristans121"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-row items-center gap-2 rounded-lg px-4 py-2 text-white/90 transition-colors hover:text-blue-400"
-                      >
-                        <Twitter className="size-4" />
-                        <span>Twitter</span>
-                        <ExternalLink className="size-4" />
-                      </a>
-                    </div>
+                  <Link
+                    href="/projects/hermes"
+                    onClick={() => setIsOpen(false)}
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 pl-6 text-white/90 transition-colors hover:text-blue-400"
+                  >
+                    <Code className="size-4" />
+                    <span>Hermes</span>
+                  </Link>
+                  <Link
+                    href="/projects/versa"
+                    onClick={() => setIsOpen(false)}
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 pl-6 text-white/90 transition-colors hover:text-blue-400"
+                  >
+                    <Code className="size-4" />
+                    <span>Versa</span>
+                  </Link>
+                  <Link
+                    href="/projects/graphics"
+                    onClick={() => setIsOpen(false)}
+                    className="flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 pl-6 text-white/90 transition-colors hover:text-blue-400"
+                  >
+                    <Code className="size-4" />
+                    <span>Graphics & Physics</span>
+                  </Link>
+
+                  <div className="mx-2 my-1 border-t border-white/10" />
+
+                  <div className="flex items-center justify-center gap-6 py-3">
+                    <a href="mailto:tsimps01@uoguelph.ca" className="text-white/70 transition-colors hover:text-blue-400">
+                      <Mail className="size-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/tristansimpsonn/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/70 transition-colors hover:text-blue-400"
+                    >
+                      <Linkedin className="size-5" />
+                    </a>
+                    <a
+                      href="https://x.com/tristans121"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/70 transition-colors hover:text-blue-400"
+                    >
+                      <Twitter className="size-5" />
+                    </a>
                   </div>
                 </div>
               </motion.div>

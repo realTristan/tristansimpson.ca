@@ -1,13 +1,23 @@
 "use client";
 
-import React, { useRef, useEffect, Suspense, useState } from "react";
+import { Center } from "@react-three/drei";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { Box3, Vector3 } from "three";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { Box3, Vector3 } from "three";
-import { Center } from "@react-three/drei";
-import * as THREE from "three";
-import { v4 as uuidv4 } from "uuid";
+import { AmbientParticlesInner } from "./ambient-particles";
+
+let _sharedDraco: DRACOLoader | null = null;
+function getSharedDraco() {
+  if (!_sharedDraco) {
+    _sharedDraco = new DRACOLoader();
+    _sharedDraco.setDecoderPath("/draco/");
+    _sharedDraco.setDecoderConfig({ type: "js" });
+  }
+  return _sharedDraco;
+}
 
 interface ApolloSceneProps {
   modelPath: string;
@@ -16,7 +26,6 @@ interface ApolloSceneProps {
 
 export default function ApolloScene({ modelPath, onObjectLoad }: ApolloSceneProps) {
   const [dpr, setDpr] = useState<[number, number]>([1, 1]);
-  const uniqueId = useRef(uuidv4());
 
   useEffect(() => {
     setDpr([1, window.devicePixelRatio]);
@@ -24,22 +33,27 @@ export default function ApolloScene({ modelPath, onObjectLoad }: ApolloSceneProp
 
   return (
     <Canvas
-      key={uniqueId.current}
       className="pointer-events-none absolute inset-0 z-auto m-0 h-full w-full"
       gl={{
         antialias: true,
         powerPreference: "high-performance",
         alpha: true,
-        preserveDrawingBuffer: true,
       }}
       dpr={dpr}
       style={{
         background: "radial-gradient(circle at center, #171717 0%, #050505 58%)",
       }}
     >
-      <ambientLight intensity={0.01} />
+      <ambientLight intensity={0.02} />
+      <AmbientParticlesInner
+        count={300}
+        spread={8}
+        size={0.015}
+        speed={0.08}
+        parallaxStrength={0.2}
+      />
       <Suspense fallback={null}>
-        <Model key={uniqueId.current} modelPath={modelPath} onLoad={onObjectLoad} />
+        <Model modelPath={modelPath} onLoad={onObjectLoad} />
       </Suspense>
     </Canvas>
   );
@@ -52,12 +66,10 @@ interface ModelProps {
 
 function Model({ modelPath, onLoad }: ModelProps) {
   const [lift, setLift] = useState(0);
+  const hasInitialized = useRef(false);
 
   const gltf = useLoader(GLTFLoader, modelPath, (loader) => {
-    const draco = new DRACOLoader();
-    draco.setDecoderPath("/draco/");
-    draco.setDecoderConfig({ type: "js" });
-    loader.setDRACOLoader(draco);
+    loader.setDRACOLoader(getSharedDraco());
   });
 
   const modelRef = useRef<THREE.Object3D>(null);
@@ -66,31 +78,29 @@ function Model({ modelPath, onLoad }: ModelProps) {
   const prevTime = useRef(0);
   const pointer = useRef({ x: 0, y: 0 });
 
+  const stableOnLoad = useCallback(onLoad, [onLoad]);
+
   useEffect(() => {
-    if (!gltf.scene) {
+    if (!gltf.scene || hasInitialized.current) {
       return;
     }
 
-    // Compute bounding box + size + center
+    hasInitialized.current = true;
+
     const box = new Box3().setFromObject(gltf.scene);
     const size = box.getSize(new Vector3());
     const center = box.getCenter(new Vector3());
 
-    // Recenter model on origin
     gltf.scene.position.sub(center);
+    setLift(size.y * 0.01);
 
-    // Lift by 40% of its height to center it better
-    setLift(size.y * 0.4);
-
-    // Position camera much closer
     const distance = Math.max(size.x, size.y, size.z) * 0.4;
     camera.position.set(0, size.y * 0.3, distance);
     camera.lookAt(0, size.y * 0.3, 0);
 
-    onLoad();
-  }, [gltf, camera, lift, onLoad]);
+    stableOnLoad();
+  }, [gltf, camera, stableOnLoad]);
 
-  // Keep animated light + parallax
   useEffect(() => {
     const onMouse = (e: MouseEvent) => {
       pointer.current.x = (e.clientX / window.innerWidth - 0.5) * 8;
@@ -98,14 +108,12 @@ function Model({ modelPath, onLoad }: ModelProps) {
     };
 
     window.addEventListener("mousemove", onMouse);
-
     return () => window.removeEventListener("mousemove", onMouse);
   }, []);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     const dt = t - prevTime.current;
-
     prevTime.current = t;
 
     if (dt > 0.1) {
@@ -126,23 +134,21 @@ function Model({ modelPath, onLoad }: ModelProps) {
   }
 
   return (
-    <>
-      <group position={[0.1, lift, 0]}>
-        <Center>
-          <primitive ref={modelRef} object={gltf.scene} />
-
-          <directionalLight position={[-10, 10, -10]} intensity={0.05} />
-          <directionalLight position={[10, 10, 10]} intensity={0.05} />
-          <pointLight
-            ref={lightRef}
-            position={[30, 3, 1.8]}
-            distance={8}
-            decay={2}
-            intensity={0.3}
-            color={0xfff0e5}
-          />
-        </Center>
-      </group>
-    </>
+    <group position={[-0.25, lift, 0]}>
+      <Center>
+        <primitive ref={modelRef} object={gltf.scene} />
+        <directionalLight position={[-10, 10, -10]} intensity={0.08} />
+        <directionalLight position={[10, 10, 10]} intensity={0.06} />
+        <directionalLight position={[-5, 0, -8]} intensity={0.12} color={0x88ccff} />
+        <pointLight
+          ref={lightRef}
+          position={[30, 3, 1.8]}
+          distance={6}
+          decay={2.5}
+          intensity={0.45}
+          color={0xfff0e5}
+        />
+      </Center>
+    </group>
   );
 }

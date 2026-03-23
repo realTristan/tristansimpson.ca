@@ -10,15 +10,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc/client";
-import Navbar from "@/components/navbar";
-import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Cursor } from "@/components/cursor";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import ReactMarkdown from "react-markdown";
 import parse from "html-react-parser";
+import { PageShell } from "@/components/page-shell";
 
 interface Message {
   id: string;
@@ -51,7 +48,7 @@ const item = {
 const JourneyHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center gap-8 px-4 pt-24 pb-16 text-center"
+      className="flex flex-col items-center justify-center gap-8 px-4 pt-16 pb-8 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -84,9 +81,7 @@ const JourneyHeader = () => {
 };
 
 const MessageContent = ({ content }: { content: string }) => {
-  // Split content by newlines and process each paragraph
   const paragraphs = content.split("\n\n").map((paragraph, index) => {
-    // Check if paragraph contains HTML tags
     const hasHtml = /<[^>]*>/g.test(paragraph);
 
     return (
@@ -107,7 +102,6 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
 
   const {
     register,
@@ -118,17 +112,15 @@ export default function ChatPage() {
     resolver: zodResolver(messageSchema),
   });
 
-  // Fetch welcome messages
   const { data: welcomeMessages } = trpc.chat.getWelcomeMessages.useQuery();
 
-  // Load messages from localStorage on mount, or use welcome messages
   useEffect(() => {
     const stored = localStorage.getItem("chat-messages");
     if (stored) {
       try {
         setMessages(JSON.parse(stored));
         return;
-      } catch (e) {
+      } catch {
         // fallback to welcome messages if parse fails
       }
     }
@@ -137,7 +129,6 @@ export default function ChatPage() {
     }
   }, [welcomeMessages]);
 
-  // Save messages to localStorage whenever they change
   useEffect(() => {
     if (messages.length > 0) {
       localStorage.setItem("chat-messages", JSON.stringify(messages));
@@ -180,107 +171,93 @@ export default function ChatPage() {
   };
 
   return (
-    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
-      <Navbar />
+    <PageShell>
+      <JourneyHeader />
 
-      {!isMobile && (
-        <>
-          <FloatingTechGridScene />
-          <Cursor />
-        </>
-      )}
-
-      {!isMobile && <JourneyHeader />}
-
-      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col">
-        {isMobile && <JourneyHeader />}
-
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="flex w-full flex-col items-center justify-center gap-8 pb-16"
+      >
         <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="flex w-full flex-col items-center justify-center gap-8 px-4 py-4"
+          variants={item}
+          className="h-full w-full max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-transparent shadow-xl backdrop-blur-md"
         >
-          <motion.div
-            variants={item}
-            className="h-full w-full max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-transparent shadow-xl backdrop-blur-md"
-          >
-            <ScrollArea ref={scrollRef} className="h-[500px] w-full max-w-3xl p-4">
-              <Column className="gap-4">
-                {messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    variants={item}
-                    className={cn(
-                      "max-w-[80%] rounded-lg p-4",
-                      message.role === "user"
-                        ? "ml-auto bg-blue-500/20 text-white"
-                        : "bg-white/5 text-gray-200",
-                    )}
-                  >
-                    <MessageContent content={message.content} />
-
-                    <p className="mt-1 text-xs text-gray-400">
-                      {new Date(message.timestamp).toLocaleTimeString()}
-                    </p>
-                  </motion.div>
-                ))}
-
-                {isLoading && (
-                  <motion.div
-                    variants={item}
-                    className="max-w-[80%] rounded-lg bg-white/5 p-4 text-gray-200"
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-blue-500" />
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-blue-500 [animation-delay:0.2s]" />
-                      <div className="h-2 w-2 animate-bounce rounded-full bg-blue-500 [animation-delay:0.4s]" />
-                    </div>
-                  </motion.div>
-                )}
-
-                {error && (
-                  <motion.div
-                    variants={item}
-                    className="max-w-[80%] rounded-lg bg-red-500/20 p-4 text-red-200"
-                  >
-                    <p>{error}</p>
-                  </motion.div>
-                )}
-              </Column>
-            </ScrollArea>
-
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="bg-background border-t border-white/10 p-4 backdrop-blur-md"
-            >
-              <Row className="gap-2">
-                <div className="flex-1">
-                  <Input
-                    {...register("content")}
-                    placeholder="Type your message..."
-                    className={cn(
-                      "bg-white/5 text-white placeholder:text-gray-400",
-                      errors.content && "border-red-500 focus-visible:ring-red-500",
-                    )}
-                    disabled={isLoading}
-                  />
-                  {errors.content && (
-                    <p className="mt-1 text-xs text-red-500">{errors.content.message}</p>
+          <ScrollArea ref={scrollRef} className="h-[500px] w-full max-w-3xl p-4">
+            <Column className="gap-4">
+              {messages.map((message) => (
+                <motion.div
+                  key={message.id}
+                  variants={item}
+                  className={cn(
+                    "max-w-[80%] rounded-lg p-4",
+                    message.role === "user"
+                      ? "ml-auto bg-blue-500/20 text-white"
+                      : "bg-white/5 text-gray-200",
                   )}
-                </div>
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="bg-blue-500 text-white hover:bg-blue-600"
                 >
-                  <Send className="h-4 w-4" />
-                </Button>
-              </Row>
-            </form>
-          </motion.div>
+                  <MessageContent content={message.content} />
+                  <p className="mt-1 text-xs text-gray-400">
+                    {new Date(message.timestamp).toLocaleTimeString()}
+                  </p>
+                </motion.div>
+              ))}
+
+              {isLoading && (
+                <motion.div
+                  variants={item}
+                  className="max-w-[80%] rounded-lg bg-white/5 p-4 text-gray-200"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 animate-bounce rounded-full bg-blue-500" />
+                    <div className="h-2 w-2 animate-bounce rounded-full bg-blue-500 [animation-delay:0.2s]" />
+                    <div className="h-2 w-2 animate-bounce rounded-full bg-blue-500 [animation-delay:0.4s]" />
+                  </div>
+                </motion.div>
+              )}
+
+              {error && (
+                <motion.div
+                  variants={item}
+                  className="max-w-[80%] rounded-lg bg-red-500/20 p-4 text-red-200"
+                >
+                  <p>{error}</p>
+                </motion.div>
+              )}
+            </Column>
+          </ScrollArea>
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="bg-background border-t border-white/10 p-4 backdrop-blur-md"
+          >
+            <Row className="gap-2">
+              <div className="flex-1">
+                <Input
+                  {...register("content")}
+                  placeholder="Type your message..."
+                  className={cn(
+                    "bg-white/5 text-white placeholder:text-gray-400",
+                    errors.content && "border-red-500 focus-visible:ring-red-500",
+                  )}
+                  disabled={isLoading}
+                />
+                {errors.content && (
+                  <p className="mt-1 text-xs text-red-500">{errors.content.message}</p>
+                )}
+              </div>
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="bg-blue-500 text-white hover:bg-blue-600"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </Row>
+          </form>
         </motion.div>
-      </ScrollArea>
-    </main>
+      </motion.div>
+    </PageShell>
   );
 }

@@ -33,7 +33,7 @@ export default function RapierBallsScene({
     <div className={cn("fixed top-0 left-0 z-40 h-screen w-screen", className)}>
       <Canvas
         shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        gl={{ alpha: true, stencil: false, antialias: false }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
       >
@@ -63,20 +63,9 @@ export default function RapierBallsScene({
           <directionalLight position={[0, -15, 0]} intensity={2} color={primaryColor} />
           <EffectComposer multisampling={0} enableNormalPass>
             <SSAO
-              samples={11}
-              radius={0.15}
+              samples={16}
+              radius={0.1}
               intensity={20}
-              luminanceInfluence={0.6}
-              color={new Color("black")}
-              worldDistanceThreshold={0}
-              worldDistanceFalloff={0}
-              worldProximityThreshold={0}
-              worldProximityFalloff={0}
-            />
-            <SSAO
-              samples={21}
-              radius={0.03}
-              intensity={15}
               luminanceInfluence={0.6}
               color={new Color("black")}
               worldDistanceThreshold={0}

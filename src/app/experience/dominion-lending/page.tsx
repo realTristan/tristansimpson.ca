@@ -1,33 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import Navbar from "@/components/navbar";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { PageShell } from "@/components/page-shell";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Users,
-  Briefcase,
-  Globe,
-  Zap,
-  TrendingUp,
-  Layers,
-  ClipboardList,
-} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import React, { useState } from "react";
-import { FileText } from "lucide-react";
-import FloatingTechGridScene from "@/components/threejs/floating-tech-grid";
 import { Column } from "@/components/ui/column";
 import { Row } from "@/components/ui/row";
-import { Cursor } from "@/components/cursor";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { Wrap } from "@/components/ui/wrap";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import {
+  Briefcase,
+  ClipboardList,
+  FileText,
+  Globe,
+  Layers,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
+import { useState } from "react";
 
 const Journey = () => {
   return (
@@ -37,7 +33,7 @@ const Journey = () => {
           <Briefcase className="h-5 w-5 text-blue-400" />
           <span className="text-lg font-semibold text-white">
             Software Developer{" "}
-            <span className="text-sm text-gray-400">(July 2023 – September 2023)</span>
+            <span className="text-sm text-gray-400">(July 2023 - September 2023)</span>
           </span>
         </Row>
         <ul className="list-disc space-y-1 pl-5 text-gray-200">
@@ -347,7 +343,7 @@ const item = {
 const DominionLendingHeader = () => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center gap-8 px-4 pt-24 pb-16 text-center"
+      className="flex flex-col items-center justify-center gap-8 px-4 pt-16 pb-16 text-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -408,89 +404,76 @@ const DominionLendingHeader = () => {
 const DominionLendingPage = () => {
   const [openedProjects, setOpenedProjects] = useState<string[]>(["journey"]);
 
-  const isMobile = useIsMobile();
-
   return (
-    <main className="relative flex h-screen w-full flex-col items-center justify-center overflow-x-hidden">
-      <Navbar />
+    <PageShell
+      breadcrumbs={[
+        { label: "Experience", href: "/experience" },
+        { label: "Dominion Lending" },
+      ]}
+    >
+      <DominionLendingHeader />
 
-      {!isMobile && (
-        <>
-          <FloatingTechGridScene />
-          <Cursor />
-        </>
-      )}
-
-      {!isMobile && <DominionLendingHeader />}
-
-      <ScrollArea className="scrollbar-hide mx-auto flex h-full w-full max-w-7xl flex-1 flex-col">
-        {isMobile && <DominionLendingHeader />}
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="flex w-screen flex-col items-center justify-center gap-8 px-4 py-4 sm:w-full"
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="flex flex-col items-center justify-center gap-8 px-4 py-4 sm:w-full"
+      >
+        <Accordion
+          type="single"
+          collapsible
+          className="flex w-full flex-col gap-6"
+          defaultValue="journey"
         >
-          <Accordion
-            type="single"
-            collapsible
-            className="flex w-full flex-col gap-4"
-            defaultValue="journey"
-          >
-            {projects.map((project) => {
-              const isOpened = openedProjects.some((p) => p === project.id);
+          {projects.map((project) => {
+            const isOpened = openedProjects.some((p) => p === project.id);
 
-              const openProject = () => {
-                setOpenedProjects((prev) => {
-                  return prev.includes(project.id) ? prev : [...prev, project.id];
-                });
-              };
+            const openProject = () => {
+              setOpenedProjects((prev) => {
+                return prev.includes(project.id) ? prev : [...prev, project.id];
+              });
+            };
 
-              return (
-                <motion.div
-                  key={project.id}
-                  variants={item}
-                  className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+            return (
+              <motion.div
+                key={project.id}
+                variants={item}
+                className="relative w-full overflow-visible rounded-xl border border-white/10 bg-transparent p-0 shadow-xl backdrop-blur-md transition-all hover:border-blue-500/50"
+              >
+                <TimelineCircle className="absolute -top-3 -left-3" isOpened={isOpened} />
+
+                <AccordionItem
+                  value={project.id}
+                  className="border-b-0 bg-transparent px-4 py-2"
                 >
-                  <TimelineCircle
-                    className="absolute -top-3 -left-3"
-                    isOpened={isOpened}
-                  />
-
-                  <AccordionItem
-                    value={project.id}
-                    className="border-b-0 bg-transparent px-4 py-2"
+                  <AccordionTrigger
+                    className="group flex items-center gap-3 text-center text-sm font-normal text-white transition hover:text-blue-400 focus:text-blue-400 sm:text-left md:text-base"
+                    onClick={openProject}
                   >
-                    <AccordionTrigger
-                      className="group flex items-center gap-3 text-center text-sm font-normal text-white transition hover:text-blue-400 focus:text-blue-400 sm:text-left md:text-base"
-                      onClick={openProject}
-                    >
-                      <Row className="flex-col items-center gap-4 md:flex-row">
-                        {project.icon}
-                        <span className="text-center sm:text-left">{project.title}</span>
-                        {project.tags?.length && (
-                          <Wrap className="w-full max-w-fit items-center justify-center gap-1 md:gap-2">
-                            {project.tags.map((tag, i) => (
-                              <Badge key={i} variant="outline">
-                                {tag}
-                              </Badge>
-                            ))}
-                          </Wrap>
-                        )}
-                      </Row>
-                    </AccordionTrigger>
-                    <AccordionContent className="pt-2 pb-4">
-                      <project.Component />
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-              );
-            })}
-          </Accordion>
-        </motion.div>
-      </ScrollArea>
-    </main>
+                    <Row className="flex-col items-center gap-4 md:flex-row">
+                      {project.icon}
+                      <span className="text-center sm:text-left">{project.title}</span>
+                      {project.tags?.length && (
+                        <Wrap className="w-full max-w-fit items-center justify-center gap-1 md:gap-2">
+                          {project.tags.map((tag, i) => (
+                            <Badge key={i} variant="outline">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </Wrap>
+                      )}
+                    </Row>
+                  </AccordionTrigger>
+                  <AccordionContent className="pt-2 pb-4">
+                    <project.Component />
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
+            );
+          })}
+        </Accordion>
+      </motion.div>
+    </PageShell>
   );
 };
 

@@ -14,8 +14,7 @@ import { Calendar, Github, Linkedin, Mail, MapPin } from "lucide-react";
 export default function WorkTermReport() {
   return (
     <div className="bg-background min-h-screen">
-      {/* Header */}
-      <header className="border-border bg-card/50 sticky top-0 z-50 border-b backdrop-blur-sm">
+      <header className="border-border bg-card/50 sticky top-0 z-40 border-b backdrop-blur-sm">
         <div className="mx-auto max-w-4xl px-6 py-4">
           <div className="flex items-center justify-between">
             <div>

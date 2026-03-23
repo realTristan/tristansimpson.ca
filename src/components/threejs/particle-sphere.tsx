@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise.js";
@@ -19,17 +19,19 @@ interface ParticleSphereProps {
   secondaryColorRatio?: number;
 }
 
+const _tempVec = new THREE.Vector3();
+
 function ParticleSphere({
-  count = 5000,
+  count = 3000,
   radius = 1.5,
   radialNoiseScale = 1,
   radialNoiseStrength = 0.01,
   swirlNoiseScale = 0.3,
-  swirlNoiseStrength = Math.PI * 1, // up to 180°
+  swirlNoiseStrength = Math.PI * 1,
   swirlSpeed = 0.05,
-  size = 0.01,
+  size = 0.013,
   color = "#88ccff",
-  secondaryColor = "#1d4ed8", // text-blue-700
+  secondaryColor = "#1d4ed8",
   secondaryColorRatio = 0.25,
 }: ParticleSphereProps) {
   const pointsRef = useRef<THREE.Points>(null!);
@@ -143,12 +145,11 @@ function ParticleSphere({
 
       const angle = ns * swirlNoiseStrength;
 
-      // rotate the anchor around its axis by angle, then scale by rr
-      const p = new THREE.Vector3().copy(v).applyAxisAngle(ax, angle).multiplyScalar(rr);
+      _tempVec.copy(v).applyAxisAngle(ax, angle).multiplyScalar(rr);
 
-      arr[i * 3 + 0] = p.x;
-      arr[i * 3 + 1] = p.y;
-      arr[i * 3 + 2] = p.z;
+      arr[i * 3 + 0] = _tempVec.x;
+      arr[i * 3 + 1] = _tempVec.y;
+      arr[i * 3 + 2] = _tempVec.z;
     }
 
     posAttr.needsUpdate = true;
@@ -177,12 +178,40 @@ function ParticleSphere({
   );
 }
 
+function MouseTiltGroup({ children }: { children: React.ReactNode }) {
+  const groupRef = useRef<THREE.Group>(null!);
+  const pointer = useRef({ x: 0, y: 0 });
+  const smooth = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const onMouse = (e: MouseEvent) => {
+      pointer.current.x = (e.clientX / window.innerWidth - 0.5) * 2;
+      pointer.current.y = -(e.clientY / window.innerHeight - 0.5) * 2;
+    };
+    window.addEventListener("mousemove", onMouse);
+    return () => window.removeEventListener("mousemove", onMouse);
+  }, []);
+
+  useFrame((_, delta) => {
+    if (!groupRef.current) return;
+    const dt = Math.min(delta, 0.1);
+    smooth.current.x += (pointer.current.x - smooth.current.x) * 1.5 * dt;
+    smooth.current.y += (pointer.current.y - smooth.current.y) * 1.5 * dt;
+    groupRef.current.rotation.x = smooth.current.y * 0.15;
+    groupRef.current.rotation.y = smooth.current.x * 0.15;
+  });
+
+  return <group ref={groupRef}>{children}</group>;
+}
+
 export default function ParticleSphereScene(props: ParticleSphereProps) {
   return (
     <div className="fixed z-0 h-screen w-screen">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <ambientLight intensity={0.2} />
-        <ParticleSphere {...props} />
+        <MouseTiltGroup>
+          <ParticleSphere {...props} />
+        </MouseTiltGroup>
       </Canvas>
     </div>
   );
